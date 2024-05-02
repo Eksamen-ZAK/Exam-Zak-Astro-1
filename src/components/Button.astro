@@ -1,0 +1,139 @@
+---
+interface Props {
+  text: string;
+  icon?: string;
+  width?: string;
+  variant: string;
+  href?: string;
+}
+
+const { text, icon, variant, href } = Astro.props;
+---
+
+{
+  href ? (
+    <a class={variant} href={href}>
+      <p>{text}</p>
+      {icon && <div class="icon" id={icon} />}
+    </a>
+  ) : (
+    <button class={variant}>
+      <p>{text}</p>
+      {icon && <div class="icon" id={icon} />}
+    </button>
+  )
+}
+
+<style>
+  button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    height: 31px;
+    padding: 6px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    border-radius: 10px;
+    text-decoration: none;
+  }
+  .fullWidth {
+    width: 100%;
+    flex-grow: 1;
+  }
+
+  p {
+    padding-top: 3px;
+    font-size: var(--fs-m);
+    font-family: var(--main-font);
+  }
+  .red {
+    color: var(--main-bg-color);
+    background-color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    > #trashcan {
+      background-image: url(../public/assets/trashcan-white.svg);
+    }
+  }
+  .red:hover {
+    color: var(--primary-color);
+    background-color: var(--main-bg-color);
+    border: 2px solid var(--primary-color);
+    > #trashcan {
+      background-image: url(../public/assets/trashcan-red.svg);
+    }
+  }
+  .green {
+    color: var(--main-bg-color);
+    background-color: var(--secondary-color);
+    border: 2px solid var(--secondary-color);
+    > #plus {
+      background-image: url(../public/assets/plus-icon-white.svg);
+    }
+  }
+  .green:hover {
+    color: var(--secondary-color);
+    background-color: var(--main-bg-color);
+    border: 2px solid var(--secondary-color);
+    > #play {
+      background-image: url(../public/assets/play-icon-green.svg);
+    }
+    > #plus {
+      background-image: url(../public/assets/plus-icon-green.svg);
+    }
+  }
+  .invertedGreen {
+    color: var(--secondary-color);
+    background-color: var(--main-bg-color);
+    border: 2px solid var(--secondary-color);
+  }
+  .invertedGreen:hover {
+    color: var(--main-bg-color);
+    background-color: var(--secondary-color);
+    border: 2px solid var(--secondary-color);
+  }
+  #play {
+    background-image: url(../public/assets/play-icon-white.svg);
+  }
+
+  .icon {
+    width: 17px;
+    height: 17px;
+    background-size: contain;
+  }
+
+  h1,
+  p {
+    font-family: var(--main-font);
+  }
+
+  .small {
+    width: 60px;
+    height: 20px;
+    border-radius: 5px;
+    padding: 6px 5px;
+    > .icon {
+      width: 12px;
+      height: 12px;
+    }
+    > p {
+      font-size: var(--fs-s);
+    }
+  }
+  .large {
+    height: 50px;
+    > p {
+      padding-top: 10px;
+      font-size: 32px;
+    }
+  }
+  a.large {
+    height: 48px;
+  }
+</style>

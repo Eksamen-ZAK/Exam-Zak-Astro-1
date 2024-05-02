@@ -1,0 +1,48 @@
+---
+let headersList = {
+  apikey:
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpsZ3N4aXlud3F2dmh3aGVleHdvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTQ0NzA5MjksImV4cCI6MjAzMDA0NjkyOX0.U40ZZWRh_MC7612vdwFHVKFZxwRHq_TECCnnzovEXKE",
+};
+
+let response = await fetch(
+  "https://jlgsxiynwqvvhwheexwo.supabase.co/rest/v1/exercises",
+  {
+    method: "GET",
+    headers: headersList,
+  }
+);
+
+let data = await response.json();
+console.log(data);
+
+import LoginLayout from "../layouts/LoginLayout.astro";
+import Button from "../components/Button.astro";
+import "../css/forms.css";
+---
+
+<LoginLayout title="Welcome to Astro.">
+  <form>
+    <input id="brugernavn" name="username" type="text" required />
+    <input id="adgangskode" name="password" type="text" required />
+    <div>
+      <Button text="Registrer" variant="invertedGreen fullWidth large" />
+      <Button text="Log ind" variant="green fullWidth large" href="/login" />
+    </div>
+  </form>
+
+  <style>
+    img {
+      width: 271.002px;
+      height: 270px;
+      margin: 0 auto;
+      text-align: center;
+      margin-top: 109px;
+    }
+    div {
+      display: flex;
+      width: 393px;
+      margin-top: 93px;
+      gap: 20px;
+    }
+  </style>
+</LoginLayout>

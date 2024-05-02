@@ -1,0 +1,42 @@
+---
+let headersList = {
+  apikey:
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpsZ3N4aXlud3F2dmh3aGVleHdvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTQ0NzA5MjksImV4cCI6MjAzMDA0NjkyOX0.U40ZZWRh_MC7612vdwFHVKFZxwRHq_TECCnnzovEXKE",
+};
+
+let response = await fetch(
+  "https://jlgsxiynwqvvhwheexwo.supabase.co/rest/v1/exercises",
+  {
+    method: "GET",
+    headers: headersList,
+  }
+);
+
+let data = await response.json();
+console.log(data);
+
+import Layout from "../layouts/Layout.astro";
+import ExerciseCard from "../components/ExerciseCard.astro";
+import Button from "../components/Button.astro";
+import RepititionButton from "../components/RepititionButton.astro";
+---
+
+<Layout title="Welcome to Astro.">
+  <ExerciseCard
+    title="Løft brynene"
+    description="En øvelse til at styrke muskulaturen omkring øjnene."
+    image="../assets/images/001.webp"
+  />
+
+  <ExerciseCard
+    title="Løft brynene"
+    description="En øvelse til at styrke muskulaturen omkring øjnene."
+    image="../assets/images/001.webp"
+    variant="remove"
+  />
+  <p></p>
+  <Button text="Afspil" variant="green" icon="play" />
+  <Button text="Slet" variant="red" icon="trashcan" />
+
+  <style></style>
+</Layout>

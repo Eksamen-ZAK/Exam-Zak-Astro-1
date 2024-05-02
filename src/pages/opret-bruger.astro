@@ -17,32 +17,18 @@ console.log(data);
 
 import LoginLayout from "../layouts/LoginLayout.astro";
 import Button from "../components/Button.astro";
+import "../css/forms.css";
 ---
 
 <LoginLayout title="Welcome to Astro.">
-  <img src="assets/logo.svg" alt="logo" />
-  <div>
-    <Button
-      text="Registrer"
-      variant="invertedGreen fullWidth large"
-      href="/opret-bruger"
+  <form>
+    <input id="brugernavn" name="username" type="text" required />
+    <input id="adgangskode" name="password" type="text" required /><input
+      id="gentag-adgangskode"
+      name="repeat-password"
+      type="text"
+      required
     />
-    <Button text="Log ind" variant="green fullWidth large" href="/log-ind" />
-  </div>
+  </form>
+  <button type="submit">Indsend bedømmelse</button>
 </LoginLayout>
-
-<style>
-  img {
-    width: 271.002px;
-    height: 270px;
-    margin: 0 auto;
-    text-align: center;
-    margin-top: 109px;
-  }
-  div {
-    display: flex;
-    width: 393px;
-    margin-top: 93px;
-    gap: 20px;
-  }
-</style>

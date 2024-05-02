@@ -1,5 +1,5 @@
 ---
-import Header from "../components/Header.astro";
+import LogoHeader from "../components/LogoHeader.astro";
 
 interface Props {
   title: string;
@@ -26,7 +26,7 @@ const { title, metaDescription } = Astro.props;
     <title>{title}</title>
   </head>
   <body>
-    <Header />
+    <LogoHeader />
     <main>
       <slot />
     </main>
@@ -50,5 +50,12 @@ const { title, metaDescription } = Astro.props;
   }
   body {
     min-height: 100vh;
+  }
+  main {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto auto;
   }
 </style>

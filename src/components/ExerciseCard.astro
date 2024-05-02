@@ -1,0 +1,102 @@
+---
+import RepititionButton from "./RepititionButton.astro";
+import Button from "./Button.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  image: string;
+  variant?: string;
+}
+
+const { title, description, image, variant } = Astro.props;
+---
+
+<article class={variant}>
+  <img src=`${image}` alt=`${title} image` />
+  <div class="text-container">
+    <h1>{title}</h1>
+    <p>{description}</p>
+    <div>
+      <RepititionButton size=`${variant==="remove" && "small"}` />
+      <Button
+        text=`${variant==="remove" ?"Fjern":"Tilføj"}`
+        variant=`${variant==="remove" ?"red small":"green"}`
+        icon=`${variant==="remove" ?"trashcan":"plus"}`
+      />
+    </div>
+  </div>
+</article>
+
+<style>
+  article {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 421px;
+    height: 178px;
+    padding: 11px 12px;
+    border-radius: 10px;
+    background-color: var(--main-bg-color);
+  }
+
+  img {
+    width: 153px;
+    height: 153px;
+    object-fit: contain;
+  }
+  .text-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 15px 0;
+    > div {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+  h1 {
+    margin-top: 8px;
+    margin-bottom: 0;
+    font-size: 24px;
+  }
+  p {
+    font-weight: var(--fw-t);
+    font-size: 18px;
+  }
+  h1,
+  p {
+    font-family: var(--main-font);
+  }
+  .remove {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 250px;
+    height: 93px;
+    padding: 6px;
+
+    > img {
+      width: 80px;
+      height: 80px;
+    }
+    > div {
+      display: flex;
+      align-items: stretch;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0;
+      padding: 2px 3px;
+      > h1 {
+        font-size: 16px;
+        margin-bottom: 0;
+      }
+      > p {
+        font-size: 12px;
+        font-weight: var(--fw-t);
+        margin: 2px 0;
+      }
+    }
+  }
+</style>
