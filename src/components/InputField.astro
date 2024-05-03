@@ -1,0 +1,31 @@
+---
+interface Props {
+  label: string;
+  id: string;
+  type: any;
+  required: boolean;
+}
+
+const { label, id, type, required = false } = Astro.props;
+---
+
+<label for={id}>{label}</label>
+<input id={id} {id} type={type} required />
+
+<style>
+  label {
+    font-size: var(--fs-m);
+    font-family: var(--main-font);
+    font-weight: var(--fw-b);
+  }
+  input:focus {
+    outline: none;
+  }
+  input {
+    height: 40px;
+    background: var(--alternative-bg-color);
+    margin-bottom: 29px;
+    border-radius: 10px;
+    border: 0;
+  }
+</style>

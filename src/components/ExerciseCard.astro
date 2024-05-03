@@ -20,6 +20,7 @@ const { title, description, image, variant } = Astro.props;
     <div>
       <RepititionButton size=`${variant==="remove" && "small"}` />
       <Button
+        type="button"
         text=`${variant==="remove" ?"Fjern":"Tilføj"}`
         variant=`${variant==="remove" ?"red small":"green"}`
         icon=`${variant==="remove" ?"trashcan":"plus"}`

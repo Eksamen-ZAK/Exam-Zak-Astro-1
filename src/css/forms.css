@@ -1,4 +1,23 @@
+div:has(form) {
+  margin-top: 108px;
+}
 form {
   display: flex;
   flex-direction: column;
+  width: 315px;
+  margin: auto;
+  > div {
+    display: flex;
+    justify-content: space-evenly;
+    width: 315px;
+    margin-top: 43px;
+    gap: 20px;
+  }
+}
+
+h1 {
+  text-align: start;
+  font-size: 24px;
+  font-family: var(--main-font);
+  color: var(--primary-color);
 }

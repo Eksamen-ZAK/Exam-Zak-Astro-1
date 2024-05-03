@@ -5,9 +5,10 @@ interface Props {
   width?: string;
   variant: string;
   href?: string;
+  type: any;
 }
 
-const { text, icon, variant, href } = Astro.props;
+const { text, icon, variant, href, type } = Astro.props;
 ---
 
 {
@@ -17,7 +18,7 @@ const { text, icon, variant, href } = Astro.props;
       {icon && <div class="icon" id={icon} />}
     </a>
   ) : (
-    <button class={variant}>
+    <button type={type} class={variant}>
       <p>{text}</p>
       {icon && <div class="icon" id={icon} />}
     </button>
@@ -126,12 +127,22 @@ const { text, icon, variant, href } = Astro.props;
       font-size: var(--fs-s);
     }
   }
+  .medium {
+    height: 44px;
+    > p {
+      padding-top: 10px;
+      font-size: 24px;
+    }
+  }
   .large {
     height: 50px;
     > p {
       padding-top: 10px;
       font-size: 32px;
     }
+  }
+  a.medium {
+    height: 40px;
   }
   a.large {
     height: 48px;
