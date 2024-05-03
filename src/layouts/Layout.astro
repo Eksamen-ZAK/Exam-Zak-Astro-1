@@ -4,9 +4,10 @@ import Header from "../components/Header.astro";
 interface Props {
   title: string;
   metaDescription?: string;
+  backgroundColor?: string;
 }
 
-const { title, metaDescription } = Astro.props;
+const { title, metaDescription, backgroundColor } = Astro.props;
 ---
 
 <!doctype html>
@@ -25,7 +26,7 @@ const { title, metaDescription } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body>
+  <body class={backgroundColor}>
     <Header />
     <main>
       <slot />
@@ -50,5 +51,8 @@ const { title, metaDescription } = Astro.props;
   }
   body {
     min-height: 100vh;
+  }
+  .alternative {
+    background-color: var(--alternative-bg-color);
   }
 </style>

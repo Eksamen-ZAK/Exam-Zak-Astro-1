@@ -11,19 +11,26 @@ interface Props {
 const { text, icon, variant, href, type } = Astro.props;
 ---
 
-{
-  href ? (
-    <a class={variant} href={href}>
-      <p>{text}</p>
-      {icon && <div class="icon" id={icon} />}
-    </a>
-  ) : (
-    <button type={type} class={variant}>
-      <p>{text}</p>
-      {icon && <div class="icon" id={icon} />}
-    </button>
-  )
-}
+<button type={type} class={variant} data-link={href}>
+  <p>{text}</p>
+  {icon && <div class="icon" id={icon} />}
+</button>
+
+<script>
+  const buttons = document.querySelectorAll("button");
+  buttons.forEach((button) => {
+    const href = button.getAttribute("data-link");
+    button.addEventListener(
+      "mousedown",
+      () => (window.location.href = `${href}`)
+    );
+    button.addEventListener("keypress", function (e) {
+      if (e.key === "Enter") {
+        window.location.href = `${href}`;
+      }
+    });
+  });
+</script>
 
 <style>
   button {
