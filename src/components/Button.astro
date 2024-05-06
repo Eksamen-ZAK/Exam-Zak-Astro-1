@@ -100,11 +100,19 @@ const { text, icon, variant, href, type } = Astro.props;
     color: var(--secondary-color);
     background-color: var(--main-bg-color);
     border: 2px solid var(--secondary-color);
+    > #bookmark {
+      background-image: url(../public/assets/bookmark-green.svg);
+      width: 13px;
+    }
   }
   .invertedGreen:hover {
     color: var(--main-bg-color);
     background-color: var(--secondary-color);
     border: 2px solid var(--secondary-color);
+    > #bookmark {
+      background-image: url(../public/assets/bookmark.svg);
+      width: 18px;
+    }
   }
   #play {
     background-image: url(../public/assets/play-icon-white.svg);
@@ -121,7 +129,7 @@ const { text, icon, variant, href, type } = Astro.props;
     font-family: var(--main-font);
   }
 
-  .small {
+  .x-small {
     width: 60px;
     height: 20px;
     border-radius: 5px;
@@ -132,6 +140,13 @@ const { text, icon, variant, href, type } = Astro.props;
     }
     > p {
       font-size: var(--fs-s);
+    }
+  }
+  .small {
+    height: 33px;
+    > p {
+      padding-top: 6px;
+      font-size: 20px;
     }
   }
   .medium {
@@ -147,11 +162,5 @@ const { text, icon, variant, href, type } = Astro.props;
       padding-top: 10px;
       font-size: 32px;
     }
-  }
-  a.medium {
-    height: 40px;
-  }
-  a.large {
-    height: 48px;
   }
 </style>

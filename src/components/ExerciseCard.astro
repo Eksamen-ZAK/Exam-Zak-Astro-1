@@ -15,14 +15,14 @@ const { title, description, image, variant } = Astro.props;
 <article class={variant}>
   <img src=`${image}` alt=`${title} image` />
   <div class="text-container">
-    <h1>{title}</h1>
+    <h3>{title}</h3>
     <p>{description}</p>
     <div>
       <RepititionButton size=`${variant==="remove" && "small"}` />
       <Button
         type="button"
         text=`${variant==="remove" ?"Fjern":"Tilføj"}`
-        variant=`${variant==="remove" ?"red small":"green"}`
+        variant=`${variant==="remove" ?"red x-small":"green"}`
         icon=`${variant==="remove" ?"trashcan":"plus"}`
       />
     </div>
@@ -57,7 +57,7 @@ const { title, description, image, variant } = Astro.props;
       justify-content: space-between;
     }
   }
-  h1 {
+  h3 {
     margin-top: 8px;
     margin-bottom: 0;
     font-size: 24px;
@@ -66,7 +66,7 @@ const { title, description, image, variant } = Astro.props;
     font-weight: var(--fw-t);
     font-size: 18px;
   }
-  h1,
+  h3,
   p {
     font-family: var(--main-font);
   }
@@ -89,7 +89,7 @@ const { title, description, image, variant } = Astro.props;
       justify-content: center;
       gap: 0;
       padding: 2px 3px;
-      > h1 {
+      > h3 {
         font-size: 16px;
         margin-bottom: 0;
       }

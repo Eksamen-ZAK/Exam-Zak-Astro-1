@@ -16,27 +16,82 @@ let data = await response.json();
 console.log(data);
 
 import Layout from "../layouts/Layout.astro";
-import ExerciseCard from "../components/ExerciseCard.astro";
+import ProgramCard from "../components/ProgramCard.astro";
 import Button from "../components/Button.astro";
-import RepititionButton from "../components/RepititionButton.astro";
 ---
 
 <Layout title="Welcome to Astro.">
-  <ExerciseCard
-    title="Løft brynene"
-    description="En øvelse til at styrke muskulaturen omkring øjnene."
-    image="../assets/images/001.webp"
-  />
-
-  <ExerciseCard
-    title="Løft brynene"
-    description="En øvelse til at styrke muskulaturen omkring øjnene."
-    image="../assets/images/001.webp"
-    variant="remove"
-  />
-  <p></p>
-  <Button text="Afspil" variant="green" icon="play" />
-  <Button text="Slet" variant="red" icon="trashcan" />
-
-  <style></style>
+  <div>
+    <h1>Dine programmer</h1>
+    <p>
+      Disse programmer er nogle du eller din tilknyttede terapeut tidligere har
+      sammensat.
+    </p>
+    <div class="program-list">
+      <button
+        ><div>
+          <img src="../assets/plus-circle.svg" alt="plus circle icon" />
+          <p>Lav nyt program</p>
+        </div></button
+      >
+      <ProgramCard
+        title="Ansigtsprogram 1"
+        description="Primære ansigtsprogram for ansigtsmuskulatur"
+        image="../assets/images/001.webp"
+      />
+      <ProgramCard
+        title="Ansigtsprogram 1"
+        description="Primære ansigtsprogram for ansigtsmuskulatur"
+        image="../assets/images/001.webp"
+      />
+      <ProgramCard
+        title="Ansigtsprogram 1"
+        description="Primære ansigtsprogram for ansigtsmuskulatur"
+        image="../assets/images/001.webp"
+      />
+    </div>
+  </div>
 </Layout>
+<style>
+  div:has(h1) {
+    padding: 40px;
+    max-width: 1148px;
+  }
+  h1 {
+    font-size: 30px;
+    font-family: var(--main-font);
+    font-weight: var(--fw-b);
+    margin-bottom: 6px;
+  }
+  p {
+    margin-bottom: 16px;
+    font-size: 18px;
+    font-family: var(--main-font);
+    font-weight: var(--fw-n);
+  }
+  button {
+    width: 264px;
+    height: 469px;
+    padding: 16px;
+    border: 2px dashed var(--secondary-color);
+    border-radius: 10px;
+    background-color: var(--main-bg-color);
+    cursor: "pointer";
+  }
+
+  button:hover {
+    background-color: var(--alternative-bg-color);
+  }
+  button div > p {
+    font-family: var(--main-font);
+    font-size: 18px;
+    font-weight: var(--fw-l);
+    color: var(--secondary-color);
+  }
+  .program-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    max-width: 1180px;
+  }
+</style>
