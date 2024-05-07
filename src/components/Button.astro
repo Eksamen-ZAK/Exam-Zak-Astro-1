@@ -17,15 +17,15 @@ const { text, icon, variant, href, type } = Astro.props;
 </button>
 
 <script>
-  const buttons = document.querySelectorAll("button");
+  const buttons = document.querySelectorAll(".link");
   buttons.forEach((button) => {
     const href = button.getAttribute("data-link");
     button.addEventListener(
       "mousedown",
       () => (window.location.href = `${href}`)
     );
-    button.addEventListener("keypress", function (e) {
-      if (e.key === "Enter") {
+    button.addEventListener("keypress", (event) => {
+      if (event.key === "Enter") {
         window.location.href = `${href}`;
       }
     });

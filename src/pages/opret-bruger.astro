@@ -1,20 +1,4 @@
 ---
-let headersList = {
-  apikey:
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpsZ3N4aXlud3F2dmh3aGVleHdvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTQ0NzA5MjksImV4cCI6MjAzMDA0NjkyOX0.U40ZZWRh_MC7612vdwFHVKFZxwRHq_TECCnnzovEXKE",
-};
-
-let response = await fetch(
-  "https://jlgsxiynwqvvhwheexwo.supabase.co/rest/v1/exercises",
-  {
-    method: "GET",
-    headers: headersList,
-  }
-);
-
-let data = await response.json();
-console.log(data);
-
 import LoginLayout from "../layouts/LoginLayout.astro";
 import Button from "../components/Button.astro";
 import InputField from "../components/InputField.astro";
@@ -22,26 +6,49 @@ import "../css/forms.css";
 ---
 
 <LoginLayout title="Welcome to Astro.">
-  <div>
-    <h1>Opret bruger:</h1>
-    <form>
-      <InputField label="Brugernavn" id="username" type="text" required />
-      <InputField label="Adgangskode" id="password" type="text" required />
-      <InputField
-        label="Gentag adgangskode"
-        id="repeat-password"
-        type="text"
-        required
-      />
-      <div>
-        <Button
-          type="button"
-          text="Afbryd"
-          variant="red fullWidth medium"
-          href=".."
+  <main>
+    <div>
+      <h1>Opret bruger:</h1>
+      <form class="sign-up">
+        <InputField label="Brugernavn" id="username" type="text" required />
+        <InputField
+          label="Adgangskode"
+          id="password"
+          type="password"
+          required
+          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
         />
-        <Button type="submit" text="Fortsæt" variant="green fullWidth medium" />
-      </div>
-    </form>
-  </div>
+        <InputField
+          label="Gentag adgangskode"
+          id="repeatPassword"
+          type="password"
+          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+          required
+        />
+        <div>
+          <h2 id="error">Adgangskoder matcher ikke</h2>
+          <h2 id="error-message">
+            Adgangskoden skal indeholde
+            <span id="letter">store og små bogstaver</span>
+            <span id="number">tal</span>
+            <span id="length">mindst 8 tegn</span>
+          </h2>
+        </div>
+        <div class="buttons">
+          <Button
+            type="button"
+            text="Afbryd"
+            variant="link red fullWidth medium"
+            href=".."
+          />
+          <Button
+            type="submit"
+            text="Fortsæt"
+            variant="green fullWidth medium"
+          />
+        </div>
+      </form>
+    </div>
+  </main>
+  <script src="../js/sign-up.js"></script>
 </LoginLayout>

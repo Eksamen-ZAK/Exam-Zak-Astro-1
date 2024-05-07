@@ -22,20 +22,40 @@ import "../css/forms.css";
 ---
 
 <LoginLayout title="Welcome to Astro.">
-  <div>
-    <h1>Log ind:</h1>
-    <form>
-      <InputField label="Brugernavn" id="username" type="text" required />
-      <InputField label="Adgangskode" id="password" type="text" required />
-      <div>
-        <Button
-          type="submit"
-          text="Afbryd"
-          variant="red fullWidth medium"
-          href=".."
+  <main>
+    <div>
+      <h1>Log ind:</h1>
+      <form>
+        <InputField
+          label="Brugernavn"
+          id="log-in-username"
+          type="text"
+          required
         />
-        <Button type="button" text="Log ind" variant="green fullWidth medium" />
-      </div>
-    </form>
-  </div>
+        <InputField
+          label="Adgangskode"
+          id="log-in-password"
+          type="password"
+          required
+          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+          title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+        />
+        <h2 id="error">Forkert brugernavn og/eller adgangskode</h2>
+        <div class="buttons">
+          <Button
+            type="button"
+            text="Afbryd"
+            variant="link red fullWidth medium"
+            href=".."
+          />
+          <Button
+            type="submit"
+            text="Log ind"
+            variant="green fullWidth medium"
+          />
+        </div>
+      </form>
+    </div>
+  </main>
+  <script src=`../js/log-in.js`></script>
 </LoginLayout>

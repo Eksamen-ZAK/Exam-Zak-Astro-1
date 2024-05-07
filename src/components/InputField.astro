@@ -3,14 +3,16 @@ interface Props {
   label: string;
   id: string;
   type: any;
+  pattern?: string;
+  title?: string;
   required: boolean;
 }
 
-const { label, id, type, required = false } = Astro.props;
+const { label, id, type, pattern, title, required = false } = Astro.props;
 ---
 
 <label for={id}>{label}</label>
-<input id={id} {id} type={type} required />
+<input id={id} name={id} type={type} required />
 
 <style>
   label {
@@ -27,5 +29,7 @@ const { label, id, type, required = false } = Astro.props;
     margin-bottom: 29px;
     border-radius: 10px;
     border: 0;
+    font-size: var(--fs-s);
+    padding-left: 12px;
   }
 </style>

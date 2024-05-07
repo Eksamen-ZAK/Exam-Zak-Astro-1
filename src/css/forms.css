@@ -1,4 +1,5 @@
 div:has(form) {
+  width: 315px;
   margin-top: 108px;
 }
 form {
@@ -6,13 +7,13 @@ form {
   flex-direction: column;
   width: 315px;
   margin: auto;
-  > div {
-    display: flex;
-    justify-content: space-evenly;
-    width: 315px;
-    margin-top: 43px;
-    gap: 20px;
-  }
+}
+.buttons {
+  display: flex;
+  justify-content: space-evenly;
+  width: 315px;
+  margin-top: 23px;
+  gap: 20px;
 }
 
 h1 {
@@ -20,4 +21,22 @@ h1 {
   font-size: 24px;
   font-family: var(--main-font);
   color: var(--primary-color);
+}
+.hide {
+  display: none;
+}
+.valid:before {
+  position: relative;
+  left: -35px;
+  content: "&#10004;";
+}
+
+.invalid {
+  border: 2px solid var(--primary-color);
+}
+
+h2 {
+  color: var(--primary-color);
+  font-family: var(--main-font);
+  font-size: 18px;
 }

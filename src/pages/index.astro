@@ -1,43 +1,50 @@
 ---
-let headersList = {
-  apikey:
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpsZ3N4aXlud3F2dmh3aGVleHdvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTQ0NzA5MjksImV4cCI6MjAzMDA0NjkyOX0.U40ZZWRh_MC7612vdwFHVKFZxwRHq_TECCnnzovEXKE",
-};
-
-let response = await fetch(
-  "https://jlgsxiynwqvvhwheexwo.supabase.co/rest/v1/exercises",
-  {
-    method: "GET",
-    headers: headersList,
-  }
-);
-
-let data = await response.json();
-console.log(data);
-
 import LoginLayout from "../layouts/LoginLayout.astro";
 import Button from "../components/Button.astro";
 import Menu from "../components/Menu.astro";
 ---
 
 <LoginLayout title="Welcome to Astro.">
-  <Menu />
-  <img src="assets/logo.svg" alt="logo" />
-  <div>
-    <Button
-      type="button"
-      text="Registrer"
-      variant="invertedGreen fullWidth large"
-      href="/opret-bruger"
-    />
-    <Button
-      type="button"
-      text="Log ind"
-      variant="green fullWidth large"
-      href="/log-ind"
-    />
-  </div>
+  <main>
+    <Menu />
+    <img src="assets/logo.svg" alt="logo" />
+    <div>
+      <Button
+        type="button"
+        text="Registrer"
+        variant="link invertedGreen fullWidth large"
+        href="/opret-bruger"
+      />
+      <Button
+        type="button"
+        text="Log ind"
+        variant="link green fullWidth large"
+        href="/log-ind"
+      />
+    </div>
+  </main>
 </LoginLayout>
+
+<script>
+  // const uuid = localStorage.getItem("uuid");
+
+  // const url = `https://jlgsxiynwqvvhwheexwo.supabase.co/rest/v1/user-data?id=eq.${uuid}`;
+  // const api =
+  //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpsZ3N4aXlud3F2dmh3aGVleHdvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTQ0NzA5MjksImV4cCI6MjAzMDA0NjkyOX0.U40ZZWRh_MC7612vdwFHVKFZxwRHq_TECCnnzovEXKE";
+
+  // const options = {
+  //   method: "GET",
+  //   headers: {
+  //     apikey: api,
+  //   },
+  // };
+
+  // fetch(url, options)
+  //   .then((res) => res.json())
+  //   .then((data) => {
+  //     window.location.href = "/gemte-programmer";
+  //   });
+</script>
 
 <style>
   img {
