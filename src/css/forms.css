@@ -15,7 +15,11 @@ form {
   margin-top: 23px;
   gap: 20px;
 }
-
+label {
+  font-size: var(--fs-m);
+  font-family: var(--main-font);
+  font-weight: var(--fw-b);
+}
 h1 {
   text-align: start;
   font-size: 24px;

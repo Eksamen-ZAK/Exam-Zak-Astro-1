@@ -24,10 +24,17 @@ async function logInFunction(e) {
     },
   };
 
-  const data = await fetch(url, options).then((res) => res.json());
-  console.log(password);
-  if (data[0].password === password) {
-    localStorage.setItem("uuid", data[0].id);
+  const data = await fetch(url, options).then((res) => {
+    if (!res.ok) {
+      document.getElementById("error").classList.remove("hide");
+    }
+    return res.json();
+  });
+
+  if (data.length > 0 && data[0].password === password) {
+    if (document.getElementById("auto-log-in").checked) {
+      localStorage.setItem("uuid", data[0].id);
+    }
     document.getElementById("error").classList.add("hide");
     window.location.href = "/gemte-programmer";
   } else {

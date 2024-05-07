@@ -15,11 +15,6 @@ const { label, id, type, pattern, title, required = false } = Astro.props;
 <input id={id} name={id} type={type} required />
 
 <style>
-  label {
-    font-size: var(--fs-m);
-    font-family: var(--main-font);
-    font-weight: var(--fw-b);
-  }
   input:focus {
     outline: none;
   }

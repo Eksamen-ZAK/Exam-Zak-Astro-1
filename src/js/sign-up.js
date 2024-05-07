@@ -81,7 +81,6 @@ form.addEventListener("submit", (e) => {
   e.preventDefault();
 
   const uuid = uuidv4();
-  localStorage.setItem("uuid", uuid);
   const obj = {
     id: uuid,
     username: form.elements.username.value,
