@@ -32,9 +32,10 @@ async function logInFunction(e) {
   });
 
   if (data.length > 0 && data[0].password === password) {
-    if (document.getElementById("auto-log-in").checked) {
-      localStorage.setItem("uuid", data[0].id);
-    }
+    // if (document.getElementById("auto-log-in").checked) {
+    //   localStorage.setItem("uuid", data[0].id);
+    // }
+    localStorage.setItem("uuid", data[0].id);
     document.getElementById("error").classList.add("hide");
     window.location.href = "/gemte-programmer";
   } else {
