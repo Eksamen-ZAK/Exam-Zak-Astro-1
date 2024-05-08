@@ -44,11 +44,11 @@ function signUp(newUser) {
 
 const form = document.querySelector(".sign-up");
 
-passwordInput.addEventListener("focus", validator);
-passwordInput.addEventListener("keyup", validator);
-document.getElementById("repeatPassword").addEventListener("keyup", validator);
+// passwordInput.addEventListener("focus", validator);
+// passwordInput.addEventListener("keyup", validator);
+// document.getElementById("repeatPassword").addEventListener("keyup", validator);
 
-function validator() {
+function displayErrorMessage() {
   document.getElementById("error").classList.add("hide");
   if (
     !passwordInput.value.match(lowerCaseLetters) ||
@@ -99,5 +99,7 @@ form.addEventListener("submit", (e) => {
   ) {
     errorMessage.classList.add("hide");
     document.getElementById("error").classList.remove("hide");
+  } else {
+    displayErrorMessage();
   }
 });
