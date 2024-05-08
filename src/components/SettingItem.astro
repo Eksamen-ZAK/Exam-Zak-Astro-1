@@ -1,0 +1,39 @@
+---
+interface Props {
+  text: string;
+  image: string;
+  altText: string;
+}
+const { image, altText, text } = Astro.props;
+---
+
+<button>
+  <img src={image} alt={altText} />
+  <p>{text}</p>
+</button>
+
+<style>
+  button {
+    width: 254px;
+    height: 249px;
+    padding: 60px 20px 20px 20px;
+    background-color: var(--main-bg-color);
+    border: none;
+    cursor: pointer;
+    border: 4px solid var(--main-bg-color);
+    border-radius: 10px;
+  }
+  button:hover {
+    border: 4px solid var(--primary-color);
+  }
+  img {
+    height: 88px;
+    margin-bottom: 46px;
+  }
+  p {
+    margin-top: 0;
+    font-size: 30px;
+    font-family: var(--main-font);
+    color: var(--primary-color);
+  }
+</style>

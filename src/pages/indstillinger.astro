@@ -1,0 +1,41 @@
+---
+import Layout from "../layouts/Layout.astro";
+import SettingItem from "../components/SettingItem.astro";
+---
+
+<Layout title="Welcome to Astro." backgroundColor="alternative">
+  <h1>Indstillinger</h1>
+  <div>
+    <SettingItem
+      text="Tekst størrelse"
+      image="assets/text-icon.svg"
+      altText="text icon"
+    />
+    <SettingItem
+      text="Kontrast"
+      image="assets/contrast-icon.svg"
+      altText="contrast icon"
+    />
+    <SettingItem
+      text="Farver: til"
+      image="assets/palette-icon.svg"
+      altText="palette icon"
+    />
+  </div>
+</Layout>
+
+<style>
+  h1 {
+    margin-top: 150px;
+    margin-bottom: 36px;
+    font-size: 30px;
+    font-family: var(--main-font);
+    text-align: center;
+  }
+  div {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 802px;
+    margin: 0 auto;
+  }
+</style>

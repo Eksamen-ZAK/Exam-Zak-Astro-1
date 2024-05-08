@@ -1,0 +1,54 @@
+---
+import LoginLayout from "../layouts/LoginLayout.astro";
+import Button from "../components/Button.astro";
+import InputField from "../components/InputField.astro";
+import "../css/forms.css";
+---
+
+<LoginLayout title="Welcome to Astro.">
+  <main>
+    <div>
+      <h1>Opret bruger:</h1>
+      <form class="sign-up">
+        <InputField label="Brugernavn" id="username" type="text" required />
+        <InputField
+          label="Adgangskode"
+          id="password"
+          type="password"
+          required
+          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+        />
+        <InputField
+          label="Gentag adgangskode"
+          id="repeatPassword"
+          type="password"
+          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+          required
+        />
+        <div>
+          <h2 id="error">Adgangskoder matcher ikke</h2>
+          <h2 id="error-message">
+            Adgangskoden skal indeholde
+            <span id="letter">store og små bogstaver</span>
+            <span id="number">tal</span>
+            <span id="length">mindst 8 tegn</span>
+          </h2>
+        </div>
+        <div class="buttons">
+          <Button
+            type="button"
+            text="Afbryd"
+            variant="link red fullWidth medium"
+            href=".."
+          />
+          <Button
+            type="submit"
+            text="Fortsæt"
+            variant="green fullWidth medium"
+          />
+        </div>
+      </form>
+    </div>
+  </main>
+  <script src="../js/sign-up.js"></script>
+</LoginLayout>

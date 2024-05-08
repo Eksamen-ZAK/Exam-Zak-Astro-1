@@ -1,0 +1,47 @@
+div:has(form) {
+  width: 315px;
+  margin-top: 108px;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  width: 315px;
+  margin: auto;
+}
+.buttons {
+  display: flex;
+  justify-content: space-evenly;
+  width: 315px;
+  margin-top: 23px;
+  gap: 20px;
+}
+
+label {
+  font-size: var(--fs-m);
+  font-family: var(--main-font);
+  font-weight: var(--fw-b);
+}
+h1 {
+  text-align: start;
+  font-size: 24px;
+  font-family: var(--main-font);
+  color: var(--primary-color);
+}
+.hide {
+  display: none;
+}
+.valid:before {
+  position: relative;
+  left: -35px;
+  content: "&#10004;";
+}
+
+.invalid {
+  border: 2px solid var(--primary-color);
+}
+
+h2 {
+  color: var(--primary-color);
+  font-family: var(--main-font);
+  font-size: 18px;
+}

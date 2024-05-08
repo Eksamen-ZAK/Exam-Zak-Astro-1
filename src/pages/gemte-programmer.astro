@@ -1,0 +1,96 @@
+---
+let headersList = {
+  apikey:
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpsZ3N4aXlud3F2dmh3aGVleHdvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTQ0NzA5MjksImV4cCI6MjAzMDA0NjkyOX0.U40ZZWRh_MC7612vdwFHVKFZxwRHq_TECCnnzovEXKE",
+};
+
+let response = await fetch(
+  "https://jlgsxiynwqvvhwheexwo.supabase.co/rest/v1/exercises",
+  {
+    method: "GET",
+    headers: headersList,
+  }
+);
+
+let data = await response.json();
+console.log(data);
+
+import Layout from "../layouts/Layout.astro";
+import ProgramCard from "../components/ProgramCard.astro";
+---
+
+<Layout title="Welcome to Astro.">
+  <div>
+    <h1>Dine programmer</h1>
+    <p>
+      Disse programmer er nogle du eller din tilknyttede terapeut tidligere har
+      sammensat.
+    </p>
+    <div class="program-list">
+      <button
+        ><div>
+          <img src="../assets/plus-circle.svg" alt="plus circle icon" />
+          <p>Lav nyt program</p>
+        </div></button
+      >
+      <ProgramCard
+        title="Ansigtsprogram 1"
+        description="Primære ansigtsprogram for ansigtsmuskulatur"
+        image="../assets/images/001.webp"
+      />
+      <ProgramCard
+        title="Ansigtsprogram 1"
+        description="Primære ansigtsprogram for ansigtsmuskulatur"
+        image="../assets/images/001.webp"
+      />
+      <ProgramCard
+        title="Ansigtsprogram 1"
+        description="Primære ansigtsprogram for ansigtsmuskulatur"
+        image="../assets/images/001.webp"
+      />
+    </div>
+  </div>
+</Layout>
+<style>
+  div:has(h1) {
+    padding: 40px;
+    max-width: 1148px;
+  }
+  h1 {
+    font-size: 30px;
+    font-family: var(--main-font);
+    font-weight: var(--fw-b);
+    margin-bottom: 6px;
+  }
+  p {
+    margin-bottom: 16px;
+    font-size: 18px;
+    font-family: var(--main-font);
+    font-weight: var(--fw-n);
+  }
+  button {
+    width: 264px;
+    height: 469px;
+    padding: 16px;
+    border: 2px dashed var(--secondary-color);
+    border-radius: 10px;
+    background-color: var(--main-bg-color);
+    cursor: "pointer";
+  }
+
+  button:hover {
+    background-color: var(--alternative-bg-color);
+  }
+  button div > p {
+    font-family: var(--main-font);
+    font-size: 18px;
+    font-weight: var(--fw-l);
+    color: var(--secondary-color);
+  }
+  .program-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    max-width: 1180px;
+  }
+</style>

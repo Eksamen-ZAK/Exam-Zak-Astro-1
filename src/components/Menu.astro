@@ -1,0 +1,74 @@
+---
+import MenuItem from "./MenuItem.astro";
+---
+
+<div id="nav" class="menu-overlay">
+  <button><img src="assets/close-icon.svg" alt="kryds ikon" /> </button>
+
+  <div class="menu-content">
+    <MenuItem text="Hjem" image="home-icon" altText="Hjem ikon" link="#" />
+    <MenuItem
+      text="Lav dit program"
+      image="build-icon"
+      altText="Værktøj ikon"
+      link="#"
+    /><MenuItem
+      text="Gemte programmer"
+      image="bookmark-icon"
+      altText="Bogmærke ikon"
+      link="#"
+    /><MenuItem
+      text="Statistik"
+      image="stats-icon"
+      altText="Statistik ikon"
+      link="#"
+    />
+    <MenuItem
+      text="Om os"
+      image="about-us-icon"
+      altText="Gruppe personer ikon"
+      link="#"
+    />
+    <MenuItem
+      text="Indstillinger"
+      image="settings-icon"
+      altText="Tandhjul ikon"
+      link="#"
+    />
+  </div>
+
+  <style>
+    .menu-overlay {
+      height: 100vh;
+      width: 100%;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      background-color: var(--primary-color);
+      overflow-x: hidden;
+      transition: 0.5s;
+      display: none;
+    }
+    .menu-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      width: 995px;
+      margin: 158px auto;
+    }
+
+    .display {
+      display: block;
+    }
+    button {
+      position: absolute;
+      right: 45px;
+      top: 45px;
+      width: 42px;
+      height: 35px;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</div>

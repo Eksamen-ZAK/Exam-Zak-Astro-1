@@ -1,0 +1,168 @@
+---
+let headersList = {
+  apikey:
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpsZ3N4aXlud3F2dmh3aGVleHdvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTQ0NzA5MjksImV4cCI6MjAzMDA0NjkyOX0.U40ZZWRh_MC7612vdwFHVKFZxwRHq_TECCnnzovEXKE",
+};
+
+let response = await fetch(
+  "https://jlgsxiynwqvvhwheexwo.supabase.co/rest/v1/exercises",
+  {
+    method: "GET",
+    headers: headersList,
+  }
+);
+
+let data = await response.json();
+console.log(data);
+
+import Layout from "../layouts/Layout.astro";
+import ExerciseCard from "../components/ExerciseCard.astro";
+import Button from "../components/Button.astro";
+---
+
+<Layout title="Welcome to Astro.">
+  <div class="sidebar">
+    <h1>Dit program</h1>
+    <div class="program-list">
+      <ExerciseCard
+        title="Løft brynene"
+        description="En øvelse til at styrke muskulaturen omkring øjnene."
+        image="../assets/images/001.webp"
+        variant="remove"
+      />
+      <div class="divider"></div>
+      <ExerciseCard
+        title="Løft brynene"
+        description="En øvelse til at styrke muskulaturen omkring øjnene."
+        image="../assets/images/001.webp"
+        variant="remove"
+      />
+      <div class="divider"></div>
+      <ExerciseCard
+        title="Løft brynene"
+        description="En øvelse til at styrke muskulaturen omkring øjnene."
+        image="../assets/images/001.webp"
+        variant="remove"
+      />
+      <div class="divider"></div>
+      <ExerciseCard
+        title="Løft brynene"
+        description="En øvelse til at styrke muskulaturen omkring øjnene."
+        image="../assets/images/001.webp"
+        variant="remove"
+      />
+      <div class="divider"></div>
+      <ExerciseCard
+        title="Løft brynene"
+        description="En øvelse til at styrke muskulaturen omkring øjnene."
+        image="../assets/images/001.webp"
+        variant="remove"
+      />
+      <div class="divider"></div>
+      <ExerciseCard
+        title="Løft brynene"
+        description="En øvelse til at styrke muskulaturen omkring øjnene."
+        image="../assets/images/001.webp"
+        variant="remove"
+      />
+      <ExerciseCard
+        title="Løft brynene"
+        description="En øvelse til at styrke muskulaturen omkring øjnene."
+        image="../assets/images/001.webp"
+        variant="remove"
+      />
+      <div class="divider"></div>
+    </div>
+    <div class="buttons">
+      <Button
+        type="button"
+        text="Gem"
+        icon="bookmark"
+        variant="invertedGreen fullWidth small"
+      /><Button
+        type="button"
+        text="Afspil"
+        icon="play"
+        variant="green fullWidth small"
+      />
+    </div>
+  </div>
+  <div>
+    <h2>Titel</h2>
+    <p>Tekst</p>
+    <div class="grid">
+      <ExerciseCard
+        title="Løft brynene"
+        description="En øvelse til at styrke muskulaturen omkring øjnene."
+        image="../assets/images/001.webp"
+      />
+      <ExerciseCard
+        title="Løft brynene"
+        description="En øvelse til at styrke muskulaturen omkring øjnene."
+        image="../assets/images/001.webp"
+      />
+      <ExerciseCard
+        title="Løft brynene"
+        description="En øvelse til at styrke muskulaturen omkring øjnene."
+        image="../assets/images/001.webp"
+      />
+    </div>
+  </div>
+</Layout>
+<style>
+  h1,
+  h2 {
+    font-size: 30px;
+    font-family: var(--main-font);
+    font-weight: var(--fw-b);
+  }
+  h2 {
+    margin-bottom: 6px;
+  }
+  p {
+    margin: 0 0 21px 8px;
+    font-size: 18px;
+    font-family: var(--main-font);
+    font-weight: var(--fw-n);
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 800px;
+    gap: 15px;
+  }
+  .sidebar {
+    position: fixed;
+    text-align: center;
+    top: 0;
+    left: 0;
+    width: 290px;
+    padding: 40px 0;
+    height: 100vh;
+    background-color: var(--alternative-bg-color);
+    border-right: 5px solid var(--primary-color);
+  }
+  .divider {
+    width: 57px;
+    border-bottom: 1px solid var(--primary-color);
+  }
+  div:has(h2) {
+    margin-left: 341px;
+  }
+  .buttons {
+    display: flex;
+    gap: 9px;
+    width: 250px;
+    padding-top: 8px;
+    margin: 0 auto;
+  }
+  .program-list {
+    text-align: left;
+    height: 610px;
+    display: flex;
+    gap: 8px;
+    flex-direction: column;
+    align-items: center;
+    overflow: scroll;
+  }
+</style>

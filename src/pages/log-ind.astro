@@ -1,0 +1,65 @@
+---
+let headersList = {
+  apikey:
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpsZ3N4aXlud3F2dmh3aGVleHdvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTQ0NzA5MjksImV4cCI6MjAzMDA0NjkyOX0.U40ZZWRh_MC7612vdwFHVKFZxwRHq_TECCnnzovEXKE",
+};
+
+let response = await fetch(
+  "https://jlgsxiynwqvvhwheexwo.supabase.co/rest/v1/exercises",
+  {
+    method: "GET",
+    headers: headersList,
+  }
+);
+
+let data = await response.json();
+console.log(data);
+
+import LoginLayout from "../layouts/LoginLayout.astro";
+import Button from "../components/Button.astro";
+import InputField from "../components/InputField.astro";
+import "../css/forms.css";
+---
+
+<LoginLayout title="Welcome to Astro.">
+  <main>
+    <div>
+      <h1>Log ind:</h1>
+      <form>
+        <InputField
+          label="Brugernavn"
+          id="log-in-username"
+          type="text"
+          required
+        />
+        <InputField
+          label="Adgangskode"
+          id="log-in-password"
+          type="password"
+          required
+          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+          title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+        />
+        <!-- <div>
+          <input type="checkbox" id="auto-log-in" name="auto-log-in" />
+          <label for="auto-log-in">Forbliv logget ind</label>
+        </div> -->
+        <h2 id="error">Forkert brugernavn og/eller adgangskode</h2>
+        <div class="buttons">
+          <Button
+            type="button"
+            text="Afbryd"
+            variant="link red fullWidth medium"
+            href=".."
+          />
+          <Button
+            type="submit"
+            text="Log ind"
+            variant="green fullWidth medium"
+          />
+        </div>
+      </form>
+    </div>
+  </main>
+  <script src=`../js/log-in.js`></script>
+</LoginLayout>
