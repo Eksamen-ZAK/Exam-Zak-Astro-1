@@ -1,0 +1,54 @@
+---
+import ExerciseCard from "./ExerciseCard.astro";
+
+interface Props {
+  headline: string;
+  description: string;
+  dataFilter: any;
+}
+
+const { headline, description, dataFilter } = Astro.props;
+---
+
+<div>
+  <h2>{headline}</h2>
+  <p>{description}</p>
+  <div class="grid">
+    {
+      dataFilter.map((exercise) => (
+        <ExerciseCard
+          cardId={`normal-${exercise.id}`}
+          title={exercise.title}
+          note={exercise.note && exercise.note}
+          image={`../assets/images/${exercise.image}.webp`}
+          imageNumber={exercise.image}
+        />
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 800px;
+    gap: 15px;
+  }
+
+  h2 {
+    font-size: 30px;
+    font-family: var(--main-font);
+    font-weight: var(--fw-b);
+    margin-bottom: 6px;
+  }
+  p {
+    margin: 0 0 21px 5px;
+    font-size: 18px;
+    font-family: var(--main-font);
+    font-weight: var(--fw-n);
+  }
+  div:has(h2) {
+    margin-left: 341px;
+  }
+</style>

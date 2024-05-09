@@ -5,12 +5,18 @@ interface Props {
   variant: string;
   href?: string;
   type: any;
+  buttonId?: string;
 }
 
-const { text, icon, variant, href, type } = Astro.props;
+const { text, icon, variant, href, type, buttonId } = Astro.props;
 ---
 
-<button type={type} class={variant} data-link={href}>
+<button
+  type={type}
+  class={variant}
+  data-link={href && href}
+  data-button-id={buttonId && buttonId}
+>
   <p>{text}</p>
   {icon && <div class="icon" id={icon} />}
 </button>

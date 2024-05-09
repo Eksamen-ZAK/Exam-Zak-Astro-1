@@ -6,16 +6,18 @@ interface Props {
   title: string;
   description?: string;
   note?: string;
-  imageNumber: string;
+  image: string;
   variant?: string;
   cardId?: string;
+  imageNumber?: string;
 }
 
-const { title, description, note, imageNumber, variant, cardId } = Astro.props;
+const { title, description, note, image, variant, cardId, imageNumber } =
+  Astro.props;
 ---
 
 <article class={variant}>
-  <img src=`${imageNumber}` alt=`${title} image` />
+  <img src=`${image}` alt=`${title} image` />
   <div class="text-container">
     <h3>{title}</h3>
     <h3 class="note">{note && `(${note})`}</h3>
@@ -23,14 +25,14 @@ const { title, description, note, imageNumber, variant, cardId } = Astro.props;
     <div>
       <RepititionButton
         cardId={cardId}
-        exercise={imageNumber}
         variant=`${variant==="remove" ? "small-card": "normal-card"}`
       />
       <Button
         type="button"
         text=`${variant==="remove" ?"Fjern":"Tilføj"}`
-        variant=`${variant==="remove" ?"red x-small":"green"}`
+        variant=`exerciseButton ${variant==="remove" ?"red x-small":"green"}`
         icon=`${variant==="remove" ?"trashcan":"plus"}`
+        buttonId={imageNumber}
       />
     </div>
   </div>

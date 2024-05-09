@@ -28,9 +28,7 @@ const { title, metaDescription, backgroundColor } = Astro.props;
   </head>
   <body class={backgroundColor}>
     <Header />
-    <main>
-      <slot />
-    </main>
+    <slot />
     <script src=`../js/generel.js`></script>
   </body>
 </html>

@@ -1,10 +1,10 @@
 ---
 interface Props {
   variant: string;
-  exercise: string;
+
   cardId: string;
 }
-const { variant, exercise, cardId } = Astro.props;
+const { variant, cardId } = Astro.props;
 ---
 
 <div class={variant} data-card-id={cardId}>
@@ -36,7 +36,6 @@ const { variant, exercise, cardId } = Astro.props;
             repititions.toString();
         }
       }
-      console.log(repititions);
       const cardId = button.getAttribute("data-card-id");
       document.getElementById(`number-${cardId}`).textContent =
         repititions.toString();
