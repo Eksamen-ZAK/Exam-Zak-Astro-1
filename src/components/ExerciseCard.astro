@@ -4,18 +4,20 @@ import Button from "./Button.astro";
 
 interface Props {
   title: string;
-  description: string;
+  description?: string;
+  note?: string;
   image: string;
   variant?: string;
 }
 
-const { title, description, image, variant } = Astro.props;
+const { title, description, note, image, variant } = Astro.props;
 ---
 
 <article class={variant}>
   <img src=`${image}` alt=`${title} image` />
   <div class="text-container">
     <h3>{title}</h3>
+    <h3 class="note">{note && `(${note})`}</h3>
     <p>{description}</p>
     <div>
       <RepititionButton size=`${variant==="remove" && "small"}` />
@@ -55,6 +57,7 @@ const { title, description, image, variant } = Astro.props;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      width: 200px;
     }
   }
   h3 {
@@ -62,6 +65,11 @@ const { title, description, image, variant } = Astro.props;
     margin-bottom: 0;
     font-size: 24px;
   }
+  .note {
+    margin-bottom: 0;
+    font-size: 14px;
+  }
+
   p {
     font-weight: var(--fw-t);
     font-size: 18px;
@@ -70,6 +78,7 @@ const { title, description, image, variant } = Astro.props;
   p {
     font-family: var(--main-font);
   }
+
   .remove {
     display: flex;
     align-items: center;
@@ -93,10 +102,22 @@ const { title, description, image, variant } = Astro.props;
         font-size: 16px;
         margin-bottom: 0;
       }
+      > h2 {
+        margin-top: 8px;
+        margin-bottom: 0;
+        font-family: var(--main-font);
+        font-size: 10px;
+      }
       > p {
         font-size: 12px;
         font-weight: var(--fw-t);
         margin: 2px 0;
+      }
+      > div {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 150px;
       }
     }
   }

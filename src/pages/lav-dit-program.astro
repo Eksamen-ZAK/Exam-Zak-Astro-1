@@ -12,7 +12,7 @@ let response = await fetch(
   }
 );
 
-let data = await response.json();
+const data = await response.json();
 console.log(data);
 
 import Layout from "../layouts/Layout.astro";
@@ -88,24 +88,117 @@ import Button from "../components/Button.astro";
     </div>
   </div>
   <div>
-    <h2>Titel</h2>
-    <p>Tekst</p>
+    <h2>Pande</h2>
+    <p>Disse øvelser fokusere på området omkring og over øjnene</p>
     <div class="grid">
-      <ExerciseCard
-        title="Løft brynene"
-        description="En øvelse til at styrke muskulaturen omkring øjnene."
-        image="../assets/images/001.webp"
-      />
-      <ExerciseCard
-        title="Løft brynene"
-        description="En øvelse til at styrke muskulaturen omkring øjnene."
-        image="../assets/images/001.webp"
-      />
-      <ExerciseCard
-        title="Løft brynene"
-        description="En øvelse til at styrke muskulaturen omkring øjnene."
-        image="../assets/images/001.webp"
-      />
+      {
+        data
+          .filter((exercise) => {
+            if (exercise.category === "pande") {
+              return true;
+            } else {
+              return false;
+            }
+          })
+          .map((exercise) => (
+            <ExerciseCard
+              title={exercise.title}
+              note={exercise.note && exercise.note}
+              image={`../assets/images/${exercise.image}.webp`}
+            />
+          ))
+      }
+    </div>
+  </div>
+  <div>
+    <h2>Øjne</h2>
+    <p>Disse øvelser fokusere på området omkring øjnene</p>
+    <div class="grid">
+      {
+        data
+          .filter((exercise) => {
+            if (exercise.category === "øjne") {
+              return true;
+            } else {
+              return false;
+            }
+          })
+          .map((exercise) => (
+            <ExerciseCard
+              title={exercise.title}
+              note={exercise.note && exercise.note}
+              image={`../assets/images/${exercise.image}.webp`}
+            />
+          ))
+      }
+    </div>
+  </div><div>
+    <h2>Næse</h2>
+    <p>Disse øvelser fokusere på området omkring næsen</p>
+    <div class="grid">
+      {
+        data
+          .filter((exercise) => {
+            if (exercise.category === "næse") {
+              return true;
+            } else {
+              return false;
+            }
+          })
+          .map((exercise) => (
+            <ExerciseCard
+              title={exercise.title}
+              note={exercise.note && exercise.note}
+              image={`../assets/images/${exercise.image}.webp`}
+            />
+          ))
+      }
+    </div>
+  </div>
+  <div>
+    <h2>Kinder og mund</h2>
+    <p>Disse øvelser fokusere på området omkring kinder og mund</p>
+    <div class="grid">
+      {
+        data
+          .filter((exercise) => {
+            if (exercise.category === "kinder-mund") {
+              return true;
+            } else {
+              return false;
+            }
+          })
+          .map((exercise) => (
+            <ExerciseCard
+              title={exercise.title}
+              note={exercise.note && exercise.note}
+              image={`../assets/images/${exercise.image}.webp`}
+            />
+          ))
+      }
+    </div>
+  </div>
+  <div>
+    <h2>Tunge</h2>
+    <p>Disse øvelser fokusere på området omkring tunge</p>
+    <div class="grid">
+      {
+        data
+          .filter((exercise) => {
+            if (exercise.category === "tunge") {
+              return true;
+            } else {
+              return false;
+            }
+          })
+          .map((exercise) => (
+            <ExerciseCard
+              title={exercise.title}
+              note={exercise.note && exercise.note}
+              image={`../assets/images/${exercise.image}.webp`}
+            />
+          ))
+      }
     </div>
   </div>
 </Layout>
@@ -120,7 +213,7 @@ import Button from "../components/Button.astro";
     margin-bottom: 6px;
   }
   p {
-    margin: 0 0 21px 8px;
+    margin: 0 0 21px 5px;
     font-size: 18px;
     font-family: var(--main-font);
     font-weight: var(--fw-n);
@@ -153,12 +246,12 @@ import Button from "../components/Button.astro";
     display: flex;
     gap: 9px;
     width: 250px;
-    padding-top: 8px;
+    padding-top: 12px;
     margin: 0 auto;
   }
   .program-list {
     text-align: left;
-    height: 610px;
+    height: 77vh;
     display: flex;
     gap: 8px;
     flex-direction: column;
