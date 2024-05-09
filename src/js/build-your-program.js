@@ -28,7 +28,8 @@ let response = await fetch(
 );
 
 const data = await response.json();
-const programArray = [];
+let programArray = [];
+let filteredData;
 const buttons = document.querySelectorAll(".exerciseButton");
 
 buttons.forEach((button) => {
@@ -37,29 +38,66 @@ buttons.forEach((button) => {
   button.addEventListener("mousedown", () => {
     if (!programArray.includes(buttonId)) {
       programArray.push(buttonId);
+      filteredData = data.filter((exercise) => {
+        if (programArray.includes(exercise.image)) {
+          return true;
+        } else {
+          return false;
+        }
+      });
+      document.querySelector(".program-list").innerHTML = filteredData
+        .map((exercise) => {
+          return `<article class="remove">
+            <img src="../assets/images/${exercise.image}.webp" alt="${
+            exercise.title
+          } image" />
+            <div class="text-container">
+              <h3>${exercise.title}</h3>
+              <h3 class="note">${exercise.note ? exercise.note : ""}</h3>
+              <p>${exercise.description}</p>
+              <div>
+                <div class="small-card" data-card-id="${exercise.id}">
+                  <button id={"minus-${exercise.id}"}>
+                    <img src="assets/minus-black.svg" alt="minus icon" />
+                  </button>
+                  <div><p id={"number-${exercise.id}"}></p></div>
+                  <button id={"plus-${exercise.id}"}>
+                    <img src="assets/plus-black.svg" alt="plus icon" />
+                  </button>
+                </div>
+                <button
+                  type="button"
+                  class="exerciseButton red x-small"
+                  data-button-id="${exercise.image}"
+                >
+                  <p>Fjern</p>
+                  <div class="icon" id="trashcan"></div>
+                </button>
+              </div>
+            </div>
+          </article>`;
+        })
+        .join("");
     }
-    return programArray;
   });
 
   button.addEventListener("keypress", (event) => {
     if (event.key === "Enter") {
       if (!programArray.includes(buttonId)) {
         programArray.push(buttonId);
+        filteredData = data.filter((exercise) => {
+          if (programArray.includes(exercise.image)) {
+            return true;
+          } else {
+            return false;
+          }
+        });
       }
-      return programArray;
+      return filteredData;
     }
   });
 });
 
-export const exercisesList = programArray;
-
-if (programArray) {
-  data.forEach((exercise) => {
-    programArray.forEach((listItem) => {
-      console.log(listItem);
-      if (listItem === exercise.image) {
-        console.log(exercise.image);
-      }
-    });
-  });
-}
+document
+  .querySelector(".exerciseButton")
+  .addEventListener("mousedown", () => console.log(filteredData));

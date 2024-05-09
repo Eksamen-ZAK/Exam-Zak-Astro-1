@@ -28,12 +28,18 @@ const { variant, cardId } = Astro.props;
         repititions = repititions + 5;
         document.getElementById(`number-${cardId}`).textContent =
           repititions.toString();
+        document
+          .getElementById(`number-${cardId}`)
+          .setAttribute("data-total-repititions", repititions.toString());
       }
       function retractRepitition() {
         if (repititions > 4) {
           repititions = repititions - 5;
           document.getElementById(`number-${cardId}`).textContent =
             repititions.toString();
+          document
+            .getElementById(`number-${cardId}`)
+            .setAttribute("data-total-repititions", repititions.toString());
         }
       }
       const cardId = button.getAttribute("data-card-id");

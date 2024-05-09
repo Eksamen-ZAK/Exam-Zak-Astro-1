@@ -1,0 +1,47 @@
+h3,
+p {
+  font-family: var(--main-font);
+}
+
+.remove {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 250px;
+  height: 93px;
+  padding: 6px;
+
+  > img {
+    width: 80px;
+    height: 80px;
+  }
+  > div {
+    display: flex;
+    align-items: stretch;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0;
+    padding: 2px 3px;
+    > h3 {
+      font-size: 16px;
+      margin-bottom: 0;
+    }
+    > h2 {
+      margin-top: 8px;
+      margin-bottom: 0;
+      font-family: var(--main-font);
+      font-size: 10px;
+    }
+    > p {
+      font-size: 12px;
+      font-weight: var(--fw-t);
+      margin: 2px 0;
+    }
+    > div {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 150px;
+    }
+  }
+}

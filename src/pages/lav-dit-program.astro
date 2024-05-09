@@ -16,7 +16,9 @@ const data = await response.json();
 
 import Layout from "../layouts/Layout.astro";
 import ExercisesList from "../components/ExercisesList.astro";
+import ExerciseCard from "../components/ExerciseCard.astro";
 import Button from "../components/Button.astro";
+import "../css/lav-dit-program.css";
 ---
 
 <Layout title="Welcome to Astro.">
@@ -24,25 +26,21 @@ import Button from "../components/Button.astro";
     <div class="sidebar">
       <h1>Dit program</h1>
       <div class="program-list">
-        <!-- <client:only>
-          {
-            data.forEach((exercise) => {
-              exercisesList.forEach(
-                (listItem) =>
-                  listItem === exercise.imageNumber && (
-                    <ExerciseCard
-                      cardId={`normal-${exercise.id}`}
-                      title={exercise.title}
-                      note={exercise.note && exercise.note}
-                      image={`../assets/images/${exercise.image}.webp`}
-                      imageNumber={exercise.image}
-                    />
-                  )
-              );
-            })
-          }
-        </client:only> -->
+        <!-- {
+          !exercisesList === null &&
+            exercisesList &&
+            exercisesList.map((exercise) => (
+              <ExerciseCard
+                cardId={`normal-${exercise.id}`}
+                title={exercise.title}
+                note={exercise.note && exercise.note}
+                image={`../assets/images/${exercise.image}.webp`}
+                imageNumber={exercise.image}
+              />
+            ))
+        } -->
       </div>
+
       <div class="buttons">
         <Button
           type="button"
@@ -57,63 +55,63 @@ import Button from "../components/Button.astro";
         />
       </div>
     </div>
-
-    <ExercisesList
-      headline="Pande"
-      description="Disse øvelser fokusere på området omkring panden"
-      dataFilter={data.filter((exercise) => {
-        if (exercise.category === "pande") {
-          return true;
-        } else {
-          return false;
-        }
-      })}
-    /><ExercisesList
-      headline="Øjne"
-      description="Disse øvelser fokusere på øjnene"
-      dataFilter={data.filter((exercise) => {
-        if (exercise.category === "øjne") {
-          return true;
-        } else {
-          return false;
-        }
-      })}
-    />
-    <ExercisesList
-      headline="Næse"
-      description="Disse øvelser fokusere på området omkring næsen"
-      dataFilter={data.filter((exercise) => {
-        if (exercise.category === "næse") {
-          return true;
-        } else {
-          return false;
-        }
-      })}
-    />
-    <ExercisesList
-      headline="Kinder og mund"
-      description="Disse øvelser fokusere på området omkring kinderne og munden"
-      dataFilter={data.filter((exercise) => {
-        if (exercise.category === "kinder-mund") {
-          return true;
-        } else {
-          return false;
-        }
-      })}
-    />
-
-    <ExercisesList
-      headline="Tunge"
-      description="Disse øvelser fokusere på tungen"
-      dataFilter={data.filter((exercise) => {
-        if (exercise.category === "tunge") {
-          return true;
-        } else {
-          return false;
-        }
-      })}
-    />
   </main>
+
+  <ExercisesList
+    headline="Pande"
+    description="Disse øvelser fokusere på området omkring panden"
+    dataFilter={data.filter((exercise) => {
+      if (exercise.category === "pande") {
+        return true;
+      } else {
+        return false;
+      }
+    })}
+  /><ExercisesList
+    headline="Øjne"
+    description="Disse øvelser fokusere på øjnene"
+    dataFilter={data.filter((exercise) => {
+      if (exercise.category === "øjne") {
+        return true;
+      } else {
+        return false;
+      }
+    })}
+  />
+  <ExercisesList
+    headline="Næse"
+    description="Disse øvelser fokusere på området omkring næsen"
+    dataFilter={data.filter((exercise) => {
+      if (exercise.category === "næse") {
+        return true;
+      } else {
+        return false;
+      }
+    })}
+  />
+  <ExercisesList
+    headline="Kinder og mund"
+    description="Disse øvelser fokusere på området omkring kinderne og munden"
+    dataFilter={data.filter((exercise) => {
+      if (exercise.category === "kinder-mund") {
+        return true;
+      } else {
+        return false;
+      }
+    })}
+  />
+
+  <ExercisesList
+    headline="Tunge"
+    description="Disse øvelser fokusere på tungen"
+    dataFilter={data.filter((exercise) => {
+      if (exercise.category === "tunge") {
+        return true;
+      } else {
+        return false;
+      }
+    })}
+  />
 </Layout>
 
 <script src="../js/build-your-program.js"></script>
