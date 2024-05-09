@@ -27,48 +27,48 @@ import Button from "../components/Button.astro";
       <ExerciseCard
         title="Løft brynene"
         description="En øvelse til at styrke muskulaturen omkring øjnene."
-        image="../assets/images/001.webp"
+        imageNumber="../assets/images/001.webp"
         variant="remove"
       />
       <div class="divider"></div>
       <ExerciseCard
         title="Løft brynene"
         description="En øvelse til at styrke muskulaturen omkring øjnene."
-        image="../assets/images/001.webp"
+        imageNumber="../assets/images/001.webp"
         variant="remove"
       />
       <div class="divider"></div>
       <ExerciseCard
         title="Løft brynene"
         description="En øvelse til at styrke muskulaturen omkring øjnene."
-        image="../assets/images/001.webp"
+        imageNumber="../assets/images/001.webp"
         variant="remove"
       />
       <div class="divider"></div>
       <ExerciseCard
         title="Løft brynene"
         description="En øvelse til at styrke muskulaturen omkring øjnene."
-        image="../assets/images/001.webp"
+        imageNumber="../assets/images/001.webp"
         variant="remove"
       />
       <div class="divider"></div>
       <ExerciseCard
         title="Løft brynene"
         description="En øvelse til at styrke muskulaturen omkring øjnene."
-        image="../assets/images/001.webp"
+        imageNumber="../assets/images/001.webp"
         variant="remove"
       />
       <div class="divider"></div>
       <ExerciseCard
         title="Løft brynene"
         description="En øvelse til at styrke muskulaturen omkring øjnene."
-        image="../assets/images/001.webp"
+        imageNumber="../assets/images/001.webp"
         variant="remove"
       />
       <ExerciseCard
         title="Løft brynene"
         description="En øvelse til at styrke muskulaturen omkring øjnene."
-        image="../assets/images/001.webp"
+        imageNumber="../assets/images/001.webp"
         variant="remove"
       />
       <div class="divider"></div>
@@ -102,9 +102,10 @@ import Button from "../components/Button.astro";
           })
           .map((exercise) => (
             <ExerciseCard
+              cardId={`normal-${exercise.id}`}
               title={exercise.title}
               note={exercise.note && exercise.note}
-              image={`../assets/images/${exercise.image}.webp`}
+              imageNumber={`../assets/images/${exercise.image}.webp`}
             />
           ))
       }
@@ -125,9 +126,10 @@ import Button from "../components/Button.astro";
           })
           .map((exercise) => (
             <ExerciseCard
+              cardId={`normal-${exercise.id}`}
               title={exercise.title}
               note={exercise.note && exercise.note}
-              image={`../assets/images/${exercise.image}.webp`}
+              imageNumber={`../assets/images/${exercise.image}.webp`}
             />
           ))
       }
@@ -147,9 +149,10 @@ import Button from "../components/Button.astro";
           })
           .map((exercise) => (
             <ExerciseCard
+              cardId={`normal-${exercise.id}`}
               title={exercise.title}
               note={exercise.note && exercise.note}
-              image={`../assets/images/${exercise.image}.webp`}
+              imageNumber={`../assets/images/${exercise.image}.webp`}
             />
           ))
       }
@@ -170,9 +173,10 @@ import Button from "../components/Button.astro";
           })
           .map((exercise) => (
             <ExerciseCard
+              cardId={`normal-${exercise.id}`}
               title={exercise.title}
               note={exercise.note && exercise.note}
-              image={`../assets/images/${exercise.image}.webp`}
+              imageNumber={`../assets/images/${exercise.image}.webp`}
             />
           ))
       }
@@ -193,9 +197,10 @@ import Button from "../components/Button.astro";
           })
           .map((exercise) => (
             <ExerciseCard
+              cardId={`normal-${exercise.id}`}
               title={exercise.title}
               note={exercise.note && exercise.note}
-              image={`../assets/images/${exercise.image}.webp`}
+              imageNumber={`../assets/images/${exercise.image}.webp`}
             />
           ))
       }
