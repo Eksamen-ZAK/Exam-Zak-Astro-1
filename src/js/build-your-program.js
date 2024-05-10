@@ -32,11 +32,14 @@ let programArray = [];
 let filteredData;
 const buttons = document.querySelectorAll(".exerciseButton");
 const parentElement = document.querySelector(".program-list");
+const template = document.querySelector("template").content;
 buttons.forEach((button) => {
   const buttonId = button.getAttribute("data-button-id");
 
   button.addEventListener("mousedown", () => {
     if (!programArray.includes(buttonId)) {
+      parentElement.innerHTML = "";
+
       programArray.push(buttonId);
       filteredData = data
         .filter((exercise) => {
@@ -47,7 +50,6 @@ buttons.forEach((button) => {
           }
         })
         .map((exercise) => {
-          const template = document.querySelector("template").content;
           const myClone = template.cloneNode(true);
           myClone
             .querySelector("img")
