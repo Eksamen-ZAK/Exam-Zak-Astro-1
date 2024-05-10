@@ -28,7 +28,7 @@ import ProgramCard from "../components/ProgramCard.astro";
         har sammensat.
       </p>
       <div class="program-list">
-        <button
+        <button class="new-program"
           ><div>
             <img src="../assets/plus-circle.svg" alt="plus circle icon" />
             <p>Lav nyt program</p>
@@ -53,6 +53,21 @@ import ProgramCard from "../components/ProgramCard.astro";
     </div>
   </main>
 </Layout>
+
+<script>
+  const button = document.querySelector(".new-program");
+
+  button.addEventListener(
+    "mousedown",
+    () => (window.location.href = `/lav-dit-program`)
+  );
+  button.addEventListener("keypress", (event) => {
+    if (event.key === "Enter") {
+      window.location.href = `/lav-dit-program`;
+    }
+  });
+</script>
+
 <style>
   div:has(h1) {
     padding: 40px;

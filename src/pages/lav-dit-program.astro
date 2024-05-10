@@ -25,7 +25,7 @@ import Button from "../components/Button.astro";
     <div class="sidebar">
       <h1>Dit program</h1>
       <div class="program-list">
-        <template>
+        <template class="small-exercise-card">
           <article class="remove">
             <img src="" alt="øvelsesbillede" />
             <div class="content-container">
@@ -40,19 +40,20 @@ import Button from "../components/Button.astro";
                     <img src="assets/minus-black.svg" alt="minus icon" />
                   </button>
                   <div><p class="number"></p></div>
-                  <button class="plus"></button>
-                  <img src="assets/plus-black.svg" alt="plus icon" />
+                  <button class="plus">
+                    <img src="assets/plus-black.svg" alt="plus icon" /></button
+                  >
                 </div>
+                <button
+                  type="button"
+                  class="exerciseButton red x-small"
+                  data-button-id="${exercise.image}"
+                >
+                  <p>Fjern</p>
+                  <div class="icon" id="trashcan"></div>
+                </button>
               </div>
             </div>
-            <button
-              type="button"
-              class="exerciseButton red x-small"
-              data-button-id="${exercise.image}"
-            >
-              <p>Fjern</p>
-              <div class="icon" id="trashcan"></div>
-            </button>
           </article>
           <div class="divider"></div>
         </template>
@@ -71,64 +72,64 @@ import Button from "../components/Button.astro";
         />
       </div>
     </div>
+
+    <ExercisesList
+      headline="Pande"
+      description="Disse øvelser fokusere på området omkring panden"
+      dataFilter={data.filter((exercise) => {
+        if (exercise.category === "pande") {
+          return true;
+        } else {
+          return false;
+        }
+      })}
+    /><ExercisesList
+      headline="Øjne"
+      description="Disse øvelser fokusere på øjnene"
+      dataFilter={data.filter((exercise) => {
+        if (exercise.category === "øjne") {
+          return true;
+        } else {
+          return false;
+        }
+      })}
+    />
+    <ExercisesList
+      headline="Næse"
+      description="Disse øvelser fokusere på området omkring næsen"
+      dataFilter={data.filter((exercise) => {
+        if (exercise.category === "næse") {
+          return true;
+        } else {
+          return false;
+        }
+      })}
+    />
+    <ExercisesList
+      headline="Kinder og mund"
+      description="Disse øvelser fokusere på området omkring kinderne og munden"
+      dataFilter={data.filter((exercise) => {
+        if (exercise.category === "kinder-mund") {
+          return true;
+        } else {
+          return false;
+        }
+      })}
+    />
+
+    <ExercisesList
+      headline="Tunge"
+      description="Disse øvelser fokusere på tungen"
+      dataFilter={data.filter((exercise) => {
+        if (exercise.category === "tunge") {
+          return true;
+        } else {
+          return false;
+        }
+      })}
+    />
   </main>
 </Layout>
-
-<ExercisesList
-  headline="Pande"
-  description="Disse øvelser fokusere på området omkring panden"
-  dataFilter={data.filter((exercise) => {
-    if (exercise.category === "pande") {
-      return true;
-    } else {
-      return false;
-    }
-  })}
-/><ExercisesList
-  headline="Øjne"
-  description="Disse øvelser fokusere på øjnene"
-  dataFilter={data.filter((exercise) => {
-    if (exercise.category === "øjne") {
-      return true;
-    } else {
-      return false;
-    }
-  })}
-/>
-<ExercisesList
-  headline="Næse"
-  description="Disse øvelser fokusere på området omkring næsen"
-  dataFilter={data.filter((exercise) => {
-    if (exercise.category === "næse") {
-      return true;
-    } else {
-      return false;
-    }
-  })}
-/>
-<ExercisesList
-  headline="Kinder og mund"
-  description="Disse øvelser fokusere på området omkring kinderne og munden"
-  dataFilter={data.filter((exercise) => {
-    if (exercise.category === "kinder-mund") {
-      return true;
-    } else {
-      return false;
-    }
-  })}
-/>
-
-<ExercisesList
-  headline="Tunge"
-  description="Disse øvelser fokusere på tungen"
-  dataFilter={data.filter((exercise) => {
-    if (exercise.category === "tunge") {
-      return true;
-    } else {
-      return false;
-    }
-  })}
-/>
 
 <script src="../js/build-your-program.js"></script>
 
@@ -150,8 +151,8 @@ import Button from "../components/Button.astro";
   }
   .grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    width: 800px;
+    grid-auto-columns: auto;
+    width: 77%;
     gap: 15px;
   }
   .sidebar {
@@ -188,16 +189,7 @@ import Button from "../components/Button.astro";
     align-items: center;
     overflow: scroll;
   }
-  article {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    width: 421px;
-    height: 178px;
-    padding: 11px 12px;
-    border-radius: 10px;
-    background-color: var(--main-bg-color);
-  }
+
   h3,
   p {
     font-family: var(--main-font);
@@ -210,6 +202,8 @@ import Button from "../components/Button.astro";
     width: 250px;
     height: 93px;
     padding: 6px;
+    border-radius: 8px;
+    background-color: var(--main-bg-color);
 
     > img {
       width: 80px;
@@ -223,27 +217,24 @@ import Button from "../components/Button.astro";
       justify-content: center;
       gap: 0;
       padding: 2px 3px;
-      > h3 {
-        margin-top: 16px;
-        font-size: 16px;
-        margin-bottom: 0;
+      > .text {
+        > h3 {
+          margin-top: 16px;
+          font-size: 16px;
+          margin-bottom: 0;
+        }
+        > .note {
+          margin-bottom: 8px;
+          font-size: 10px;
+          margin-top: 0;
+        }
+        > p {
+          font-size: 12px;
+          font-weight: var(--fw-t);
+          margin: 2px 0;
+        }
       }
-      > .note {
-        margin-bottom: 8px;
-        font-size: 10px;
-        margin-top: 0;
-      }
-      > h2 {
-        margin-top: 8px;
-        margin-bottom: 0;
-        font-family: var(--main-font);
-        font-size: 10px;
-      }
-      > p {
-        font-size: 12px;
-        font-weight: var(--fw-t);
-        margin: 2px 0;
-      }
+
       > .buttons {
         display: flex;
         align-items: center;
@@ -301,12 +292,15 @@ import Button from "../components/Button.astro";
       width: 22px;
       height: 22px;
       border-radius: 4px;
-
       background-color: #eaeaea;
-
       > p {
         font-size: 14px;
+        font-family: var(--secondary-font);
+        font-size: 14px;
       }
+    }
+    > img {
+      padding: 9px 4px;
     }
     > button {
       display: flex;

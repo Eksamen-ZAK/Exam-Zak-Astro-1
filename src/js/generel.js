@@ -1,5 +1,10 @@
-window.addEventListener("load", () => localStorage.setItem("uuid", ""));
-const uuid = sessionStorage.getItem("uuid");
+let uuid;
+
+if (localStorage.getItem("uuid")) {
+  uuid = localStorage.getItem("uuid");
+} else {
+  uuid = sessionStorage.getItem("uuid");
+}
 
 const url = `https://jlgsxiynwqvvhwheexwo.supabase.co/rest/v1/user-data?id=eq.${uuid}`;
 const api =

@@ -32,10 +32,9 @@ let programArray = [];
 let filteredData;
 const buttons = document.querySelectorAll(".exerciseButton");
 const parentElement = document.querySelector(".program-list");
-const template = document.querySelector("template").content;
+const template = document.querySelector(".small-exercise-card").content;
 buttons.forEach((button) => {
   const buttonId = button.getAttribute("data-button-id");
-
   button.addEventListener("mousedown", () => {
     if (!programArray.includes(buttonId)) {
       parentElement.innerHTML = "";
@@ -93,39 +92,6 @@ buttons.forEach((button) => {
   });
 });
 
-// return `<article class="remove">
-//             <img src="../assets/images/${exercise.image}.webp" alt="${
-//             exercise.title
-//           } image" />
-//             <div class="content-container">
-//                 <div class="text">
-//               <h3>${exercise.title}</h3>
-//               <h3 class="note">${exercise.note ? exercise.note : ""}</h3>
-//               <p>${exercise.description ? exercise.description : ""}</p>
-//               </div>
-//               <div class="buttons">
-//                 <div class="small-card" data-card-id="${exercise.id}">
-//                   <button id={"minus-${exercise.id}"}>
-//                     <img src="assets/minus-black.svg" alt="minus icon" />
-//                   </button>
-//                   <div><p class="number" id={"number-${exercise.id}"}></p></div>
-//                   <button cid={"plus-${exercise.id}"}>
-//                     <img src="assets/plus-black.svg" alt="plus icon" />
-//                   </button>
-//                 </div>
-//                 <button
-//                   type="button"
-//                   class="exerciseButton red x-small"
-//                   data-button-id="${exercise.image}"
-//                 >
-//                   <p>Fjern</p>
-//                   <div class="icon" id="trashcan"></div>
-//                 </button>
-//               </div>
-//             </div>
-//           </article>`;
-//         })
-//         .join("");
 document
   .querySelector(".exerciseButton")
   .addEventListener("mousedown", () => console.log(filteredData));
