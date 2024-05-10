@@ -39,7 +39,6 @@ buttons.forEach((button) => {
   button.addEventListener("mousedown", () => {
     if (!programArray.includes(buttonId)) {
       parentElement.innerHTML = "";
-
       programArray.push(buttonId);
       filteredData = data
         .filter((exercise) => {
