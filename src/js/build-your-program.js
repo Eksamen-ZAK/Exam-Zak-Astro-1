@@ -34,60 +34,89 @@ const buttons = document.querySelectorAll(".exerciseButton");
 const parentElement = document.querySelector(".program-list");
 const template = document.querySelector(".small-exercise-card").content;
 
-function addExercise(buttonId) {
-  if (!programArray.includes(buttonId)) {
-    parentElement.innerHTML = "";
-    programArray.push(buttonId);
-    filteredData = data
-      .filter((exercise) => {
-        if (programArray.includes(exercise.image)) {
-          return true;
-        } else {
-          return false;
-        }
-      })
-      .map((exercise) => {
-        const myClone = template.cloneNode(true);
-        myClone
-          .querySelector("img")
-          .setAttribute("src", `../assets/images/${exercise.image}.webp`);
-        myClone.querySelector(".title").textContent = exercise.title;
-        myClone.querySelector(".note").textContent = exercise.note;
-        myClone.querySelector(".description").textContent =
-          exercise.description;
-        myClone
-          .querySelector(".small-card")
-          .setAttribute("data-card-id", exercise.id);
-        myClone
-          .querySelector(".minus")
-          .setAttribute("id", `minus-${exercise.id}`);
-        exercise.description;
-        myClone
-          .querySelector(".number")
-          .setAttribute("id", `number-${exercise.id}`);
-        exercise.description;
-        myClone
-          .querySelector(".plus")
-          .setAttribute("id", `plus-${exercise.id}`);
-        exercise.description;
-        parentElement.appendChild(myClone);
-      });
-  }
-}
-
 buttons.forEach((button) => {
   const buttonId = button.getAttribute("data-button-id");
   button.addEventListener("mousedown", () => {
-    addExercise(buttonId);
+    if (!programArray.includes(buttonId)) {
+      parentElement.innerHTML = "";
+      programArray.push(buttonId);
+      data
+        .filter((exercise) => {
+          if (programArray.includes(exercise.image)) {
+            return true;
+          } else {
+            return false;
+          }
+        })
+        .map((exercise) => {
+          const myClone = template.cloneNode(true);
+          myClone
+            .querySelector("img")
+            .setAttribute("src", `../assets/images/${exercise.image}.webp`);
+          myClone.querySelector(".title").textContent = exercise.title;
+          myClone.querySelector(".note").textContent = exercise.note;
+          myClone.querySelector(".description").textContent =
+            exercise.description;
+          myClone
+            .querySelector(".small-card")
+            .setAttribute("data-card-id", exercise.id);
+          myClone
+            .querySelector(".minus")
+            .setAttribute("id", `minus-${exercise.id}`);
+          exercise.description;
+          myClone
+            .querySelector(".number")
+            .setAttribute("id", `number-${exercise.id}`);
+          exercise.description;
+          myClone
+            .querySelector(".plus")
+            .setAttribute("id", `plus-${exercise.id}`);
+          exercise.description;
+          parentElement.appendChild(myClone);
+        });
+    }
   });
 
   button.addEventListener("keypress", (event) => {
     if (event.key === "Enter") {
-      addExercise(buttonId);
+      if (!programArray.includes(buttonId)) {
+        parentElement.innerHTML = "";
+        programArray.push(buttonId);
+        data
+          .filter((exercise) => {
+            if (programArray.includes(exercise.image)) {
+              return true;
+            } else {
+              return false;
+            }
+          })
+          .map((exercise) => {
+            const myClone = template.cloneNode(true);
+            myClone
+              .querySelector("img")
+              .setAttribute("src", `../assets/images/${exercise.image}.webp`);
+            myClone.querySelector(".title").textContent = exercise.title;
+            myClone.querySelector(".note").textContent = exercise.note;
+            myClone.querySelector(".description").textContent =
+              exercise.description;
+            myClone
+              .querySelector(".small-card")
+              .setAttribute("data-card-id", exercise.id);
+            myClone
+              .querySelector(".minus")
+              .setAttribute("id", `minus-${exercise.id}`);
+            exercise.description;
+            myClone
+              .querySelector(".number")
+              .setAttribute("id", `number-${exercise.id}`);
+            exercise.description;
+            myClone
+              .querySelector(".plus")
+              .setAttribute("id", `plus-${exercise.id}`);
+            exercise.description;
+            parentElement.appendChild(myClone);
+          });
+      }
     }
   });
 });
-
-document
-  .querySelector(".exerciseButton")
-  .addEventListener("mousedown", () => console.log(filteredData));
