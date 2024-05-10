@@ -78,6 +78,16 @@ buttons.forEach((button) => {
                 .getElementById(`number-normal-${exercise.id}`)
                 .getAttribute("data-total-repititions")
             );
+          myClone
+            .getElementById(`number-${exercise.id}`)
+            .setAttribute(
+              "data-total-repititions",
+              parseInt(
+                document
+                  .getElementById(`number-normal-${exercise.id}`)
+                  .getAttribute("data-total-repititions")
+              )
+            );
 
           myClone
             .querySelector(".plus")
@@ -87,62 +97,6 @@ buttons.forEach((button) => {
             .addEventListener("mousedown", () => addRepitition(exercise.id));
           parentElement.appendChild(myClone);
         });
-    }
-  });
-
-  button.addEventListener("keypress", (event) => {
-    if (event.key === "Enter") {
-      if (!programArray.includes(buttonId)) {
-        parentElement.innerHTML = "";
-        programArray.push(buttonId);
-        data
-          .filter((exercise) => {
-            if (programArray.includes(exercise.image)) {
-              return true;
-            } else {
-              return false;
-            }
-          })
-          .map((exercise) => {
-            const myClone = template.cloneNode(true);
-            myClone
-              .querySelector("img")
-              .setAttribute("src", `../assets/images/${exercise.image}.webp`);
-            myClone.querySelector(".title").textContent = exercise.title;
-            myClone.querySelector(".note").textContent = exercise.note;
-            myClone.querySelector(".description").textContent =
-              exercise.description;
-            myClone
-              .querySelector(".small-card")
-              .setAttribute("data-card-id", exercise.id);
-            myClone
-              .querySelector(".minus")
-              .setAttribute("id", `minus-${exercise.id}`);
-            myClone
-              .getElementById(`minus-${exercise.id}`)
-              .addEventListener("mousedown", () => {
-                retractRepitition(exercise.id);
-              });
-            myClone
-              .querySelector(".number")
-              .setAttribute("id", `number-${exercise.id}`);
-
-            myClone.getElementById(`number-${exercise.id}`).textContent =
-              parseInt(
-                myClone
-                  .getElementById(`number-${exercise.id}`)
-                  .getAttribute("data-total-repititions")
-              );
-
-            myClone
-              .querySelector(".plus")
-              .setAttribute("id", `plus-${exercise.id}`);
-            myClone
-              .getElementById(`plus-${exercise.id}`)
-              .addEventListener("mousedown", () => addRepitition(exercise.id));
-            parentElement.appendChild(myClone);
-          });
-      }
     }
   });
 });
@@ -159,6 +113,9 @@ function addRepitition(id) {
   document
     .getElementById(`number-${id}`)
     .setAttribute("data-total-repititions", count.toString());
+  document
+    .getElementById(`number-normal-${id}`)
+    .setAttribute("data-total-repititions", count.toString());
 }
 function retractRepitition(id) {
   count = parseInt(
@@ -171,6 +128,9 @@ function retractRepitition(id) {
     document.getElementById(`number-${id}`).textContent = count.toString();
     document
       .getElementById(`number-${id}`)
+      .setAttribute("data-total-repititions", count.toString());
+    document
+      .getElementById(`number-normal-${id}`)
       .setAttribute("data-total-repititions", count.toString());
   }
 }
