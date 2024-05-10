@@ -35,11 +35,11 @@ import Button from "../components/Button.astro";
                 <p class="description"></p>
               </div>
               <div class="buttons">
-                <div class="small-card">
+                <div class="repition-button small-card">
                   <button class="minus">
                     <img src="assets/minus-black.svg" alt="minus icon" />
                   </button>
-                  <div><p class="number"></p></div>
+                  <div><p class="number" data-total-repititions="5"></p></div>
                   <button class="plus">
                     <img src="assets/plus-black.svg" alt="plus icon" /></button
                   >
@@ -188,6 +188,10 @@ import Button from "../components/Button.astro";
     flex-direction: column;
     align-items: center;
     overflow: scroll;
+  }
+  .minus,
+  .plus {
+    cursor: pointer;
   }
 
   h3,

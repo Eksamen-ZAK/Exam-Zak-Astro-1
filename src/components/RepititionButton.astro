@@ -1,7 +1,6 @@
 ---
 interface Props {
   variant: string;
-
   cardId: string;
 }
 const { variant, cardId } = Astro.props;
@@ -11,34 +10,35 @@ const { variant, cardId } = Astro.props;
   <button id={`minus-${cardId}`}
     ><img src="assets/minus-black.svg" alt="minus icon" /></button
   >
-  <div><p id={`number-${cardId}`}></p></div>
+  <div><p data-total-repititions="5" id={`number-${cardId}`}></p></div>
   <button id={`plus-${cardId}`}
     ><img src="assets/plus-black.svg" alt="plus icon" />
   </button>
 </div>
 
 <script>
-  const buttons = document.querySelectorAll(".normal-card");
   window.addEventListener("load", loadRepititionButtons);
+  const repititionButtons = document.querySelectorAll(".normal-card");
 
   function loadRepititionButtons() {
-    buttons.forEach((button) => {
+    repititionButtons.forEach((button) => {
+      const id = button.getAttribute("data-card-id");
       let repititions = 5;
       function addRepitition() {
         repititions = repititions + 5;
-        document.getElementById(`number-${cardId}`).textContent =
+        document.getElementById(`number-${id}`).textContent =
           repititions.toString();
         document
-          .getElementById(`number-${cardId}`)
+          .getElementById(`number-${id}`)
           .setAttribute("data-total-repititions", repititions.toString());
       }
       function retractRepitition() {
-        if (repititions > 4) {
+        if (repititions > 5) {
           repititions = repititions - 5;
-          document.getElementById(`number-${cardId}`).textContent =
+          document.getElementById(`number-${id}`).textContent =
             repititions.toString();
           document
-            .getElementById(`number-${cardId}`)
+            .getElementById(`number-${id}`)
             .setAttribute("data-total-repititions", repititions.toString());
         }
       }
@@ -48,13 +48,13 @@ const { variant, cardId } = Astro.props;
 
       document
         .getElementById(`minus-${cardId}`)
-        .addEventListener("click", () => {
+        .addEventListener("mousedown", () => {
           retractRepitition();
         });
 
       document
         .getElementById(`plus-${cardId}`)
-        .addEventListener("click", () => {
+        .addEventListener("mousedown", () => {
           addRepitition();
         });
     });

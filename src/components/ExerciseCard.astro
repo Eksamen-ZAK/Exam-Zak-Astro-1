@@ -25,13 +25,13 @@ const { title, description, note, image, variant, cardId, imageNumber } =
     <div>
       <RepititionButton
         cardId={cardId}
-        variant=`${variant==="remove" ? "small-card": "normal-card"}`
+        variant="repitition-button normal-card"
       />
       <Button
         type="button"
-        text=`${variant==="remove" ?"Fjern":"Tilføj"}`
-        variant=`exerciseButton ${variant==="remove" ?"red x-small":"green"}`
-        icon=`${variant==="remove" ?"trashcan":"plus"}`
+        text="Tilføj"
+        variant="exerciseButton green"
+        icon="plus"
         buttonId={imageNumber}
       />
     </div>

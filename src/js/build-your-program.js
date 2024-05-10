@@ -63,15 +63,28 @@ buttons.forEach((button) => {
           myClone
             .querySelector(".minus")
             .setAttribute("id", `minus-${exercise.id}`);
-          exercise.description;
+          myClone
+            .getElementById(`minus-${exercise.id}`)
+            .addEventListener("mousedown", () => {
+              retractRepitition(exercise.id);
+            });
           myClone
             .querySelector(".number")
             .setAttribute("id", `number-${exercise.id}`);
-          exercise.description;
+
+          myClone.getElementById(`number-${exercise.id}`).textContent =
+            parseInt(
+              document
+                .getElementById(`number-normal-${exercise.id}`)
+                .getAttribute("data-total-repititions")
+            );
+
           myClone
             .querySelector(".plus")
             .setAttribute("id", `plus-${exercise.id}`);
-          exercise.description;
+          myClone
+            .getElementById(`plus-${exercise.id}`)
+            .addEventListener("mousedown", () => addRepitition(exercise.id));
           parentElement.appendChild(myClone);
         });
     }
@@ -105,18 +118,59 @@ buttons.forEach((button) => {
             myClone
               .querySelector(".minus")
               .setAttribute("id", `minus-${exercise.id}`);
-            exercise.description;
+            myClone
+              .getElementById(`minus-${exercise.id}`)
+              .addEventListener("mousedown", () => {
+                retractRepitition(exercise.id);
+              });
             myClone
               .querySelector(".number")
               .setAttribute("id", `number-${exercise.id}`);
-            exercise.description;
+
+            myClone.getElementById(`number-${exercise.id}`).textContent =
+              parseInt(
+                myClone
+                  .getElementById(`number-${exercise.id}`)
+                  .getAttribute("data-total-repititions")
+              );
+
             myClone
               .querySelector(".plus")
               .setAttribute("id", `plus-${exercise.id}`);
-            exercise.description;
+            myClone
+              .getElementById(`plus-${exercise.id}`)
+              .addEventListener("mousedown", () => addRepitition(exercise.id));
             parentElement.appendChild(myClone);
           });
       }
     }
   });
 });
+let count;
+function addRepitition(id) {
+  count = parseInt(
+    document
+      .getElementById(`number-${id}`)
+      .getAttribute("data-total-repititions")
+  );
+
+  count = count + 5;
+  document.getElementById(`number-${id}`).textContent = count.toString();
+  document
+    .getElementById(`number-${id}`)
+    .setAttribute("data-total-repititions", count.toString());
+}
+function retractRepitition(id) {
+  count = parseInt(
+    document
+      .getElementById(`number-${id}`)
+      .getAttribute("data-total-repititions")
+  );
+  if (count > 5) {
+    count = count - 5;
+    document.getElementById(`number-${id}`).textContent = count.toString();
+    document
+      .getElementById(`number-${id}`)
+      .setAttribute("data-total-repititions", count.toString());
+  }
+}
