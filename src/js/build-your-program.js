@@ -31,73 +31,100 @@ const data = await response.json();
 let programArray = [];
 let filteredData;
 const buttons = document.querySelectorAll(".exerciseButton");
-
+const parentElement = document.querySelector(".program-list");
 buttons.forEach((button) => {
   const buttonId = button.getAttribute("data-button-id");
 
   button.addEventListener("mousedown", () => {
     if (!programArray.includes(buttonId)) {
       programArray.push(buttonId);
-      filteredData = data.filter((exercise) => {
-        if (programArray.includes(exercise.image)) {
-          return true;
-        } else {
-          return false;
-        }
-      });
-      document.querySelector(".program-list").innerHTML = filteredData
-        .map((exercise) => {
-          return `<article class="remove">
-            <img src="../assets/images/${exercise.image}.webp" alt="${
-            exercise.title
-          } image" />
-            <div class="text-container">
-              <h3>${exercise.title}</h3>
-              <h3 class="note">${exercise.note ? exercise.note : ""}</h3>
-              <p>${exercise.description}</p>
-              <div>
-                <div class="small-card" data-card-id="${exercise.id}">
-                  <button id={"minus-${exercise.id}"}>
-                    <img src="assets/minus-black.svg" alt="minus icon" />
-                  </button>
-                  <div><p id={"number-${exercise.id}"}></p></div>
-                  <button id={"plus-${exercise.id}"}>
-                    <img src="assets/plus-black.svg" alt="plus icon" />
-                  </button>
-                </div>
-                <button
-                  type="button"
-                  class="exerciseButton red x-small"
-                  data-button-id="${exercise.image}"
-                >
-                  <p>Fjern</p>
-                  <div class="icon" id="trashcan"></div>
-                </button>
-              </div>
-            </div>
-          </article>`;
-        })
-        .join("");
-    }
-  });
-
-  button.addEventListener("keypress", (event) => {
-    if (event.key === "Enter") {
-      if (!programArray.includes(buttonId)) {
-        programArray.push(buttonId);
-        filteredData = data.filter((exercise) => {
+      filteredData = data
+        .filter((exercise) => {
           if (programArray.includes(exercise.image)) {
             return true;
           } else {
             return false;
           }
+        })
+        .map((exercise) => {
+          const template = document.querySelector("template").content;
+          const myClone = template.cloneNode(true);
+          myClone
+            .querySelector("img")
+            .setAttribute("src", `../assets/images/${exercise.image}.webp`);
+          myClone.querySelector(".title").textContent = exercise.title;
+          myClone.querySelector(".note").textContent = exercise.note;
+          myClone.querySelector(".description").textContent =
+            exercise.description;
+          myClone
+            .querySelector(".small-card")
+            .setAttribute("data-card-id", exercise.id);
+          myClone
+            .querySelector(".minus")
+            .setAttribute("id", `minus-${exercise.id}`);
+          exercise.description;
+          myClone
+            .querySelector(".number")
+            .setAttribute("id", `number-${exercise.id}`);
+          exercise.description;
+          myClone
+            .querySelector(".plus")
+            .setAttribute("id", `plus-${exercise.id}`);
+          exercise.description;
+          parentElement.appendChild(myClone);
         });
-      }
-      return filteredData;
     }
+
+    button.addEventListener("keypress", (event) => {
+      if (event.key === "Enter") {
+        if (!programArray.includes(buttonId)) {
+          programArray.push(buttonId);
+          filteredData = data.filter((exercise) => {
+            if (programArray.includes(exercise.image)) {
+              return true;
+            } else {
+              return false;
+            }
+          });
+        }
+      }
+    });
   });
 });
 
+// return `<article class="remove">
+//             <img src="../assets/images/${exercise.image}.webp" alt="${
+//             exercise.title
+//           } image" />
+//             <div class="content-container">
+//                 <div class="text">
+//               <h3>${exercise.title}</h3>
+//               <h3 class="note">${exercise.note ? exercise.note : ""}</h3>
+//               <p>${exercise.description ? exercise.description : ""}</p>
+//               </div>
+//               <div class="buttons">
+//                 <div class="small-card" data-card-id="${exercise.id}">
+//                   <button id={"minus-${exercise.id}"}>
+//                     <img src="assets/minus-black.svg" alt="minus icon" />
+//                   </button>
+//                   <div><p class="number" id={"number-${exercise.id}"}></p></div>
+//                   <button cid={"plus-${exercise.id}"}>
+//                     <img src="assets/plus-black.svg" alt="plus icon" />
+//                   </button>
+//                 </div>
+//                 <button
+//                   type="button"
+//                   class="exerciseButton red x-small"
+//                   data-button-id="${exercise.image}"
+//                 >
+//                   <p>Fjern</p>
+//                   <div class="icon" id="trashcan"></div>
+//                 </button>
+//               </div>
+//             </div>
+//           </article>`;
+//         })
+//         .join("");
 document
   .querySelector(".exerciseButton")
   .addEventListener("mousedown", () => console.log(filteredData));

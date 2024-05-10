@@ -54,7 +54,7 @@ p {
       font-weight: var(--fw-t);
       margin: 2px 0;
     }
-    > div {
+    > .buttons {
       display: flex;
       align-items: center;
       justify-content: space-between;
