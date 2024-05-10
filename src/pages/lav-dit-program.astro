@@ -44,11 +44,7 @@ import Button from "../components/Button.astro";
                     <img src="assets/plus-black.svg" alt="plus icon" /></button
                   >
                 </div>
-                <button
-                  type="button"
-                  class="exerciseButton red x-small"
-                  data-button-id="${exercise.image}"
-                >
+                <button type="button" class="red x-small">
                   <p>Fjern</p>
                   <div class="icon" id="trashcan"></div>
                 </button>
@@ -160,7 +156,7 @@ import Button from "../components/Button.astro";
     text-align: center;
     top: 0;
     left: 0;
-    width: 290px;
+    width: 400px;
     padding: 40px 0;
     height: 100vh;
     background-color: var(--alternative-bg-color);
@@ -203,15 +199,15 @@ import Button from "../components/Button.astro";
     display: flex;
     align-items: center;
     gap: 10px;
-    width: 250px;
-    height: 93px;
+    width: 300px;
+    height: 125px;
     padding: 6px;
     border-radius: 8px;
     background-color: var(--main-bg-color);
 
     > img {
-      width: 80px;
-      height: 80px;
+      width: 107px;
+      height: 107px;
     }
 
     > div {
@@ -243,17 +239,12 @@ import Button from "../components/Button.astro";
         display: flex;
         align-items: center;
         justify-content: space-between;
-        width: 150px;
+        width: 169px;
       }
     }
   }
   .red {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     gap: 4px;
-    height: 31px;
-    padding: 6px 15px;
     border-radius: 10px;
     cursor: pointer;
     color: var(--main-bg-color);
@@ -273,45 +264,49 @@ import Button from "../components/Button.astro";
     }
   }
   .x-small {
-    width: 60px;
-    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 82px;
+    height: 25px;
     border-radius: 5px;
     padding: 6px 5px;
     > .icon {
-      width: 12px;
-      height: 12px;
+      width: 18px;
+      height: 18px;
     }
     > p {
-      font-size: var(--fs-s);
+      margin-top: 23px;
+      font-size: 14px;
     }
   }
-  .small-card {
+  .repition-button {
     display: flex;
     align-items: center;
     gap: 2px;
     > div {
       display: flex;
       align-items: center;
-      gap: 2px;
-      width: 22px;
-      height: 22px;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
       border-radius: 4px;
       background-color: #eaeaea;
       > p {
+        margin-top: 19px;
+        margin-right: 4px;
         font-size: 14px;
         font-family: var(--secondary-font);
         font-size: 14px;
       }
     }
-    > img {
-      padding: 9px 4px;
-    }
+
     > button {
       display: flex;
       align-items: center;
       justify-content: center;
       width: 14px;
-      height: 16px;
+      height: 18px;
       border: 0;
       border-radius: 2px;
       background-color: #eaeaea;
