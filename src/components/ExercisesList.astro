@@ -5,9 +5,10 @@ interface Props {
   headline: string;
   description: string;
   dataFilter: any;
+  divider?: boolean;
 }
 
-const { headline, description, dataFilter } = Astro.props;
+const { headline, description, dataFilter, divider = true } = Astro.props;
 ---
 
 <div>
@@ -26,7 +27,7 @@ const { headline, description, dataFilter } = Astro.props;
       ))
     }
   </div>
-  <div class="section-divider"></div>
+  {divider && <div class="section-divider" />}
 </div>
 
 <style>
