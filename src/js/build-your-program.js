@@ -87,10 +87,8 @@ function mappingProgram(filteredData, programArray) {
       .getElementById(`x-small-${exercise.id}`)
       .addEventListener("mousedown", () => {
         parentElement.innerHTML = "";
-        const index = programArray.indexOf(exercise.id);
+        const index = programArray.indexOf(`00${exercise.id}`);
         programArray.splice(index, 1);
-
-        console.log(programArray);
         dataFilter = data.filter((exercise) => {
           if (programArray.includes(exercise.image)) {
             return true;
