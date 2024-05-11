@@ -30,8 +30,8 @@ let response = await fetch(
 const data = await response.json();
 let programArray = [];
 let filteredData;
+let dataFilter;
 const addbButtons = document.querySelectorAll(".exerciseButton");
-const removeButtons = document.querySelectorAll(".x-small");
 const parentElement = document.querySelector(".program-list");
 const template = document.querySelector(".small-exercise-card").content;
 
@@ -41,69 +41,84 @@ addbButtons.forEach((button) => {
     if (!programArray.includes(buttonId)) {
       parentElement.innerHTML = "";
       programArray.push(buttonId);
-      data
-        .filter((exercise) => {
+      filteredData = data.filter((exercise) => {
+        if (programArray.includes(exercise.image)) {
+          return true;
+        } else {
+          return false;
+        }
+      });
+      mappingProgram(filteredData, programArray);
+    }
+  });
+});
+
+function mappingProgram(filteredData, programArray) {
+  filteredData.map((exercise) => {
+    const myClone = template.cloneNode(true);
+    myClone
+      .querySelector("img")
+      .setAttribute("src", `../assets/images/${exercise.image}.webp`);
+    myClone.querySelector(".title").textContent = exercise.title;
+    myClone.querySelector(".note").textContent = exercise.note;
+    myClone.querySelector(".description").textContent = exercise.description;
+    myClone
+      .querySelector(".small-card")
+      .setAttribute("data-card-id", exercise.id);
+    myClone
+      .querySelector(".x-small")
+      .setAttribute("id", `x-small-${exercise.id}`);
+    myClone.querySelector(".minus").setAttribute("id", `minus-${exercise.id}`);
+    myClone
+      .getElementById(`minus-${exercise.id}`)
+      .addEventListener("mousedown", () => {
+        retractRepitition(exercise.id);
+      });
+    myClone
+      .querySelector(".number")
+      .setAttribute("id", `number-${exercise.id}`);
+
+    myClone.getElementById(`number-${exercise.id}`).textContent = parseInt(
+      document
+        .getElementById(`number-normal-${exercise.id}`)
+        .getAttribute("data-total-repititions")
+    );
+    myClone
+      .getElementById(`x-small-${exercise.id}`)
+      .addEventListener("mousedown", () => {
+        parentElement.innerHTML = "";
+        const index = programArray.indexOf(exercise.id);
+        programArray.splice(index, 1);
+
+        console.log(programArray);
+        dataFilter = data.filter((exercise) => {
           if (programArray.includes(exercise.image)) {
             return true;
           } else {
             return false;
           }
-        })
-        .map((exercise) => {
-          const myClone = template.cloneNode(true);
-          myClone
-            .querySelector("img")
-            .setAttribute("src", `../assets/images/${exercise.image}.webp`);
-          myClone.querySelector(".title").textContent = exercise.title;
-          myClone.querySelector(".note").textContent = exercise.note;
-          myClone.querySelector(".description").textContent =
-            exercise.description;
-          myClone
-            .querySelector(".small-card")
-            .setAttribute("data-card-id", exercise.id);
-          myClone
-            .querySelector(".x-small")
-            .setAttribute("data-button-id", exercise.id);
-          myClone
-            .querySelector(".minus")
-            .setAttribute("id", `minus-${exercise.id}`);
-          myClone
-            .getElementById(`minus-${exercise.id}`)
-            .addEventListener("mousedown", () => {
-              retractRepitition(exercise.id);
-            });
-          myClone
-            .querySelector(".number")
-            .setAttribute("id", `number-${exercise.id}`);
-
-          myClone.getElementById(`number-${exercise.id}`).textContent =
-            parseInt(
-              document
-                .getElementById(`number-normal-${exercise.id}`)
-                .getAttribute("data-total-repititions")
-            );
-          myClone
-            .getElementById(`number-${exercise.id}`)
-            .setAttribute(
-              "data-total-repititions",
-              parseInt(
-                document
-                  .getElementById(`number-normal-${exercise.id}`)
-                  .getAttribute("data-total-repititions")
-              )
-            );
-
-          myClone
-            .querySelector(".plus")
-            .setAttribute("id", `plus-${exercise.id}`);
-          myClone
-            .getElementById(`plus-${exercise.id}`)
-            .addEventListener("mousedown", () => addRepitition(exercise.id));
-          parentElement.appendChild(myClone);
         });
-    }
+        mappingProgram(dataFilter, programArray);
+      });
+    myClone
+      .getElementById(`number-${exercise.id}`)
+      .setAttribute(
+        "data-total-repititions",
+        parseInt(
+          document
+            .getElementById(`number-normal-${exercise.id}`)
+            .getAttribute("data-total-repititions")
+        )
+      );
+
+    myClone.querySelector(".plus").setAttribute("id", `plus-${exercise.id}`);
+    myClone
+      .getElementById(`plus-${exercise.id}`)
+      .addEventListener("mousedown", () => addRepitition(exercise.id));
+    parentElement.appendChild(myClone);
   });
-});
+}
+
 let count;
 function addRepitition(id) {
   count = parseInt(
@@ -138,70 +153,3 @@ function retractRepitition(id) {
       .setAttribute("data-total-repititions", count.toString());
   }
 }
-
-// removeButtons.forEach((button) => {
-//   const buttonId = button.getAttribute("data-button-id");
-//   button.addEventListener("mousedown", () => {
-//     if (!programArray.includes(buttonId)) {
-//       parentElement.innerHTML = "";
-//       programArray.push(buttonId);
-//       data
-//         .filter((exercise) => {
-//           if (programArray.includes(exercise.image)) {
-//             return true;
-//           } else {
-//             return false;
-//           }
-//         })
-//         .map((exercise) => {
-//           const myClone = template.cloneNode(true);
-//           myClone
-//             .querySelector("img")
-//             .setAttribute("src", `../assets/images/${exercise.image}.webp`);
-//           myClone.querySelector(".title").textContent = exercise.title;
-//           myClone.querySelector(".note").textContent = exercise.note;
-//           myClone.querySelector(".description").textContent =
-//             exercise.description;
-//           myClone
-//             .querySelector(".small-card")
-//             .setAttribute("data-card-id", exercise.id);
-//           myClone
-//             .querySelector(".minus")
-//             .setAttribute("id", `minus-${exercise.id}`);
-//           myClone
-//             .getElementById(`minus-${exercise.id}`)
-//             .addEventListener("mousedown", () => {
-//               retractRepitition(exercise.id);
-//             });
-//           myClone
-//             .querySelector(".number")
-//             .setAttribute("id", `number-${exercise.id}`);
-
-//           myClone.getElementById(`number-${exercise.id}`).textContent =
-//             parseInt(
-//               document
-//                 .getElementById(`number-normal-${exercise.id}`)
-//                 .getAttribute("data-total-repititions")
-//             );
-//           myClone
-//             .getElementById(`number-${exercise.id}`)
-//             .setAttribute(
-//               "data-total-repititions",
-//               parseInt(
-//                 document
-//                   .getElementById(`number-normal-${exercise.id}`)
-//                   .getAttribute("data-total-repititions")
-//               )
-//             );
-
-//           myClone
-//             .querySelector(".plus")
-//             .setAttribute("id", `plus-${exercise.id}`);
-//           myClone
-//             .getElementById(`plus-${exercise.id}`)
-//             .addEventListener("mousedown", () => addRepitition(exercise.id));
-//           parentElement.appendChild(myClone);
-//         });
-//     }
-//   });
-// });
