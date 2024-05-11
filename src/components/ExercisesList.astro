@@ -26,6 +26,7 @@ const { headline, description, dataFilter } = Astro.props;
       ))
     }
   </div>
+  <div class="section-divider"></div>
 </div>
 
 <style>
@@ -50,5 +51,10 @@ const { headline, description, dataFilter } = Astro.props;
   }
   div:has(h2) {
     margin-left: 420px;
+  }
+  .section-divider {
+    width: 95%;
+    margin: 20px auto;
+    border-bottom: 3px solid var(--alternative-bg-color);
   }
 </style>

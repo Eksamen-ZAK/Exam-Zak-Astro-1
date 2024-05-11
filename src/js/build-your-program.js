@@ -63,7 +63,6 @@ function mappingProgram(filteredData, programArray) {
       .setAttribute("src", `../assets/images/${exercise.image}.webp`);
     myClone.querySelector(".title").textContent = exercise.title;
     myClone.querySelector(".note").textContent = exercise.note;
-    myClone.querySelector(".description").textContent = exercise.description;
     myClone
       .querySelector(".small-card")
       .setAttribute("data-card-id", exercise.id);
