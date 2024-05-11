@@ -134,7 +134,7 @@ import Button from "../components/Button.astro";
 <style>
   h1,
   h2 {
-    font-size: 30px;
+    font-size: var(--fs-l);
     font-family: var(--main-font);
     font-weight: var(--fw-b);
   }
@@ -143,7 +143,7 @@ import Button from "../components/Button.astro";
   }
   p {
     margin: 0 0 21px 5px;
-    font-size: 18px;
+    font-size: var(--fs-m);
     font-family: var(--main-font);
     font-weight: var(--fw-n);
   }
@@ -223,16 +223,16 @@ import Button from "../components/Button.astro";
       > .text {
         > h3 {
           margin-top: 16px;
-          font-size: 16px;
+          font-size: var(--fs-medium-card);
           margin-bottom: 0;
         }
         > .note {
           margin-bottom: 8px;
-          font-size: 10px;
+          font-size: var(--fs-xs);
           margin-top: 0;
         }
         > p {
-          font-size: 12px;
+          font-size: var(--fs-s);
           font-weight: var(--fw-t);
           margin: 2px 0;
         }
@@ -280,7 +280,7 @@ import Button from "../components/Button.astro";
     }
     > p {
       margin-top: 23px;
-      font-size: 14px;
+      font-size: var(--fs-s);
     }
   }
   .repition-button {
@@ -298,9 +298,9 @@ import Button from "../components/Button.astro";
       > p {
         margin-top: 19px;
         margin-right: 4px;
-        font-size: 14px;
+        font-size: var(--fs-s);
         font-family: var(--secondary-font);
-        font-size: 14px;
+        font-size: var(--fs-s);
       }
     }
 

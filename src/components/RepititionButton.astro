@@ -78,7 +78,7 @@ const { variant, cardId } = Astro.props;
   }
   p {
     font-family: var(--secondary-font);
-    font-size: 18px;
+    font-size: var(--fs-m);
   }
   button {
     display: flex;
@@ -100,7 +100,7 @@ const { variant, cardId } = Astro.props;
       height: 22px;
       border-radius: 4px;
       > p {
-        font-size: 14px;
+        font-size: var(--fs-s);
       }
     }
     > button {
