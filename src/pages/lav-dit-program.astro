@@ -12,103 +12,123 @@ let response = await fetch(
   }
 );
 
-let data = await response.json();
-console.log(data);
+const data = await response.json();
 
 import Layout from "../layouts/Layout.astro";
+import ExercisesList from "../components/ExercisesList.astro";
 import ExerciseCard from "../components/ExerciseCard.astro";
 import Button from "../components/Button.astro";
 ---
 
 <Layout title="Welcome to Astro.">
-  <div class="sidebar">
-    <h1>Dit program</h1>
-    <div class="program-list">
-      <ExerciseCard
-        title="Løft brynene"
-        description="En øvelse til at styrke muskulaturen omkring øjnene."
-        image="../assets/images/001.webp"
-        variant="remove"
-      />
-      <div class="divider"></div>
-      <ExerciseCard
-        title="Løft brynene"
-        description="En øvelse til at styrke muskulaturen omkring øjnene."
-        image="../assets/images/001.webp"
-        variant="remove"
-      />
-      <div class="divider"></div>
-      <ExerciseCard
-        title="Løft brynene"
-        description="En øvelse til at styrke muskulaturen omkring øjnene."
-        image="../assets/images/001.webp"
-        variant="remove"
-      />
-      <div class="divider"></div>
-      <ExerciseCard
-        title="Løft brynene"
-        description="En øvelse til at styrke muskulaturen omkring øjnene."
-        image="../assets/images/001.webp"
-        variant="remove"
-      />
-      <div class="divider"></div>
-      <ExerciseCard
-        title="Løft brynene"
-        description="En øvelse til at styrke muskulaturen omkring øjnene."
-        image="../assets/images/001.webp"
-        variant="remove"
-      />
-      <div class="divider"></div>
-      <ExerciseCard
-        title="Løft brynene"
-        description="En øvelse til at styrke muskulaturen omkring øjnene."
-        image="../assets/images/001.webp"
-        variant="remove"
-      />
-      <ExerciseCard
-        title="Løft brynene"
-        description="En øvelse til at styrke muskulaturen omkring øjnene."
-        image="../assets/images/001.webp"
-        variant="remove"
-      />
-      <div class="divider"></div>
+  <main>
+    <div class="sidebar">
+      <h1>Dit program</h1>
+      <div class="program-list">
+        <template class="small-exercise-card">
+          <article class="remove">
+            <img src="" alt="øvelsesbillede" />
+            <div class="content-container">
+              <div class="text">
+                <h3 class="title"></h3>
+                <h3 class="note"></h3>
+                <p class="description"></p>
+              </div>
+              <div class="buttons">
+                <div class="repition-button small-card">
+                  <button class="minus">
+                    <img src="assets/minus-black.svg" alt="minus icon" />
+                  </button>
+                  <div><p class="number"></p></div>
+                  <button class="plus">
+                    <img src="assets/plus-black.svg" alt="plus icon" /></button
+                  >
+                </div>
+                <button type="button" class="red x-small">
+                  <p>Fjern</p>
+                  <div class="icon" id="trashcan"></div>
+                </button>
+              </div>
+            </div>
+          </article>
+          <div class="divider"></div>
+        </template>
+      </div>
+      <div class="buttons">
+        <Button
+          type="button"
+          text="Gem"
+          icon="bookmark"
+          variant="invertedGreen fullWidth small"
+        /><Button
+          type="button"
+          text="Afspil"
+          icon="play"
+          variant="green fullWidth small"
+        />
+      </div>
     </div>
-    <div class="buttons">
-      <Button
-        type="button"
-        text="Gem"
-        icon="bookmark"
-        variant="invertedGreen fullWidth small"
-      /><Button
-        type="button"
-        text="Afspil"
-        icon="play"
-        variant="green fullWidth small"
-      />
-    </div>
-  </div>
-  <div>
-    <h2>Titel</h2>
-    <p>Tekst</p>
-    <div class="grid">
-      <ExerciseCard
-        title="Løft brynene"
-        description="En øvelse til at styrke muskulaturen omkring øjnene."
-        image="../assets/images/001.webp"
-      />
-      <ExerciseCard
-        title="Løft brynene"
-        description="En øvelse til at styrke muskulaturen omkring øjnene."
-        image="../assets/images/001.webp"
-      />
-      <ExerciseCard
-        title="Løft brynene"
-        description="En øvelse til at styrke muskulaturen omkring øjnene."
-        image="../assets/images/001.webp"
-      />
-    </div>
-  </div>
+
+    <ExercisesList
+      headline="Pande"
+      description="Disse øvelser fokusere på området omkring panden"
+      dataFilter={data.filter((exercise) => {
+        if (exercise.category === "pande") {
+          return true;
+        } else {
+          return false;
+        }
+      })}
+    /><ExercisesList
+      headline="Øjne"
+      description="Disse øvelser fokusere på øjnene"
+      dataFilter={data.filter((exercise) => {
+        if (exercise.category === "øjne") {
+          return true;
+        } else {
+          return false;
+        }
+      })}
+    />
+    <ExercisesList
+      headline="Næse"
+      description="Disse øvelser fokusere på området omkring næsen"
+      dataFilter={data.filter((exercise) => {
+        if (exercise.category === "næse") {
+          return true;
+        } else {
+          return false;
+        }
+      })}
+    />
+    <ExercisesList
+      headline="Kinder og mund"
+      description="Disse øvelser fokusere på området omkring kinderne og munden"
+      dataFilter={data.filter((exercise) => {
+        if (exercise.category === "kinder-mund") {
+          return true;
+        } else {
+          return false;
+        }
+      })}
+    />
+
+    <ExercisesList
+      headline="Tunge"
+      description="Disse øvelser fokusere på tungen"
+      dataFilter={data.filter((exercise) => {
+        if (exercise.category === "tunge") {
+          return true;
+        } else {
+          return false;
+        }
+      })}
+    />
+  </main>
 </Layout>
+
+<script src="../js/build-your-program.js"></script>
+
 <style>
   h1,
   h2 {
@@ -120,15 +140,15 @@ import Button from "../components/Button.astro";
     margin-bottom: 6px;
   }
   p {
-    margin: 0 0 21px 8px;
+    margin: 0 0 21px 5px;
     font-size: 18px;
     font-family: var(--main-font);
     font-weight: var(--fw-n);
   }
   .grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    width: 800px;
+    grid-auto-columns: auto;
+    width: 77%;
     gap: 15px;
   }
   .sidebar {
@@ -136,7 +156,7 @@ import Button from "../components/Button.astro";
     text-align: center;
     top: 0;
     left: 0;
-    width: 290px;
+    width: 400px;
     padding: 40px 0;
     height: 100vh;
     background-color: var(--alternative-bg-color);
@@ -153,16 +173,149 @@ import Button from "../components/Button.astro";
     display: flex;
     gap: 9px;
     width: 250px;
-    padding-top: 8px;
+    padding-top: 12px;
     margin: 0 auto;
   }
   .program-list {
     text-align: left;
-    height: 610px;
+    height: 77vh;
     display: flex;
     gap: 8px;
     flex-direction: column;
     align-items: center;
     overflow: scroll;
+  }
+  .minus,
+  .plus {
+    cursor: pointer;
+  }
+
+  h3,
+  p {
+    font-family: var(--main-font);
+  }
+
+  .remove {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 300px;
+    height: 125px;
+    padding: 6px;
+    border-radius: 8px;
+    background-color: var(--main-bg-color);
+
+    > img {
+      width: 107px;
+      height: 107px;
+    }
+
+    > div {
+      display: flex;
+      align-items: stretch;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0;
+      padding: 2px 3px;
+      > .text {
+        > h3 {
+          margin-top: 16px;
+          font-size: 16px;
+          margin-bottom: 0;
+        }
+        > .note {
+          margin-bottom: 8px;
+          font-size: 10px;
+          margin-top: 0;
+        }
+        > p {
+          font-size: 12px;
+          font-weight: var(--fw-t);
+          margin: 2px 0;
+        }
+      }
+
+      > .buttons {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 169px;
+      }
+    }
+  }
+  .red {
+    gap: 4px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: var(--main-bg-color);
+    background-color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+
+    > #trashcan {
+      background-image: url(../public/assets/trashcan-white.svg);
+    }
+  }
+  .red:hover {
+    color: var(--primary-color);
+    background-color: var(--main-bg-color);
+    border: 2px solid var(--primary-color);
+    > #trashcan {
+      background-image: url(../public/assets/trashcan-red.svg);
+    }
+  }
+  .x-small {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 82px;
+    height: 25px;
+    border-radius: 5px;
+    padding: 6px 5px;
+    > .icon {
+      width: 18px;
+      height: 18px;
+    }
+    > p {
+      margin-top: 23px;
+      font-size: 14px;
+    }
+  }
+  .repition-button {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    > div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      border-radius: 4px;
+      background-color: #eaeaea;
+      > p {
+        margin-top: 19px;
+        margin-right: 4px;
+        font-size: 14px;
+        font-family: var(--secondary-font);
+        font-size: 14px;
+      }
+    }
+
+    > button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 14px;
+      height: 18px;
+      border: 0;
+      border-radius: 2px;
+      background-color: #eaeaea;
+      cursor: pointer;
+    }
+  }
+  .icon {
+    width: 17px;
+    height: 17px;
+    background-size: contain;
   }
 </style>

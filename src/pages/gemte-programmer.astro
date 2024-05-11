@@ -20,37 +20,54 @@ import ProgramCard from "../components/ProgramCard.astro";
 ---
 
 <Layout title="Welcome to Astro.">
-  <div>
-    <h1>Dine programmer</h1>
-    <p>
-      Disse programmer er nogle du eller din tilknyttede terapeut tidligere har
-      sammensat.
-    </p>
-    <div class="program-list">
-      <button
-        ><div>
-          <img src="../assets/plus-circle.svg" alt="plus circle icon" />
-          <p>Lav nyt program</p>
-        </div></button
-      >
-      <ProgramCard
-        title="Ansigtsprogram 1"
-        description="Primære ansigtsprogram for ansigtsmuskulatur"
-        image="../assets/images/001.webp"
-      />
-      <ProgramCard
-        title="Ansigtsprogram 1"
-        description="Primære ansigtsprogram for ansigtsmuskulatur"
-        image="../assets/images/001.webp"
-      />
-      <ProgramCard
-        title="Ansigtsprogram 1"
-        description="Primære ansigtsprogram for ansigtsmuskulatur"
-        image="../assets/images/001.webp"
-      />
+  <main>
+    <div>
+      <h1>Dine programmer</h1>
+      <p>
+        Disse programmer er nogle du eller din tilknyttede terapeut tidligere
+        har sammensat.
+      </p>
+      <div class="program-list">
+        <button class="new-program"
+          ><div>
+            <img src="../assets/plus-circle.svg" alt="plus circle icon" />
+            <p>Lav nyt program</p>
+          </div></button
+        >
+        <ProgramCard
+          title="Ansigtsprogram 1"
+          description="Primære ansigtsprogram for ansigtsmuskulatur"
+          image="../assets/images/001.webp"
+        />
+        <ProgramCard
+          title="Ansigtsprogram 1"
+          description="Primære ansigtsprogram for ansigtsmuskulatur"
+          image="../assets/images/001.webp"
+        />
+        <ProgramCard
+          title="Ansigtsprogram 1"
+          description="Primære ansigtsprogram for ansigtsmuskulatur"
+          image="../assets/images/001.webp"
+        />
+      </div>
     </div>
-  </div>
+  </main>
 </Layout>
+
+<script>
+  const button = document.querySelector(".new-program");
+
+  button.addEventListener(
+    "mousedown",
+    () => (window.location.href = `/lav-dit-program`)
+  );
+  button.addEventListener("keypress", (event) => {
+    if (event.key === "Enter") {
+      window.location.href = `/lav-dit-program`;
+    }
+  });
+</script>
+
 <style>
   div:has(h1) {
     padding: 40px;

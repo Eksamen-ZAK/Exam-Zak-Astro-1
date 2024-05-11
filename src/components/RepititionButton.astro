@@ -1,15 +1,65 @@
 ---
 interface Props {
-  size: string;
+  variant: string;
+  cardId: string;
 }
-const { size } = Astro.props;
+const { variant, cardId } = Astro.props;
 ---
 
-<div class={size}>
-  <button><img src="assets/minus-black.svg" alt="minus icon" /></button>
-  <div><p>5</p></div>
-  <button><img src="assets/plus-black.svg" alt="plus icon" /> </button>
+<div class={variant} data-card-id={cardId}>
+  <button id={`minus-${cardId}`}
+    ><img src="assets/minus-black.svg" alt="minus icon" /></button
+  >
+  <div><p data-total-repititions="5" id={`number-${cardId}`}></p></div>
+  <button id={`plus-${cardId}`}
+    ><img src="assets/plus-black.svg" alt="plus icon" />
+  </button>
 </div>
+
+<script>
+  window.addEventListener("load", loadRepititionButtons);
+  const repititionButtons = document.querySelectorAll(".normal-card");
+
+  function loadRepititionButtons() {
+    repititionButtons.forEach((button) => {
+      const id = button.getAttribute("data-card-id");
+      let repititions = 5;
+      function addRepitition() {
+        repititions = repititions + 5;
+        document.getElementById(`number-${id}`).textContent =
+          repititions.toString();
+        document
+          .getElementById(`number-${id}`)
+          .setAttribute("data-total-repititions", repititions.toString());
+      }
+      function retractRepitition() {
+        if (repititions > 5) {
+          repititions = repititions - 5;
+          document.getElementById(`number-${id}`).textContent =
+            repititions.toString();
+          document
+            .getElementById(`number-${id}`)
+            .setAttribute("data-total-repititions", repititions.toString());
+        }
+      }
+      const cardId = button.getAttribute("data-card-id");
+      document.getElementById(`number-${cardId}`).textContent =
+        repititions.toString();
+
+      document
+        .getElementById(`minus-${cardId}`)
+        .addEventListener("mousedown", () => {
+          retractRepitition();
+        });
+
+      document
+        .getElementById(`plus-${cardId}`)
+        .addEventListener("mousedown", () => {
+          addRepitition();
+        });
+    });
+  }
+</script>
 
 <style>
   div {
@@ -39,11 +89,12 @@ const { size } = Astro.props;
     border: 0;
     border-radius: 4px;
     background-color: #eaeaea;
+    cursor: pointer;
   }
   img {
     padding: 9px 4px;
   }
-  .small {
+  .small-card {
     > div {
       width: 22px;
       height: 22px;
@@ -55,6 +106,7 @@ const { size } = Astro.props;
     > button {
       height: 16px;
       border-radius: 2px;
+      cursor: pointer;
     }
   }
 </style>
