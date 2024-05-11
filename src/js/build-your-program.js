@@ -39,6 +39,7 @@ addbButtons.forEach((button) => {
   const buttonId = button.getAttribute("data-button-id");
   button.addEventListener("mousedown", () => {
     button.classList.add("disabled-green");
+    button.classList.remove("green");
     button.setAttribute("id", buttonId);
     if (!programArray.includes(buttonId)) {
       parentElement.innerHTML = "";
@@ -100,6 +101,7 @@ function mappingProgram(filteredData, programArray) {
         document
           .getElementById(exercise.image)
           .classList.remove("disabled-green");
+        document.getElementById(exercise.image).classList.add("green");
         mappingProgram(dataFilter, programArray);
       });
     myClone

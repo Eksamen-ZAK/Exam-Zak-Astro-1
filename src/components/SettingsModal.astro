@@ -1,0 +1,21 @@
+---
+interface Props {
+  type: string;
+}
+const { type } = Astro.props;
+---
+
+<div class=`${type} modal`></div>
+
+<style>
+  .modal {
+    width: 66vw;
+    height: 55vh;
+    border-radius: 10px;
+    background: #fff;
+    display: none;
+  }
+  .display {
+    display: block;
+  }
+</style>
