@@ -38,6 +38,8 @@ const template = document.querySelector(".small-exercise-card").content;
 addbButtons.forEach((button) => {
   const buttonId = button.getAttribute("data-button-id");
   button.addEventListener("mousedown", () => {
+    button.classList.add("disabled-green");
+    button.setAttribute("id", buttonId);
     if (!programArray.includes(buttonId)) {
       parentElement.innerHTML = "";
       programArray.push(buttonId);
@@ -87,7 +89,7 @@ function mappingProgram(filteredData, programArray) {
       .getElementById(`x-small-${exercise.id}`)
       .addEventListener("mousedown", () => {
         parentElement.innerHTML = "";
-        const index = programArray.indexOf(`00${exercise.id}`);
+        const index = programArray.indexOf(exercise.image);
         programArray.splice(index, 1);
         dataFilter = data.filter((exercise) => {
           if (programArray.includes(exercise.image)) {
@@ -96,6 +98,9 @@ function mappingProgram(filteredData, programArray) {
             return false;
           }
         });
+        document
+          .getElementById(exercise.image)
+          .classList.remove("disabled-green");
         mappingProgram(dataFilter, programArray);
       });
     myClone
