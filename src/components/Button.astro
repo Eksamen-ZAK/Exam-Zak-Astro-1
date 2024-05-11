@@ -17,7 +17,7 @@ const { text, icon, variant, href, type, buttonId } = Astro.props;
   data-link={href && href}
   data-button-id={buttonId && buttonId}
 >
-  <p>{text}</p>
+  <p id=`text-${buttonId}`>{text}</p>
   {icon && <div class="icon" id={icon} />}
 </button>
 

@@ -40,6 +40,7 @@ addbButtons.forEach((button) => {
   button.addEventListener("mousedown", () => {
     button.classList.add("disabled-green");
     button.classList.remove("green");
+
     button.setAttribute("id", buttonId);
     if (!programArray.includes(buttonId)) {
       parentElement.innerHTML = "";
@@ -58,6 +59,7 @@ addbButtons.forEach((button) => {
 
 function mappingProgram(filteredData, programArray) {
   filteredData.map((exercise) => {
+    document.getElementById(`text-${exercise.image}`).textContent = "Tilføjet";
     const myClone = template.cloneNode(true);
     myClone
       .querySelector("img")
@@ -101,6 +103,8 @@ function mappingProgram(filteredData, programArray) {
         document
           .getElementById(exercise.image)
           .classList.remove("disabled-green");
+        document.getElementById(`text-${exercise.image}`).textContent =
+          "Tilføj";
         document.getElementById(exercise.image).classList.add("green");
         mappingProgram(dataFilter, programArray);
       });
