@@ -5,7 +5,7 @@ if (localStorage.getItem("uuid")) {
 } else {
   uuid = sessionStorage.getItem("uuid");
 }
-// --fw-t: 100;
+// --fs-xs: 10px;
 // --fs-s: 14px;
 // --fs-small-card: 16px;
 // --fs-m: 18px;
@@ -24,6 +24,10 @@ function getFontSize() {
     const html = document.querySelector("html");
     const htmlStyle = getComputedStyle(html);
     if (localStorage.getItem("font-size") !== "18") {
+      html.style.setProperty(
+        "--fs-xs",
+        `${localStorage.getItem("font-size") - 4}px`
+      );
       html.style.setProperty(
         "--fs-s",
         `${localStorage.getItem("font-size") - 4}px`
@@ -58,7 +62,8 @@ function getFontSize() {
         );
       }
     } else {
-      html.style.setProperty("--fs-s", `13px`);
+      html.style.setProperty("--fs-xs", `10px`);
+      html.style.setProperty("--fs-s", `14px`);
       html.style.setProperty("--fs-small-card", "16px");
       html.style.setProperty("--fs-m", `18px`);
       html.style.setProperty("--fs-ml", "24px");
