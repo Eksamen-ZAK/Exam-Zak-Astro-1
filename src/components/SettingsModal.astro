@@ -1,21 +1,166 @@
 ---
 interface Props {
-  type: string;
+  type?: string;
 }
 const { type } = Astro.props;
 ---
 
-<div class=`${type} modal`></div>
+<dialog id="settings-modal">
+  <div class="content-container">
+    <img
+      src="../public/assets/text-setting-modal.svg"
+      alt="text setting image"
+    />
+    <div>
+      <div><p id="small-text">Aa</p><p id="large-text">Aa</p></div>
+      <input
+        type="range"
+        id="text-size-slider"
+        name="text-size"
+        min="18"
+        max="34"
+        value="18"
+        step="4"
+      />
+    </div>
+    <button class="close-button">
+      <img src="../public/assets/x-red.svg" alt="red x" /></button
+    >
+  </div>
+  <div><div class="example"><p>Rediger tekst størrelse</p></div></div>
+</dialog>
 
 <style>
-  .modal {
-    width: 66vw;
+  dialog {
+    width: 60vw;
     height: 55vh;
     border-radius: 10px;
     background: #fff;
     display: none;
+    border: none;
+    padding: 10px 21px;
   }
   .display {
     display: block;
+  }
+  button {
+    background-color: transparent;
+    border: none;
+  }
+  .content-container {
+    display: grid;
+    grid-template-columns: 4fr 5fr 1.5fr;
+    align-items: start;
+  }
+  .close-button {
+    cursor: pointer;
+  }
+  div:has(input) {
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    > div {
+      display: flex;
+      height: 75px;
+      justify-content: space-between;
+      align-items: baseline;
+      width: 100%;
+      padding: 0;
+    }
+  }
+  #large-text {
+    font-family: var(--main-font);
+    font-size: 38px;
+    font-weight: var(--fw-b);
+  }
+  #small-text {
+    font-family: var(--main-font);
+    font-size: 18px;
+    font-weight: var(--fw-b);
+  }
+
+  div:has(.example) {
+    margin-top: 45px;
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    > .example {
+      position: relative;
+      grid-column: 2;
+      width: 100%;
+      height: 200px;
+      background-color: var(--alternative-bg-color);
+      border-radius: 4px;
+      > p {
+        position: absolute;
+        top: 45%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        font-family: var(--main-font);
+        font-size: var(--fs-m);
+        font-weight: 700;
+      }
+    }
+  }
+  input[type="range"] {
+    -webkit-appearance: none;
+    margin: 18px 0;
+    width: 100%;
+  }
+  input[type="range"]:focus {
+    outline: none;
+  }
+  input[type="range"]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 13px;
+    cursor: pointer;
+    background: #d3a3af;
+    border-radius: 11px;
+    border: 0;
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    width: 45px;
+    height: 45px;
+    border-radius: 30px;
+    background: var(--primary-color);
+    border: 0;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -14px;
+  }
+
+  input[type="range"]::-moz-range-track {
+    width: 100%;
+    height: 13px;
+    cursor: pointer;
+    background: #d3a3af;
+    border-radius: 11px;
+    border: 0;
+  }
+  input[type="range"]::-moz-range-thumb {
+    width: 45px;
+    height: 45px;
+    border-radius: 30px;
+    background: var(--primary-color);
+    border: 0;
+    cursor: pointer;
+  }
+  input[type="range"]::-ms-track {
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+    background: transparent;
+    border-color: transparent;
+    border-width: 16px 0;
+    color: transparent;
+  }
+
+  input[type="range"]::-ms-thumb {
+    width: 45px;
+    height: 45px;
+    border-radius: 30px;
+    background: var(--primary-color);
+    border: 0;
+    cursor: pointer;
   }
 </style>

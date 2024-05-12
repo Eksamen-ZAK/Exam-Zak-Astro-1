@@ -1,29 +1,35 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import SettingItem from "../components/SettingItem.astro";
+import SettingsModal from "../components/SettingsModal.astro";
 ---
 
 <Layout title="Welcome to Astro." backgroundColor="alternative">
   <main>
+    <SettingsModal />
     <h1>Indstillinger</h1>
     <div>
       <SettingItem
         text="Tekst størrelse"
         image="assets/text-icon.svg"
         altText="text icon"
+        type="pop-up"
       />
       <SettingItem
         text="Kontrast"
         image="assets/contrast-icon.svg"
         altText="contrast icon"
+        type="pop-up"
       />
       <SettingItem
-        text="Farver: til"
+        text="Farver: "
         image="assets/palette-icon.svg"
         altText="palette icon"
+        type="toggle"
       />
     </div>
   </main>
+  <script src="../js/settings.js"></script>
 </Layout>
 
 <style>
