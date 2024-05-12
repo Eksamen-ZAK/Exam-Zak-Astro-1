@@ -39,42 +39,17 @@ function getFontSize() {
     const html = document.querySelector("html");
     const htmlStyle = getComputedStyle(html);
     if (localStorage.getItem("font-size") !== "18") {
-      html.style.setProperty(
-        "--fs-xs",
-        `${localStorage.getItem("font-size") - 4}px`
-      );
-      html.style.setProperty(
-        "--fs-s",
-        `${localStorage.getItem("font-size") - 4}px`
-      );
-      html.style.setProperty(
-        "--fs-small-card",
-        `${localStorage.getItem("font-size") - 4}px`
-      );
-      html.style.setProperty(
-        "--fs-m",
-        `${localStorage.getItem("font-size") - 4}px`
-      );
-      html.style.setProperty(
-        "--fs-ml",
-        `${localStorage.getItem("font-size")}px`
-      );
-      if (
-        htmlStyle.getPropertyValue("--fs-l") < localStorage.getItem("font-size")
-      ) {
-        html.style.setProperty(
-          "--fs-l",
-          `${localStorage.getItem("font-size")}px`
-        );
+      const fontSize = localStorage.getItem("font-size");
+      html.style.setProperty("--fs-xs", `${fontSize - 4}px`);
+      html.style.setProperty("--fs-s", `${fontSize - 4}px`);
+      html.style.setProperty("--fs-small-card", `${fontSize - 4}px`);
+      html.style.setProperty("--fs-m", `${fontSize - 4}px`);
+      html.style.setProperty("--fs-ml", `${fontSize}px`);
+      if (htmlStyle.getPropertyValue("--fs-l") < fontSize) {
+        html.style.setProperty("--fs-l", `${fontSize}px`);
       }
-      if (
-        htmlStyle.getPropertyValue("--fs-xl") <
-        localStorage.getItem("font-size")
-      ) {
-        html.style.setProperty(
-          "--fs-l",
-          `${localStorage.getItem("font-size")}px`
-        );
+      if (htmlStyle.getPropertyValue("--fs-xl") < fontSize) {
+        html.style.setProperty("--fs-l", `${fontSize}px`);
       }
     } else {
       html.style.setProperty("--fs-xs", `10px`);
@@ -90,7 +65,6 @@ function getFontSize() {
 function getColors() {
   if (localStorage.getItem("color-status")) {
     const html = document.querySelector("html");
-    const htmlStyle = getComputedStyle(html);
     if (localStorage.getItem("color-status") === "black-white") {
       html.style.setProperty("--primary-color", `black`);
       html.style.setProperty("--secondary-color", "#545454");
