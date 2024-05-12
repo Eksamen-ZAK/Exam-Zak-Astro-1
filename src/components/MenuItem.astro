@@ -8,13 +8,13 @@ interface Props {
 const { link, image, altText, text } = Astro.props;
 ---
 
-<button data-link={link}>
+<button class="menu-item" data-link={link}>
   <div class={image}></div>
   <p>{text}</p>
 </button>
 
 <script>
-  const buttons = document.querySelectorAll("button");
+  const buttons = document.querySelectorAll(".menu-item");
   buttons.forEach((button) => {
     const href = button.getAttribute("data-link");
     button.addEventListener(

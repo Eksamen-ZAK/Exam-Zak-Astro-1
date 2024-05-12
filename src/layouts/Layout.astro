@@ -1,5 +1,6 @@
 ---
 import Header from "../components/Header.astro";
+import Menu from "../components/Menu.astro";
 
 interface Props {
   title: string;
@@ -28,6 +29,7 @@ const { title, metaDescription, backgroundColor } = Astro.props;
   </head>
   <body class={backgroundColor}>
     <Header />
+    <Menu />
     <slot />
     <script src=`../js/generel.js`></script>
   </body>
@@ -52,7 +54,7 @@ const { title, metaDescription, backgroundColor } = Astro.props;
     --font-color: #141414;
   }
   body {
-    min-height: 100vh;
+    max-height: 100vh;
     background-color: var(--main-bg-color);
   }
   .alternative {

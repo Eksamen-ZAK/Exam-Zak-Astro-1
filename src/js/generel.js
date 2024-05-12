@@ -5,6 +5,21 @@ if (localStorage.getItem("uuid")) {
 } else {
   uuid = sessionStorage.getItem("uuid");
 }
+
+document.querySelectorAll(".burger-menu").forEach((menu) =>
+  menu.addEventListener("mousedown", () => {
+    document
+      .querySelectorAll(".menu-overlay")
+      .forEach((overlay) => overlay.classList.remove("hide"));
+  })
+);
+document.querySelectorAll(".close-menu").forEach((menu) =>
+  menu.addEventListener("mousedown", () => {
+    document
+      .querySelectorAll(".menu-overlay")
+      .forEach((overlay) => overlay.classList.add("hide"));
+  })
+);
 // --fs-xs: 10px;
 // --fs-s: 14px;
 // --fs-small-card: 16px;

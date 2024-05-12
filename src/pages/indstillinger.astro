@@ -2,10 +2,12 @@
 import Layout from "../layouts/Layout.astro";
 import SettingItem from "../components/SettingItem.astro";
 import SettingsModal from "../components/SettingsModal.astro";
+import Menu from "../components/Menu.astro";
 ---
 
 <Layout title="Welcome to Astro." backgroundColor="alternative">
   <main>
+    <Menu />
     <SettingsModal />
     <h1>Indstillinger</h1>
     <div>
@@ -34,7 +36,7 @@ import SettingsModal from "../components/SettingsModal.astro";
 
 <style>
   h1 {
-    margin-top: 150px;
+    margin-top: 140px;
     margin-bottom: 36px;
     font-size: var(--fs-l);
     font-family: var(--main-font);

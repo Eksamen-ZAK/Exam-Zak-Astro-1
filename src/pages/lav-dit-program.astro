@@ -16,12 +16,13 @@ const data = await response.json();
 
 import Layout from "../layouts/Layout.astro";
 import ExercisesList from "../components/ExercisesList.astro";
-import ExerciseCard from "../components/ExerciseCard.astro";
 import Button from "../components/Button.astro";
+import Menu from "../components/Menu.astro";
 ---
 
 <Layout title="Welcome to Astro.">
   <main>
+    <Menu />
     <div class="sidebar">
       <h1>Dit program</h1>
       <div class="program-list">
