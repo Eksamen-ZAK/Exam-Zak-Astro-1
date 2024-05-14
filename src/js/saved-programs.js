@@ -16,8 +16,6 @@ let res = await fetch(url + `?id=eq.${uuid}`, {
 
 const userData = await res.json();
 
-console.log(userData[0].saved_programs[0].programId);
-
 const parentElement = document.querySelector(".program-list");
 const template = document.querySelector(".card-template").content;
 
@@ -32,9 +30,16 @@ if (userData[0].saved_programs) {
       myClone.querySelector(".program-description").textContent =
         data.programDescription;
     }
+    myClone.querySelector(".edit").setAttribute("id", `edit-${data.programId}`);
     myClone
       .querySelector(".program-image")
       .setAttribute("src", `../assets/images/${data.programList[0]}.webp`);
+    myClone
+      .getElementById(`edit-${data.programId}`)
+      .addEventListener("mousedown", () => {
+        window.location.href = `/lav-dit-program`;
+        sessionStorage.setItem("program-list", data.programList);
+      });
     parentElement.appendChild(myClone);
   });
 }

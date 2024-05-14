@@ -28,6 +28,17 @@ const template = document.querySelector(".small-exercise-card").content;
 // Der tilføjes eventListeners til fjern-knapperne, som fjerner øvelsens id fra arrayet
 // Til sidst bliver templatet tilføjet til parenElement "program-list" vha. appendChild
 
+if (sessionStorage.getItem("program-list")) {
+  programArray = sessionStorage.getItem("program-list");
+  filteredData = data.filter((exercise) => {
+    if (programArray.includes(exercise.image)) {
+      return true;
+    } else {
+      return false;
+    }
+  });
+  mappingProgram(filteredData, programArray);
+}
 addButtons.forEach((button) => {
   const buttonId = button.getAttribute("data-button-id");
   button.addEventListener("mousedown", () => {
