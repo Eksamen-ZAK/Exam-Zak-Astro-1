@@ -66,7 +66,7 @@ function getColors() {
   if (localStorage.getItem("color-status")) {
     const html = document.querySelector("html");
     if (localStorage.getItem("color-status") === "black-white") {
-      html.style.setProperty("--primary-color", `black`);
+      html.style.setProperty("--primary-color", `#212121`);
       html.style.setProperty("--secondary-color", "#545454");
       document.querySelector(".toggle").classList.add("off");
       document.querySelector(".color-status").textContent = "fra";

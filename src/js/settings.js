@@ -26,6 +26,6 @@ toggleButton.addEventListener("mousedown", () => {
   const status = toggleButton.classList.toggle("off");
   document.querySelector(".color-status").textContent = status ? "fra" : "til";
   localStorage.setItem("color-status", status ? "black-white" : "");
-  html.style.setProperty("--primary-color", status ? `black` : `#901a36`);
+  html.style.setProperty("--primary-color", status ? `#212121` : `#901a36`);
   html.style.setProperty("--secondary-color", status ? `#545454` : `#749e2e`);
 });
