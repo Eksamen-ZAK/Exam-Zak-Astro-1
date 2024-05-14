@@ -18,11 +18,13 @@ import Layout from "../layouts/Layout.astro";
 import ExercisesList from "../components/ExercisesList.astro";
 import Button from "../components/Button.astro";
 import Menu from "../components/Menu.astro";
+import ProgramModal from "../components/ProgramModal.astro";
 ---
 
 <Layout title="Welcome to Astro.">
   <main>
     <Menu />
+    <ProgramModal />
     <div class="sidebar">
       <h1>Dit program</h1>
       <div class="program-list">
@@ -60,7 +62,7 @@ import Menu from "../components/Menu.astro";
           type="button"
           text="Gem"
           icon="bookmark"
-          variant="invertedGreen fullWidth small"
+          variant="invertedGreen fullWidth small save"
         /><Button
           type="button"
           text="Afspil"
@@ -129,6 +131,7 @@ import Menu from "../components/Menu.astro";
     />
   </main>
   <script src="../js/build-your-program.js"></script>
+  <script src=`../js/generel.js`></script>
 </Layout>
 
 <style>

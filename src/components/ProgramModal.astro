@@ -1,0 +1,75 @@
+---
+import Button from "./Button.astro";
+import InputField from "./InputField.astro";
+---
+
+<dialog class="program-modal">
+  <form id="program-form">
+    <InputField
+      label="Navngiv dit program"
+      id="program_title"
+      type="text"
+      required
+    />
+    <label for="program_description">Beskrivelse</label>
+    <textarea
+      placeholder="
+Tilføj en beskrivelse (valgfrit)"
+      id="program_description"
+      name="program_description"
+      rows="6"></textarea>
+    <div class="buttons">
+      <Button
+        type="button"
+        text="Fortryd"
+        variant="red fullWidth small back-button"
+      />
+      <Button type="submit" text="Gem" variant="green fullWidth small " />
+    </div>
+  </form>
+</dialog>
+
+<style>
+  .hide {
+    display: none;
+  }
+  dialog {
+    position: relative;
+    width: 40vw;
+    height: 50vh;
+    border-radius: 10px;
+    background: #fff;
+    border: none;
+    padding: 10px 21px;
+  }
+  form {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 315px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    gap: 3px;
+  }
+  .buttons {
+    display: flex;
+    justify-content: space-evenly;
+    width: 315px;
+    margin-top: 23px;
+    gap: 20px;
+  }
+  label {
+    font-size: var(--fs-m);
+    font-family: var(--main-font);
+    font-weight: var(--fw-b);
+  }
+  textarea {
+    height: 120px;
+    background: var(--alternative-bg-color);
+    border-radius: 10px;
+    border: 0;
+    font-size: var(--fs-m);
+    padding-left: 12px;
+  }
+</style>
