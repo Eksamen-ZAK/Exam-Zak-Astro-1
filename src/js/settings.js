@@ -3,13 +3,13 @@ const html = document.querySelector("html");
 const buttons = document.querySelectorAll(".pop-up");
 buttons.forEach((button) =>
   button.addEventListener("mousedown", () => {
-    document.querySelector("#settings-modal").classList.add("display");
+    document.getElementById("settings-modal").showModal();
   })
 );
 const closeButtons = document.querySelectorAll(".close-button");
 closeButtons.forEach((button) =>
   button.addEventListener("mousedown", () => {
-    document.querySelector("#settings-modal").classList.remove("display");
+    document.getElementById("settings-modal").close();
     location.reload();
   })
 );

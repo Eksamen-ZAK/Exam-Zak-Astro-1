@@ -1,29 +1,15 @@
+import { v4 as uuidv4 } from "uuid";
+
 const url = "https://jlgsxiynwqvvhwheexwo.supabase.co/rest/v1/user-data";
 const api =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpsZ3N4aXlud3F2dmh3aGVleHdvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTQ0NzA5MjksImV4cCI6MjAzMDA0NjkyOX0.U40ZZWRh_MC7612vdwFHVKFZxwRHq_TECCnnzovEXKE";
 
-function addExercise() {
-  const options = {
-    method: "POST",
-    headers: {
-      apikey: api,
-      Authorization: "Bearer " + api,
-      "Content-Type": "application/json",
-      Prefer: "return=representation",
-    },
-    body: JSON.stringify(newUser),
-  };
-}
-let headersList = {
-  apikey:
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpsZ3N4aXlud3F2dmh3aGVleHdvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTQ0NzA5MjksImV4cCI6MjAzMDA0NjkyOX0.U40ZZWRh_MC7612vdwFHVKFZxwRHq_TECCnnzovEXKE",
-};
-
+// fetching
 let response = await fetch(
   "https://jlgsxiynwqvvhwheexwo.supabase.co/rest/v1/exercises",
   {
     method: "GET",
-    headers: headersList,
+    headers: { apikey: api },
   }
 );
 
@@ -31,16 +17,27 @@ const data = await response.json();
 let programArray = [];
 let filteredData;
 let dataFilter;
-const addbButtons = document.querySelectorAll(".exerciseButton");
+const addButtons = document.querySelectorAll(".exerciseButton");
 const parentElement = document.querySelector(".program-list");
 const template = document.querySelector(".small-exercise-card").content;
 
-addbButtons.forEach((button) => {
+// Tilføjer eventListeners til "tilføj"-knapperne
+// Øvelsen, som man har klikket på, har et id, som bliver indsat i et array "programArray".
+// De fetchede data bliver filtreret, så det kun er de id'er fra arrayet, hvis data bliver mappet igennem
+// Under mappingen bliver der clonet et template for hver tilføjet øvelse, og data fra øvelserne indsættes i templatet.
+// Der tilføjes eventListeners til fjern-knapperne, som fjerner øvelsens id fra arrayet
+// Til sidst bliver templatet tilføjet til parenElement "program-list" vha. appendChild
+
+addButtons.forEach((button) => {
   const buttonId = button.getAttribute("data-button-id");
   button.addEventListener("mousedown", () => {
     button.classList.add("disabled-green");
     button.classList.remove("green");
-
+    document.querySelector(".save").addEventListener("mousedown", () => {
+      if (programArray.length > 0) {
+        document.querySelector(".program-modal").showModal();
+      }
+    });
     button.setAttribute("id", buttonId);
     if (!programArray.includes(buttonId)) {
       parentElement.innerHTML = "";
@@ -124,10 +121,15 @@ function mappingProgram(filteredData, programArray) {
       .getElementById(`plus-${exercise.id}`)
       .addEventListener("mousedown", () => addRepitition(exercise.id));
     parentElement.appendChild(myClone);
+    return programArray;
   });
 }
 
+// Funktioner, som holder styr på antallet af repitioner for hver enkel øvelse
+
 let count;
+
+// Funktion, der lægger 5 repititioner til
 function addRepitition(id) {
   count = parseInt(
     document
@@ -144,6 +146,15 @@ function addRepitition(id) {
     .getElementById(`number-normal-${id}`)
     .setAttribute("data-total-repititions", count.toString());
 }
+
+const options = {
+  method: "GET",
+  headers: {
+    apikey: api,
+  },
+};
+
+// Funktion, der trækker 5 repititioner fra
 function retractRepitition(id) {
   count = parseInt(
     document
@@ -160,4 +171,75 @@ function retractRepitition(id) {
       .getElementById(`number-normal-${id}`)
       .setAttribute("data-total-repititions", count.toString());
   }
+}
+
+let uuid;
+let obj;
+
+if (localStorage.getItem("uuid")) {
+  uuid = localStorage.getItem("uuid");
+} else {
+  uuid = sessionStorage.getItem("uuid");
+}
+
+let res = await fetch(url + `?id=eq.${uuid}`, {
+  method: "GET",
+  headers: { apikey: api },
+});
+
+const userData = await res.json();
+
+document
+  .querySelector(".back-button")
+  .addEventListener("mousedown", () =>
+    document.querySelector(".program-modal").close()
+  );
+const form = document.getElementById("program-form");
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const programUuid = uuidv4();
+  if (userData[0].saved_programs) {
+    obj = {
+      saved_programs: userData[0].saved_programs.concat([
+        {
+          programId: programUuid,
+          programTitle: form.elements.program_title.value,
+          programDescription: form.elements.program_description.value,
+          programList: programArray,
+        },
+      ]),
+    };
+  } else {
+    obj = {
+      saved_programs: [
+        {
+          programId: programUuid,
+          programTitle: form.elements.program_title.value,
+          programDescription: form.elements.program_description.value,
+          programList: programArray,
+        },
+      ],
+    };
+  }
+  saveProgram(obj);
+});
+
+//patching program liste
+async function saveProgram(program) {
+  fetch(
+    `https://jlgsxiynwqvvhwheexwo.supabase.co/rest/v1/user-data?id=eq.${uuid}`,
+    {
+      method: "PATCH",
+      body: JSON.stringify(program),
+      headers: {
+        apikey: api,
+        Prefer: "return=representation",
+        "Content-Type": "application/json",
+      },
+    }
+  )
+    .then((res) => res.json())
+    .then((data) => {
+      document.querySelector(".program-modal").close();
+    });
 }
