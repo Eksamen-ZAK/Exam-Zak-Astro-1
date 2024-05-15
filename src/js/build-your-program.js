@@ -276,7 +276,7 @@ form.addEventListener("submit", (e) => {
           programId: programUuid,
           programTitle: form.elements.program_title.value,
           programDescription: form.elements.program_description.value,
-          programList: programArray,
+          programList: exercisesList,
         },
       ],
     };
