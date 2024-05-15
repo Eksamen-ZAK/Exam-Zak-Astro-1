@@ -56,16 +56,18 @@ if (programArray.length > 0) {
   });
   mappingProgram(filteredData, programArray, exercisesList);
 }
+
+document.querySelector(".save").addEventListener("mousedown", () => {
+  if (exercisesList.length > 0) {
+    document.querySelector(".program-modal").showModal();
+  }
+});
+
 addButtons.forEach((button) => {
   const buttonId = button.getAttribute("data-button-id");
   button.addEventListener("mousedown", () => {
     button.classList.add("disabled-green");
     button.classList.remove("green");
-    document.querySelector(".save").addEventListener("mousedown", () => {
-      if (programArray.length > 0) {
-        document.querySelector(".program-modal").showModal();
-      }
-    });
 
     if (!programArray.includes(buttonId)) {
       parentElement.innerHTML = "";
