@@ -1,4 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
+import ExercisesList from "../components/ExercisesList.astro";
 
 const url = "https://jlgsxiynwqvvhwheexwo.supabase.co/rest/v1/user-data";
 const api =
@@ -18,6 +19,7 @@ const data = await response.json();
 let filteredData;
 let dataFilter;
 let programArray = [];
+let exercisesList = [];
 const addButtons = document.querySelectorAll(".exerciseButton");
 const parentElement = document.querySelector(".program-list");
 const template = document.querySelector(".small-exercise-card").content;
@@ -30,7 +32,8 @@ const template = document.querySelector(".small-exercise-card").content;
 // Til sidst bliver templatet tilføjet til parenElement "program-list" vha. appendChild
 
 if (sessionStorage.getItem("program-list")) {
-  programArray = JSON.parse(sessionStorage.getItem("program-list"));
+  exercisesList = JSON.parse(sessionStorage.getItem("program-list"));
+  programArray = exercisesList.map((arr) => arr[0]);
 }
 
 if (sessionStorage.getItem("program-title")) {
@@ -51,7 +54,7 @@ if (programArray.length > 0) {
       return false;
     }
   });
-  mappingProgram(filteredData, programArray);
+  mappingProgram(filteredData, programArray, exercisesList);
 }
 addButtons.forEach((button) => {
   const buttonId = button.getAttribute("data-button-id");
@@ -67,6 +70,12 @@ addButtons.forEach((button) => {
     if (!programArray.includes(buttonId)) {
       parentElement.innerHTML = "";
       programArray.push(buttonId);
+      exercisesList.push([
+        buttonId,
+        document
+          .getElementById(`number-normal-${buttonId.replace(/^0+(?=\d)/, "")}`)
+          .getAttribute("data-total-repititions"),
+      ]);
       filteredData = data.filter((exercise) => {
         if (programArray.includes(exercise.image)) {
           return true;
@@ -74,12 +83,12 @@ addButtons.forEach((button) => {
           return false;
         }
       });
-      mappingProgram(filteredData, programArray);
+      mappingProgram(filteredData, programArray, exercisesList);
     }
   });
 });
 
-function mappingProgram(filteredData, programArray) {
+function mappingProgram(filteredData, programArray, exercisesList) {
   filteredData.map((exercise) => {
     document.getElementById(`text-${exercise.image}`).textContent = "Tilføjet";
     document.getElementById(exercise.image).classList.add("disabled-green");
@@ -106,17 +115,21 @@ function mappingProgram(filteredData, programArray) {
       .querySelector(".number")
       .setAttribute("id", `number-${exercise.id}`);
 
-    myClone.getElementById(`number-${exercise.id}`).textContent = parseInt(
-      document
-        .getElementById(`number-normal-${exercise.id}`)
-        .getAttribute("data-total-repititions")
-    );
+    exercisesList.map((arr) => {
+      if (arr.includes(exercise.image)) {
+        myClone.getElementById(`number-${exercise.id}`).textContent = parseInt(
+          arr[1]
+        );
+      }
+    });
+
     myClone
       .getElementById(`x-small-${exercise.id}`)
       .addEventListener("mousedown", () => {
         parentElement.innerHTML = "";
         const index = programArray.indexOf(exercise.image);
         programArray.splice(index, 1);
+        exercisesList.splice(index, 1);
         dataFilter = data.filter((exercise) => {
           if (programArray.includes(exercise.image)) {
             return true;
@@ -130,7 +143,7 @@ function mappingProgram(filteredData, programArray) {
         document.getElementById(`text-${exercise.image}`).textContent =
           "Tilføj";
         document.getElementById(exercise.image).classList.add("green");
-        mappingProgram(dataFilter, programArray);
+        mappingProgram(dataFilter, programArray, exercisesList);
       });
     myClone
       .getElementById(`number-${exercise.id}`)
@@ -165,6 +178,9 @@ function addRepitition(id) {
   );
 
   count = count + 5;
+
+  const index = exercisesList.findIndex((item) => item[0] === `00${id}`);
+  exercisesList.splice(index, 1, ["00" + id, count.toString()]);
   document.getElementById(`number-${id}`).textContent = count.toString();
   document
     .getElementById(`number-${id}`)
@@ -190,6 +206,9 @@ function retractRepitition(id) {
   );
   if (count > 5) {
     count = count - 5;
+    const index = exercisesList.findIndex((item) => item[0] === `00${id}`);
+    exercisesList.splice(index, 1, ["00" + id, count.toString()]);
+    document.getElementById(`number-${id}`).textContent = count.toString();
     document.getElementById(`number-${id}`).textContent = count.toString();
     document
       .getElementById(`number-${id}`)
@@ -246,7 +265,7 @@ form.addEventListener("submit", (e) => {
           programId: programUuid,
           programTitle: form.elements.program_title.value,
           programDescription: form.elements.program_description.value,
-          programList: programArray,
+          programList: exercisesList,
         },
       ]),
     };

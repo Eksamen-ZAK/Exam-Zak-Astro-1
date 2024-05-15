@@ -36,7 +36,10 @@ if (userData[0].saved_programs) {
       .setAttribute("id", `delete-${data.programId}`);
     myClone
       .querySelector(".program-image")
-      .setAttribute("src", `../assets/images/${data.programList[0]}.webp`);
+      .setAttribute(
+        "src",
+        `../assets/images/${data.programList[0][0].slice(0, 3)}.webp`
+      );
     myClone
       .getElementById(`edit-${data.programId}`)
       .addEventListener("mousedown", () => {
