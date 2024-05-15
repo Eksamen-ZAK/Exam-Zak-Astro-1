@@ -1,0 +1,116 @@
+---
+import InputField from "./InputField.astro";
+import Button from "./Button.astro";
+---
+
+<dialog class="goal-modal">
+  <div class="heading">
+    <div>
+      <img src="../public/assets/dart-icon.svg" alt="målsætning ikon" />
+      <h2>Målsætning</h2>
+    </div>
+  </div>
+  <p>
+    Målsætning kan hjælpe dig med at holde styr på, hvor mange gange du har
+    gennemført et bestemt program.
+  </p>
+  <p>
+    Når du opretter en målsætning, skal du angive det ønsket antal af gange, du
+    gerne vil udføre programmet.
+  </p>
+  <form id="goal-form">
+    <InputField
+      variant="fullWidth"
+      label="Angiv antal*"
+      id="goal_setting"
+      type="number"
+      required
+    />
+    <p>
+      Vi anbefaler at du sætter et tidsinterval på så det bliver mere
+      håndgribeligt.
+    </p>
+    <div>
+      <div class="inputfield">
+        <InputField
+          label="Angiv startdato"
+          id="goal_start"
+          type="date"
+          required
+        />
+      </div><div class="inputfield">
+        <InputField label="Angiv slutdato" id="goal_end" type="date" required />
+      </div>
+    </div>
+    <div class="buttons">
+      <Button
+        type="button"
+        text="Afbryd"
+        variant="red fullWidth back-button large"
+      />
+      <Button type="submit" text="Færdig" variant="green fullWidth large" />
+    </div>
+  </form>
+</dialog>
+
+<style>
+  dialog {
+    position: fixed;
+    width: 48vw;
+    height: 60vh;
+    border-radius: 10px;
+    background: #fff;
+    border: none;
+    padding: 20px 38px;
+  }
+
+  .heading {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: -10px;
+
+    > div {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      > h2 {
+        font-size: var(--fs-ml);
+        font-family: var(--main-font);
+        font-weight: var(--fw-b);
+      }
+    }
+  }
+  .goal-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 3px;
+  }
+  p {
+    font-size: var(--fs-small-card);
+    font-family: var(--main-font);
+    font-weight: var(--fw-r);
+  }
+  div:has(.inputfield) {
+    display: flex;
+    gap: 29px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    > .inputfield {
+      display: flex;
+      flex-direction: column;
+      width: 50%;
+    }
+  }
+  .buttons {
+    display: flex;
+    margin: 0 auto;
+    width: 300px;
+    gap: 20px;
+  }
+  button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+</style>

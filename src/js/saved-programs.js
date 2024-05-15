@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from "uuid";
 let uuid;
 const url = "https://jlgsxiynwqvvhwheexwo.supabase.co/rest/v1/user-data";
 const api =
@@ -32,6 +33,9 @@ if (userData[0].saved_programs) {
     }
     myClone.querySelector(".edit").setAttribute("id", `edit-${data.programId}`);
     myClone
+      .querySelector(".set-goal")
+      .setAttribute("id", `set-goal-${data.programId}`);
+    myClone
       .querySelector(".delete")
       .setAttribute("id", `delete-${data.programId}`);
     myClone
@@ -51,6 +55,12 @@ if (userData[0].saved_programs) {
         sessionStorage.setItem("program-id", data.programId);
         sessionStorage.setItem("program-title", data.programTitle);
         sessionStorage.setItem("program-description", data.programDescription);
+      });
+    myClone
+      .getElementById(`set-goal-${data.programId}`)
+      .addEventListener("mousedown", () => {
+        document.querySelector(".goal-modal").showModal();
+        console.log("hi");
       });
     myClone
       .getElementById(`delete-${data.programId}`)
@@ -93,5 +103,75 @@ async function saveProgram(program) {
     .then((res) => res.json())
     .then((data) => {
       location.reload();
+    });
+}
+
+let goalUuid;
+document.querySelector(".back-button").addEventListener("mousedown", () => {
+  document.querySelector(".goal-modal").close();
+});
+
+const form = document.getElementById("goal-form");
+
+form.addEventListener("submit", (e) => {
+  console.log(userData[0]);
+  e.preventDefault();
+  if (sessionStorage.getItem("goal-id")) {
+    goalUuid = sessionStorage.getItem("goal-id");
+  } else {
+    goalUuid = uuidv4();
+  }
+  if (
+    userData[0].goals &&
+    userData[0].goals.findIndex((item) => item.goalId === goalUuid) > -1
+  ) {
+    const index = userData[0].goals.findIndex(
+      (item) => item.goalId === goalUuid
+    );
+    userData[0].goals.splice(index, 1);
+  }
+  if (userData[0].goals) {
+    obj = {
+      goals: userData[0].goals.concat([
+        {
+          goalId: goalUuid,
+          goalNumber: form.elements.goal_setting.value,
+          startDate: form.elements.goal_start.value,
+          endDate: form.elements.goal_end.value,
+        },
+      ]),
+    };
+  } else {
+    obj = {
+      goals: [
+        {
+          programId: goalUuid,
+          goalNumber: form.elements.goal_setting.value,
+          startDate: form.elements.goal_start.value,
+          endDate: form.elements.goal_end.value,
+        },
+      ],
+    };
+  }
+  saveGoal(obj);
+});
+
+//patching program liste
+async function saveGoal(program) {
+  fetch(
+    `https://jlgsxiynwqvvhwheexwo.supabase.co/rest/v1/user-data?id=eq.${uuid}`,
+    {
+      method: "PATCH",
+      body: JSON.stringify(program),
+      headers: {
+        apikey: api,
+        Prefer: "return=representation",
+        "Content-Type": "application/json",
+      },
+    }
+  )
+    .then((res) => res.json())
+    .then((data) => {
+      document.querySelector(".goal-modal").close();
     });
 }

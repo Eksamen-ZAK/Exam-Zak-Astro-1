@@ -13,15 +13,16 @@ let response = await fetch(
 );
 
 let data = await response.json();
-console.log(data);
 
 import Layout from "../layouts/Layout.astro";
 import Menu from "../components/Menu.astro";
+import GoalModal from "../components/GoalModal.astro";
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title="Gemte programmer">
   <main>
     <Menu />
+    <GoalModal />
     <div>
       <h1>Dine programmer</h1>
       <p>
@@ -44,7 +45,7 @@ import Menu from "../components/Menu.astro";
               <h3 class="program-title"></h3>
               <p class="program-description"></p>
               <div class="functions-list">
-                <button>
+                <button class="set-goal">
                   <img src="assets/target-icon.png" alt="mål ikon" /><p>
                     Tilføj målsætning
                   </p>
