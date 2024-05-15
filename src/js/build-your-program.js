@@ -217,7 +217,7 @@ if (localStorage.getItem("uuid")) {
   uuid = sessionStorage.getItem("uuid");
 }
 
-let res = await fetch(url + `?id=eq.${uuid}`, {
+const userData = await fetch(url + `?id=eq.${uuid}`, {
   method: "GET",
   headers: { apikey: api },
 }).then((res) => {
@@ -227,7 +227,6 @@ let res = await fetch(url + `?id=eq.${uuid}`, {
   return res.json();
 });
 
-const userData = await res.json();
 let programUuid;
 document
   .querySelector(".back-button")

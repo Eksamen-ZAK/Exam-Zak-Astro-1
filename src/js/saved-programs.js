@@ -9,7 +9,7 @@ if (localStorage.getItem("uuid")) {
   uuid = sessionStorage.getItem("uuid");
 }
 
-let res = await fetch(url + `?id=eq.${uuid}`, {
+const userData = await fetch(url + `?id=eq.${uuid}`, {
   method: "GET",
   headers: { apikey: api },
 }).then((res) => {
@@ -20,8 +20,6 @@ let res = await fetch(url + `?id=eq.${uuid}`, {
 });
 
 let obj;
-
-const userData = await res.json();
 
 const parentElement = document.querySelector(".program-list");
 const template = document.querySelector(".card-template").content;
