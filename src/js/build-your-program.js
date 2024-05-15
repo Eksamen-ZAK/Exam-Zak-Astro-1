@@ -171,7 +171,6 @@ function addRepitition(id) {
       .getElementById(`number-${id}`)
       .getAttribute("data-total-repititions")
   );
-
   count = count + 5;
 
   const index = exercisesList.findIndex((item) => item[0] === `00${id}`);
@@ -200,7 +199,6 @@ function retractRepitition(id) {
     count = count - 5;
     const index = exercisesList.findIndex((item) => item[0] === `00${id}`);
     exercisesList.splice(index, 1, ["00" + id, count.toString()]);
-    document.getElementById(`number-${id}`).textContent = count.toString();
     document.getElementById(`number-${id}`).textContent = count.toString();
     document
       .getElementById(`number-${id}`)
