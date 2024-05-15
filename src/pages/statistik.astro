@@ -3,7 +3,48 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Statistik">
-  <main></main>
+  <main>
+    <div class="goals-side-bar">
+      <h1>Målsætninger</h1><div id="goals-list"></div>
+    </div>
+    <div>
+      <h2>Statistik</h2>
+      <p>
+        Her kan du se din progression gennem forløbet og holde øje med dine mål
+      </p>
+    </div>
+  </main>
   <script src="../js/stats.js"></script>
   <script src=`../js/generel.js`></script>
 </Layout>
+
+<style>
+  h1,
+  h2 {
+    font-size: var(--fs-l);
+    font-family: var(--main-font);
+    font-weight: var(--fw-b);
+  }
+  div:has(h2) {
+    margin-top: 50px;
+    margin-left: 450px;
+  }
+  p {
+    margin-left: 10px;
+    font-size: var(--fs-m);
+    font-family: var(--main-font);
+    font-weight: var(--fw-b);
+  }
+  .goals-side-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 387px;
+    height: 1053px;
+    margin: 0;
+    padding: 30px 6px;
+    border-right: 5px solid var(--primary-color);
+    background-color: var(--alternative-bg-color);
+    text-align: center;
+  }
+</style>
