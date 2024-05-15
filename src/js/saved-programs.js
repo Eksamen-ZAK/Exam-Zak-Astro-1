@@ -38,6 +38,12 @@ if (userData[0].saved_programs) {
       .querySelector(".program-image")
       .setAttribute("src", `../assets/images/${data.programList[0]}.webp`);
     myClone
+      .getElementById(`edit-${data.programId}`)
+      .addEventListener("mousedown", () => {
+        window.location.href = `/lav-dit-program`;
+        sessionStorage.setItem("program-list", data.programList);
+      });
+    myClone
       .getElementById(`delete-${data.programId}`)
       .addEventListener("mousedown", () => {
         console.log(userData[0].saved_programs);
