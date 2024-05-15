@@ -220,6 +220,11 @@ if (localStorage.getItem("uuid")) {
 let res = await fetch(url + `?id=eq.${uuid}`, {
   method: "GET",
   headers: { apikey: api },
+}).then((res) => {
+  if (!res.ok) {
+    window.location.href = "/";
+  }
+  return res.json();
 });
 
 const userData = await res.json();
