@@ -120,6 +120,9 @@ function mappingProgram(filteredData, programArray, exercisesList) {
         myClone.getElementById(`number-${exercise.id}`).textContent = parseInt(
           arr[1]
         );
+        myClone
+          .getElementById(`number-${exercise.id}`)
+          .setAttribute("data-total-repititions", parseInt(arr[1]));
       }
     });
 
@@ -145,16 +148,6 @@ function mappingProgram(filteredData, programArray, exercisesList) {
         document.getElementById(exercise.image).classList.add("green");
         mappingProgram(dataFilter, programArray, exercisesList);
       });
-    myClone
-      .getElementById(`number-${exercise.id}`)
-      .setAttribute(
-        "data-total-repititions",
-        parseInt(
-          document
-            .getElementById(`number-normal-${exercise.id}`)
-            .getAttribute("data-total-repititions")
-        )
-      );
 
     myClone.querySelector(".plus").setAttribute("id", `plus-${exercise.id}`);
     myClone
@@ -185,9 +178,6 @@ function addRepitition(id) {
   document
     .getElementById(`number-${id}`)
     .setAttribute("data-total-repititions", count.toString());
-  document
-    .getElementById(`number-normal-${id}`)
-    .setAttribute("data-total-repititions", count.toString());
 }
 
 const options = {
@@ -212,9 +202,6 @@ function retractRepitition(id) {
     document.getElementById(`number-${id}`).textContent = count.toString();
     document
       .getElementById(`number-${id}`)
-      .setAttribute("data-total-repititions", count.toString());
-    document
-      .getElementById(`number-normal-${id}`)
       .setAttribute("data-total-repititions", count.toString());
   }
 }
