@@ -17,6 +17,7 @@ const data = await response.json();
 
 let filteredData;
 let dataFilter;
+let programArray = [];
 const addButtons = document.querySelectorAll(".exerciseButton");
 const parentElement = document.querySelector(".program-list");
 const template = document.querySelector(".small-exercise-card").content;
@@ -28,13 +29,16 @@ const template = document.querySelector(".small-exercise-card").content;
 // Der tilføjes eventListeners til fjern-knapperne, som fjerner øvelsens id fra arrayet
 // Til sidst bliver templatet tilføjet til parenElement "program-list" vha. appendChild
 
-let programArray = JSON.parse(sessionStorage.getItem("program-list")) || [];
+if (sessionStorage.getItem("program-list")) {
+  programArray = JSON.parse(sessionStorage.getItem("program-list"));
+}
+
 if (sessionStorage.getItem("program-title")) {
   document.getElementById("program_title").value =
     sessionStorage.getItem("program-title");
 }
 if (sessionStorage.getItem("program-description")) {
-  document.getElementById("description").value = sessionStorage.getItem(
+  document.getElementById("program_description").value = sessionStorage.getItem(
     "program-description"
   );
 }
