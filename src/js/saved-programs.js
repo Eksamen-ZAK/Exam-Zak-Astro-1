@@ -41,7 +41,10 @@ if (userData[0].saved_programs) {
       .getElementById(`edit-${data.programId}`)
       .addEventListener("mousedown", () => {
         window.location.href = `/lav-dit-program`;
-        sessionStorage.setItem("program-list", data.programList);
+        sessionStorage.setItem(
+          "program-list",
+          JSON.stringify(data.programList)
+        );
       });
     myClone
       .getElementById(`delete-${data.programId}`)

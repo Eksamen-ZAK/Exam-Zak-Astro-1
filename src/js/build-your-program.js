@@ -14,7 +14,7 @@ let response = await fetch(
 );
 
 const data = await response.json();
-let programArray = [];
+
 let filteredData;
 let dataFilter;
 const addButtons = document.querySelectorAll(".exerciseButton");
@@ -28,8 +28,10 @@ const template = document.querySelector(".small-exercise-card").content;
 // Der tilføjes eventListeners til fjern-knapperne, som fjerner øvelsens id fra arrayet
 // Til sidst bliver templatet tilføjet til parenElement "program-list" vha. appendChild
 
-if (sessionStorage.getItem("program-list")) {
-  programArray = sessionStorage.getItem("program-list");
+let programArray = JSON.parse(sessionStorage.getItem("program-list")) || [];
+console.log(sessionStorage.getItem("program-list"));
+
+if (programArray.length > 0) {
   filteredData = data.filter((exercise) => {
     if (programArray.includes(exercise.image)) {
       return true;
@@ -49,7 +51,7 @@ addButtons.forEach((button) => {
         document.querySelector(".program-modal").showModal();
       }
     });
-    button.setAttribute("id", buttonId);
+
     if (!programArray.includes(buttonId)) {
       parentElement.innerHTML = "";
       programArray.push(buttonId);
@@ -68,12 +70,14 @@ addButtons.forEach((button) => {
 function mappingProgram(filteredData, programArray) {
   filteredData.map((exercise) => {
     document.getElementById(`text-${exercise.image}`).textContent = "Tilføjet";
+    document.getElementById(exercise.image).classList.add("disabled-green");
     const myClone = template.cloneNode(true);
     myClone
       .querySelector("img")
       .setAttribute("src", `../assets/images/${exercise.image}.webp`);
     myClone.querySelector(".title").textContent = exercise.title;
     myClone.querySelector(".note").textContent = exercise.note;
+
     myClone
       .querySelector(".small-card")
       .setAttribute("data-card-id", exercise.id);
