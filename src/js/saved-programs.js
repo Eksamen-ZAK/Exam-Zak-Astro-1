@@ -1,4 +1,3 @@
-import { v4 as uuidv4 } from "uuid";
 let uuid;
 const url = "https://jlgsxiynwqvvhwheexwo.supabase.co/rest/v1/user-data";
 const api =
@@ -60,7 +59,7 @@ if (userData[0].saved_programs) {
       .getElementById(`set-goal-${data.programId}`)
       .addEventListener("mousedown", () => {
         document.querySelector(".goal-modal").showModal();
-        console.log("hi");
+        sessionStorage.setItem("program-id", data.programId);
       });
     myClone
       .getElementById(`delete-${data.programId}`)
@@ -106,7 +105,7 @@ async function saveProgram(program) {
     });
 }
 
-let goalUuid;
+let goalId;
 document.querySelector(".back-button").addEventListener("mousedown", () => {
   document.querySelector(".goal-modal").close();
 });
@@ -116,25 +115,20 @@ const form = document.getElementById("goal-form");
 form.addEventListener("submit", (e) => {
   console.log(userData[0]);
   e.preventDefault();
-  if (sessionStorage.getItem("goal-id")) {
-    goalUuid = sessionStorage.getItem("goal-id");
-  } else {
-    goalUuid = uuidv4();
-  }
+  goalId = sessionStorage.getItem("program-id");
+
   if (
     userData[0].goals &&
-    userData[0].goals.findIndex((item) => item.goalId === goalUuid) > -1
+    userData[0].goals.findIndex((item) => item.goalId === goalId) > -1
   ) {
-    const index = userData[0].goals.findIndex(
-      (item) => item.goalId === goalUuid
-    );
+    const index = userData[0].goals.findIndex((item) => item.goalId === goalId);
     userData[0].goals.splice(index, 1);
   }
   if (userData[0].goals) {
     obj = {
       goals: userData[0].goals.concat([
         {
-          goalId: goalUuid,
+          programId: goalId,
           goalNumber: form.elements.goal_setting.value,
           startDate: form.elements.goal_start.value,
           endDate: form.elements.goal_end.value,
@@ -145,7 +139,7 @@ form.addEventListener("submit", (e) => {
     obj = {
       goals: [
         {
-          programId: goalUuid,
+          programId: goalId,
           goalNumber: form.elements.goal_setting.value,
           startDate: form.elements.goal_start.value,
           endDate: form.elements.goal_end.value,

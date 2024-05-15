@@ -238,6 +238,7 @@ form.addEventListener("submit", (e) => {
     programUuid = uuidv4();
   }
   if (
+    userData[0].saved_programs &&
     userData[0].saved_programs.findIndex(
       (item) => item.programId === programUuid
     ) > -1
