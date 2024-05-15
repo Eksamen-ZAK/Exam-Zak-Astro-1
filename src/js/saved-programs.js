@@ -13,6 +13,7 @@ let res = await fetch(url + `?id=eq.${uuid}`, {
   method: "GET",
   headers: { apikey: api },
 });
+let obj;
 
 const userData = await res.json();
 
@@ -77,14 +78,6 @@ if (userData[0].saved_programs) {
   });
 }
 
-let obj;
-
-if (localStorage.getItem("uuid")) {
-  uuid = localStorage.getItem("uuid");
-} else {
-  uuid = sessionStorage.getItem("uuid");
-}
-
 //patching program liste
 async function saveProgram(program) {
   fetch(
@@ -105,7 +98,9 @@ async function saveProgram(program) {
     });
 }
 
+let item;
 let goalId;
+
 document.querySelector(".back-button").addEventListener("mousedown", () => {
   document.querySelector(".goal-modal").close();
 });
@@ -125,7 +120,7 @@ form.addEventListener("submit", (e) => {
     userData[0].goals.splice(index, 1);
   }
   if (userData[0].goals) {
-    obj = {
+    item = {
       goals: userData[0].goals.concat([
         {
           programId: goalId,
@@ -136,7 +131,7 @@ form.addEventListener("submit", (e) => {
       ]),
     };
   } else {
-    obj = {
+    item = {
       goals: [
         {
           programId: goalId,
@@ -147,7 +142,7 @@ form.addEventListener("submit", (e) => {
       ],
     };
   }
-  saveGoal(obj);
+  saveGoal(item);
 });
 
 //patching program liste
