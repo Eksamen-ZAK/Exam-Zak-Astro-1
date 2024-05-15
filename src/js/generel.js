@@ -32,6 +32,7 @@ document.querySelectorAll(".close-menu").forEach((menu) =>
 window.addEventListener("load", () => {
   getFontSize();
   getColors();
+  getContrast();
 });
 
 function getFontSize() {
@@ -77,7 +78,22 @@ function getColors() {
     }
   }
 }
+function getContrast() {
+  if (localStorage.getItem("contrast")) {
+    const html = document.querySelector("html");
 
+    if (localStorage.getItem("contrast") === "low") {
+      html.style.setProperty("--primary-color", `#901a36`);
+      html.style.setProperty("--secondary-color", `#749e2e`);
+    } else if (localStorage.getItem("contrast") === "medium") {
+      html.style.setProperty("--primary-color", `#7A061F`);
+      html.style.setProperty("--secondary-color", `#597B20`);
+    } else {
+      html.style.setProperty("--primary-color", `#6B061C`);
+      html.style.setProperty("--secondary-color", `#0F5400`);
+    }
+  }
+}
 const url = `https://jlgsxiynwqvvhwheexwo.supabase.co/rest/v1/user-data?id=eq.${uuid}`;
 const api =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpsZ3N4aXlud3F2dmh3aGVleHdvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTQ0NzA5MjksImV4cCI6MjAzMDA0NjkyOX0.U40ZZWRh_MC7612vdwFHVKFZxwRHq_TECCnnzovEXKE";

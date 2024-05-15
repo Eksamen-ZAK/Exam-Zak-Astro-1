@@ -8,20 +8,21 @@ import Menu from "../components/Menu.astro";
 <Layout title="Welcome to Astro." backgroundColor="alternative">
   <main>
     <Menu />
-    <SettingsModal />
+    <SettingsModal variant="text-setting-modal" />
+    <SettingsModal variant="contrast-setting-modal" />
     <h1>Indstillinger</h1>
     <div>
       <SettingItem
         text="Tekst størrelse"
         image="assets/text-icon.svg"
         altText="text icon"
-        type="pop-up"
+        type="pop-up text-size-setting"
       />
       <SettingItem
         text="Kontrast"
         image="assets/contrast-icon.svg"
         altText="contrast icon"
-        type="pop-up"
+        type="pop-up contrast-setting"
       />
       <SettingItem
         text="Farver: "
