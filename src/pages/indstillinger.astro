@@ -37,7 +37,12 @@ import Menu from "../components/Menu.astro";
 </Layout>
 
 <script>
-  sessionStorage.setItem("program-list", "");
+  if (sessionStorage.getItem("program-list")) {
+    sessionStorage.setItem("program-title", "");
+    sessionStorage.setItem("program-id", "");
+    sessionStorage.setItem("program-list", "");
+    sessionStorage.setItem("program-description", "");
+  }
 </script>
 
 <style>

@@ -29,7 +29,15 @@ const template = document.querySelector(".small-exercise-card").content;
 // Til sidst bliver templatet tilføjet til parenElement "program-list" vha. appendChild
 
 let programArray = JSON.parse(sessionStorage.getItem("program-list")) || [];
-console.log(sessionStorage.getItem("program-list"));
+if (sessionStorage.getItem("program-title")) {
+  document.getElementById("program_title").value =
+    sessionStorage.getItem("program-title");
+}
+if (sessionStorage.getItem("program-description")) {
+  document.getElementById("description").value = sessionStorage.getItem(
+    "program-description"
+  );
+}
 
 if (programArray.length > 0) {
   filteredData = data.filter((exercise) => {
@@ -203,7 +211,7 @@ let res = await fetch(url + `?id=eq.${uuid}`, {
 });
 
 const userData = await res.json();
-
+let programUuid;
 document
   .querySelector(".back-button")
   .addEventListener("mousedown", () =>
@@ -212,7 +220,21 @@ document
 const form = document.getElementById("program-form");
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  const programUuid = uuidv4();
+  if (sessionStorage.getItem("program-id")) {
+    programUuid = sessionStorage.getItem("program-id");
+  } else {
+    programUuid = uuidv4();
+  }
+  if (
+    userData[0].saved_programs.findIndex(
+      (item) => item.programId === programUuid
+    ) > -1
+  ) {
+    const index = userData[0].saved_programs.findIndex(
+      (item) => item.programId === programUuid
+    );
+    userData[0].saved_programs.splice(index, 1);
+  }
   if (userData[0].saved_programs) {
     obj = {
       saved_programs: userData[0].saved_programs.concat([

@@ -45,11 +45,13 @@ if (userData[0].saved_programs) {
           "program-list",
           JSON.stringify(data.programList)
         );
+        sessionStorage.setItem("program-id", data.programId);
+        sessionStorage.setItem("program-title", data.programTitle);
+        sessionStorage.setItem("program-description", data.programDescription);
       });
     myClone
       .getElementById(`delete-${data.programId}`)
       .addEventListener("mousedown", () => {
-        console.log(userData[0].saved_programs);
         const index = userData[0].saved_programs.findIndex(
           (item) => item.programId === data.programId
         );
