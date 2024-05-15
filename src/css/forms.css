@@ -40,3 +40,8 @@ h2 {
   font-family: var(--main-font);
   font-size: 18px;
 }
+label {
+  font-size: var(--fs-m);
+  font-family: var(--main-font);
+  font-weight: var(--fw-b);
+}
