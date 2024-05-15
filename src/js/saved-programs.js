@@ -32,14 +32,52 @@ if (userData[0].saved_programs) {
     }
     myClone.querySelector(".edit").setAttribute("id", `edit-${data.programId}`);
     myClone
+      .querySelector(".delete")
+      .setAttribute("id", `delete-${data.programId}`);
+    myClone
       .querySelector(".program-image")
       .setAttribute("src", `../assets/images/${data.programList[0]}.webp`);
     myClone
-      .getElementById(`edit-${data.programId}`)
+      .getElementById(`delete-${data.programId}`)
       .addEventListener("mousedown", () => {
-        window.location.href = `/lav-dit-program`;
-        sessionStorage.setItem("program-list", data.programList);
+        console.log(userData[0].saved_programs);
+        const index = userData[0].saved_programs.findIndex(
+          (item) => item.programId === data.programId
+        );
+        userData[0].saved_programs.splice(index, 1);
+        obj = {
+          saved_programs: userData[0].saved_programs,
+        };
+        saveProgram(obj);
       });
     parentElement.appendChild(myClone);
   });
+}
+
+let obj;
+
+if (localStorage.getItem("uuid")) {
+  uuid = localStorage.getItem("uuid");
+} else {
+  uuid = sessionStorage.getItem("uuid");
+}
+
+//patching program liste
+async function saveProgram(program) {
+  fetch(
+    `https://jlgsxiynwqvvhwheexwo.supabase.co/rest/v1/user-data?id=eq.${uuid}`,
+    {
+      method: "PATCH",
+      body: JSON.stringify(program),
+      headers: {
+        apikey: api,
+        Prefer: "return=representation",
+        "Content-Type": "application/json",
+      },
+    }
+  )
+    .then((res) => res.json())
+    .then((data) => {
+      location.reload();
+    });
 }
