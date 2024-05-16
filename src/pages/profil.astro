@@ -1,0 +1,137 @@
+---
+/* let headersList = {
+  apikey:
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpsZ3N4aXlud3F2dmh3aGVleHdvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTQ0NzA5MjksImV4cCI6MjAzMDA0NjkyOX0.U40ZZWRh_MC7612vdwFHVKFZxwRHq_TECCnnzovEXKE",
+};
+
+let response = await fetch(
+  "https://jlgsxiynwqvvhwheexwo.supabase.co/rest/v1/exercises",
+  {
+    method: "GET",
+    headers: headersList,
+  }
+);
+
+const data = await response.json(); */
+
+import Layout from "../layouts/Layout.astro";
+import Button from "../components/Button.astro";
+import Menu from "../components/Menu.astro";
+import "../css/generel.css";
+---
+
+<Layout title="Welcome to Astro.">
+  <main>
+    <Menu />
+    <h1>Profil</h1>
+        <article class="person-data">
+            <img src="../../public/assets/placeholder-foto.svg" alt="profilbillede">
+            <div id="personal-info">
+                <h2>Person information</h2>
+                <div class="info-lists">
+                    <ul class="colored-text">
+                        <p>Navn:</p>
+                        <p>Fødselsdag:</p>
+                        <p>Tlf. Nr.:</p>
+                        <p>Mail:</p>
+                    </ul>
+                    <ul>
+                        <p id="name">Ukendt</p>
+                        <p id="birthday">Ukendt</p>
+                        <p id="tlfNumber">Ukendt</p>
+                        <p id="mail">Ukendt</p>
+                    </ul>
+                </div>
+            </div>
+            <div id="gen-info">
+                <div id="locked-info">
+                    <h2>Generel information</h2>
+                    <img src="" alt="">
+                </div>
+                <div class="info-lists">
+                    <ul class="colored-text">
+                        <p>BrugerID:</p>
+                        <p>Oprettet:</p>
+                    </ul>
+                    <ul>
+                        <p id="userID">Ukendt</p>
+                        <p id="accessdate">Ukendt</p>
+                    </ul>
+                </div>
+            </div>
+            <div class="buttons">
+                <Button
+                  type="button"
+                  text="Log af"
+                  icon="log-out"
+                  variant="red fullWidth small"
+                /><Button
+                  type="button"
+                  text="Rediger"
+                  icon="edit"
+                  variant="green fullWidth small"
+                />
+              </div>
+        </article>
+  </main>
+  <script src="../js/build-your-program.js"></script>
+</Layout>
+
+<style>
+    article {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    h1 {
+        font-size: var(--fs-l);
+        font-family: var(--main-font);
+        font-weight: var(--fw-b);
+    }
+    h2 {
+        margin-bottom: 6px;
+        font-size: var(--fs-m);
+        font-family: var(--main-font);
+        font-weight: var(--fw-b);
+    }
+    ul > p {
+        margin: 0.5rem 1rem;
+        font-size: 16px;
+        font-family: var(--main-font);
+        font-weight: var(--fw-n);
+    }
+    article > img {
+        height: 120px;
+        width: 120px;
+        margin: 0 2rem;
+    }
+    .buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        width: 260px;
+        height: 100px;
+    }
+    .info-lists {
+        display: flex;
+        margin-bottom: 2rem;
+        > .colored-text {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+    }
+    #locked-info {
+        display: flex;
+        gap: 0.5rem;
+        > img {
+            width: 1rem;
+            height: 1rem;
+        }
+    }
+    /* .grid {
+    .icon {
+        width: 17px;
+        height: 17px;
+        background-size: contain;
+    } */
+</style>

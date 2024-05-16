@@ -66,6 +66,12 @@ const { text, icon, variant, href, type, buttonId } = Astro.props;
     > #trashcan {
       background-image: url(../public/assets/trashcan-white.svg);
     }
+    > #log-out {
+      background-image: url(../public/assets/log-out-white.svg);
+      width: 13px;
+      height: 13px;
+      margin-left: 0.5rem;
+    }
   }
   .red:hover {
     color: var(--primary-color);
@@ -74,6 +80,9 @@ const { text, icon, variant, href, type, buttonId } = Astro.props;
     > #trashcan {
       background-image: url(../public/assets/trashcan-red.svg);
     }
+    > #log-out {
+      background-image: url(../public/assets/log-out-red.svg);
+    }
   }
   .green {
     color: var(--main-bg-color);
@@ -81,6 +90,12 @@ const { text, icon, variant, href, type, buttonId } = Astro.props;
     border: 2px solid var(--secondary-color);
     > #plus {
       background-image: url(../public/assets/plus-icon-white.svg);
+    }
+    > #edit {
+      background-image: url(../public/assets/edit-white.svg);
+      margin-left: 0.5rem;
+      width: 13px;
+      height: 13px;
     }
   }
   .green:hover {
@@ -92,6 +107,10 @@ const { text, icon, variant, href, type, buttonId } = Astro.props;
     }
     > #plus {
       background-image: url(../public/assets/plus-icon-green.svg);
+    }
+    > #edit {
+      background-image: url(../public/assets/edit-green.svg);
+      width: 13px;
     }
   }
 
