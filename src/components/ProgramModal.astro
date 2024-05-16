@@ -4,6 +4,11 @@ import InputField from "./InputField.astro";
 ---
 
 <dialog class="program-modal">
+  <h1>Gem program</h1>
+  <div id="save_disc">
+    <p>Når du gemmer et program, skal du give det et navn. Vær opmærksom på at navnet skal give mening for dig, så du kan skelne mellem de forskellige programmer.</p>
+    <p>Vi anbefaler også at du giver programmet en beskrivelse som kan hjælpe dig med at huske indholdet af øvelser.</p>
+  </div>
   <form id="program-form">
     <InputField
       label="Navngiv dit program"
@@ -13,20 +18,35 @@ import InputField from "./InputField.astro";
     />
     <label for="program_description">Beskrivelse</label>
     <textarea
-      placeholder="
-Tilføj en beskrivelse (valgfrit)"
+      placeholder="Tilføj en beskrivelse (valgfrit)"
       id="program_description"
       name="program_description"
-      rows="6"></textarea>
-    <div class="buttons">
+      rows="6">
+    </textarea>
+  </form>
+  <div>
+    <p>Her kan du tilføje på mindelse og målsætning for programmet.</p>
+    <div class="additional_buttons">
       <Button
         type="button"
-        text="Fortryd"
-        variant="red fullWidth small back-button"
+        text="Påmindelse"
+        variant="black fullWidth small"
       />
-      <Button type="submit" text="Gem" variant="green fullWidth small " />
+      <Button
+        type="button"
+        text="Målsætning"
+        variant="black fullWidth small"
+      />
     </div>
-  </form>
+  </div>
+  <div class="buttons">
+    <Button
+      type="button"
+      text="Fortryd"
+      variant="red fullWidth small back-button"
+    />
+    <Button type="submit" text="Gem" variant="green fullWidth small " />
+  </div>
 </dialog>
 
 <style>
@@ -36,21 +56,29 @@ Tilføj en beskrivelse (valgfrit)"
   dialog {
     position: fixed;
     width: 40vw;
-    height: 50vh;
+    height: 85vh;
     border-radius: 10px;
     background: #fff;
     border: none;
+    top: 6%;
     padding: 10px 21px;
-  }
-  form {
-    position: absolute;
     display: flex;
     flex-direction: column;
-    width: 315px;
-    top: 50%;
+    gap: 0.5rem;
+    align-items: center;
+  }
+  form {
+    /* position: absolute; */
+    display: flex;
+    flex-direction: column;
+    width: 30rem;
+    /* top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    gap: 3px;
+    gap: 3px; */
+  }
+  #save_disc {
+    width: 30rem;
   }
   .buttons {
     display: flex;
@@ -71,5 +99,22 @@ Tilføj en beskrivelse (valgfrit)"
     border: 0;
     font-size: var(--fs-m);
     padding-left: 12px;
+  }
+  h1 {
+    font-size: var(--fs-l);
+    font-family: var(--main-font);
+    font-weight: var(--fw-b);
+    margin-bottom: -0.2rem;
+  }
+  p {
+    font-size: var(--fs-s);
+    font-family: var(--main-font);
+    font-weight: var(--fw-n);
+  }
+  .additional_buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 30rem;
   }
 </style>
