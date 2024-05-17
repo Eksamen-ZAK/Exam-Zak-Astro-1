@@ -24,121 +24,133 @@ import "../css/generel.css";
   <main>
     <Menu />
     <h1>Profil</h1>
-        <article class="person-data">
-            <img class="profile-pic" src="../../public/assets/placeholder-foto.svg" alt="profilbillede">
-            <div>
-                <div id="personal-info">
-                    <h2>Person information</h2>
-                    <div class="info-lists">
-                        <ul class="colored-text">
-                            <p>Navn:</p>
-                            <p>Fødselsdag:</p>
-                            <p>Tlf. Nr.:</p>
-                            <p>Mail:</p>
-                        </ul>
-                        <ul>
-                            <p id="name">Ukendt</p>
-                            <p id="birthday">Ukendt</p>
-                            <p id="tlf">Ukendt</p>
-                            <p id="mail">Ukendt</p>
-                        </ul>
-                    </div>
-                </div>
-                <div id="gen-info">
-                    <div id="locked-info">
-                        <h2>Generel information</h2>
-                        <img src="" alt="">
-                    </div>
-                    <div class="info-lists">
-                        <ul class="colored-text">
-                            <p>Bruger navn:</p>
-                            <p>BrugerID:</p>
-                            <p>Oprettet:</p>
-                        </ul>
-                        <ul>
-                            <p id="user-name">Ukendt</p>
-                            <p id="userID">Ukendt</p>
-                            <p id="accessdate">Ukendt</p>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="buttons">
-                <Button
-                  type="button"
-                  text="Log af"
-                  icon="log-out"
-                  variant="red fullWidth small"
-                /><Button
-                  type="button"
-                  text="Rediger"
-                  icon="edit"
-                  variant="green fullWidth small"
-                />
-              </div>
-        </article>
+    <article class="person-data">
+      <img
+        class="profile-pic"
+        src="../../public/assets/placeholder-foto.svg"
+        alt="profilbillede"
+      />
+      <div>
+        <div id="personal-info">
+          <h2>Person information</h2>
+          <div class="info-lists">
+            <ul class="colored-text">
+              <p>Navn:</p>
+              <p>Fødselsdag:</p>
+              <p>Tlf. Nr.:</p>
+              <p>Mail:</p>
+            </ul>
+            <ul>
+              <p id="name">Ukendt</p>
+              <p id="birthday">Ukendt</p>
+              <p id="tlf">Ukendt</p>
+              <p id="mail">Ukendt</p>
+            </ul>
+          </div>
+        </div>
+        <div id="gen-info">
+          <div id="locked-info">
+            <h2>Generel information</h2>
+            <img src="" alt="" />
+          </div>
+          <div class="info-lists">
+            <ul class="colored-text">
+              <p>Bruger navn:</p>
+              <p>BrugerID:</p>
+              <p>Oprettet:</p>
+            </ul>
+            <ul>
+              <p id="user-name">Ukendt</p>
+              <p id="userID">Ukendt</p>
+              <p id="accessdate">Ukendt</p>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="buttons">
+        <Button
+          type="button"
+          text="Log af"
+          icon="log-out"
+          variant="red fullWidth small log-out"
+        /><Button
+          type="button"
+          text="Rediger"
+          icon="edit"
+          variant="green fullWidth small "
+        />
+      </div>
+    </article>
   </main>
   <script src="../js/profile.js"></script>
 </Layout>
 
 <style>
-    article {
-        display: flex;
-        flex-direction: column;
-        gap: 3rem;
+  main {
+    margin: 0rem 5rem;
+    padding-top: 50px;
+  }
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  article {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+  h1 {
+    font-size: var(--fs-l);
+    font-family: var(--main-font);
+    font-weight: var(--fw-b);
+    display: none;
+  }
+  h2 {
+    margin-bottom: 6px;
+    font-size: var(--fs-m);
+    font-family: var(--main-font);
+    font-weight: var(--fw-b);
+  }
+  ul {
+    display: grid;
+    gap: 0.2rem;
+    align-items: center;
+    > p {
+      font-size: 16px;
+      font-family: var(--main-font);
+      font-weight: var(--fw-n);
     }
-    h1 {
-        font-size: var(--fs-l);
-        font-family: var(--main-font);
-        font-weight: var(--fw-b);
-        display: none;
+  }
+
+  article > img {
+    height: 120px;
+    width: 120px;
+    margin: 0 2rem;
+  }
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 260px;
+    height: 100px;
+  }
+  .info-lists {
+    display: flex;
+    gap: 1.5rem;
+    > .colored-text {
+      color: var(--primary-color);
+      font-weight: bold;
     }
-    h2 {
-        margin-bottom: 6px;
-        font-size: var(--fs-m);
-        font-family: var(--main-font);
-        font-weight: var(--fw-b);
+  }
+  #personal-info {
+    margin-bottom: 2rem;
+  }
+  #locked-info {
+    display: flex;
+    gap: 0.5rem;
+    > img {
+      width: 1rem;
+      height: 1rem;
     }
-    ul {
-        display: grid;
-        gap: 0.2rem;
-        align-items: center;
-        > p {
-        font-size: 16px;
-        font-family: var(--main-font);
-        font-weight: var(--fw-n);
-    }
-    }
-    
-    article > img {
-        height: 120px;
-        width: 120px;
-        margin: 0 2rem;
-    }
-    .buttons {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-        width: 260px;
-        height: 100px;
-    }
-    .info-lists {
-        display: flex;
-        gap: 1.5rem;
-        > .colored-text {
-            color: var(--primary-color);
-            font-weight: bold;
-        }
-    }
-    #personal-info{
-        margin-bottom: 2rem;
-    }
-    #locked-info {
-        display: flex;
-        gap: 0.5rem;
-        > img {
-            width: 1rem;
-            height: 1rem;
-        }
-    }
+  }
 </style>

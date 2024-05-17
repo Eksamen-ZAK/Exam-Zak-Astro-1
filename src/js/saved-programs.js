@@ -65,6 +65,8 @@ if (userData[0].saved_programs) {
       .addEventListener("mousedown", () => {
         document.querySelector(".goal-modal").showModal();
         sessionStorage.setItem("program-id", data.programId);
+        sessionStorage.setItem("program-title", data.programTitle);
+        sessionStorage.setItem("program-list", data.programList);
       });
     myClone
       .getElementById(`delete-${data.programId}`)
@@ -104,6 +106,8 @@ async function saveProgram(program) {
 
 let item;
 let goalId;
+let goalProgram;
+let goalProgramList;
 
 document.querySelector(".back-button").addEventListener("mousedown", () => {
   document.querySelector(".goal-modal").close();
@@ -112,15 +116,18 @@ document.querySelector(".back-button").addEventListener("mousedown", () => {
 const form = document.getElementById("goal-form");
 
 form.addEventListener("submit", (e) => {
-  console.log(userData[0]);
   e.preventDefault();
   goalId = sessionStorage.getItem("program-id");
+  goalProgram = sessionStorage.getItem("program-title");
+  goalProgramList = sessionStorage.getItem("program-list");
 
   if (
     userData[0].goals &&
-    userData[0].goals.findIndex((item) => item.goalId === goalId) > -1
+    userData[0].goals.findIndex((item) => item.programId === goalId) > -1
   ) {
-    const index = userData[0].goals.findIndex((item) => item.goalId === goalId);
+    const index = userData[0].goals.findIndex(
+      (item) => item.programId === goalId
+    );
     userData[0].goals.splice(index, 1);
   }
   if (userData[0].goals) {
@@ -128,6 +135,8 @@ form.addEventListener("submit", (e) => {
       goals: userData[0].goals.concat([
         {
           programId: goalId,
+          goalTitle: goalProgram,
+          goalProgramList: goalProgramList,
           goalNumber: form.elements.goal_setting.value,
           startDate: form.elements.goal_start.value,
           endDate: form.elements.goal_end.value,
@@ -139,6 +148,8 @@ form.addEventListener("submit", (e) => {
       goals: [
         {
           programId: goalId,
+          goalTitle: goalProgram,
+          goalProgramList: goalProgramList,
           goalNumber: form.elements.goal_setting.value,
           startDate: form.elements.goal_start.value,
           endDate: form.elements.goal_end.value,

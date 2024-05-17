@@ -5,46 +5,126 @@ import Layout from "../layouts/Layout.astro";
 <Layout title="Statistik">
   <main>
     <div class="goals-side-bar">
-      <h1>Målsætninger</h1><div id="goals-list"></div>
+      <h1>Målsætninger</h1>
+      <div class="goals-list">
+        <template class="goal-card-template">
+          <article class="goal-card">
+            <div class="goal-content">
+              <img class="goal-image" alt="goal image" /><div>
+                <div class="text-content">
+                  <div class="goal-heading">
+                    <h3 class="program-name"></h3>
+                    <img
+                      class="edit-button"
+                      src="assets/pen-black.svg"
+                      alt="Pen ikon"
+                    />
+                  </div>
+                  <p>Start dato:<span class="start-date"></span></p>
+                  <p>Slut dato:<span class="end-date"></span></p>
+                  <div class="goal-progress">
+                    <div class="progress-bar">
+                      <p>0/<span class="goal-number"></span></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </template>
+      </div>
     </div>
     <div>
       <h2>Statistik</h2>
-      <p>
+      <p class="description">
         Her kan du se din progression gennem forløbet og holde øje med dine mål
       </p>
     </div>
-  </main>
-  <script src="../js/stats.js"></script>
-  <script src=`../js/generel.js`></script>
-</Layout>
 
-<style>
-  h1,
-  h2 {
-    font-size: var(--fs-l);
-    font-family: var(--main-font);
-    font-weight: var(--fw-b);
-  }
-  div:has(h2) {
-    margin-top: 50px;
-    margin-left: 450px;
-  }
-  p {
-    margin-left: 10px;
-    font-size: var(--fs-m);
-    font-family: var(--main-font);
-    font-weight: var(--fw-b);
-  }
-  .goals-side-bar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 387px;
-    height: 1053px;
-    margin: 0;
-    padding: 30px 6px;
-    border-right: 5px solid var(--primary-color);
-    background-color: var(--alternative-bg-color);
-    text-align: center;
-  }
-</style>
+    <script src="../js/stats.js"></script>
+    <script src=`../js/generel.js`></script>
+  </main>
+
+  <style>
+    h1,
+    h2 {
+      font-size: var(--fs-l);
+      font-family: var(--main-font);
+      font-weight: var(--fw-b);
+    }
+    div:has(h2) {
+      margin-top: 50px;
+      margin-left: 450px;
+    }
+    p {
+      margin-left: 10px;
+      font-size: var(--fs-m);
+      font-family: var(--main-font);
+      font-weight: var(--fw-b);
+    }
+    .goals-side-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 387px;
+      height: 1053px;
+      margin: 0;
+      padding: 30px 6px;
+      border-right: 5px solid var(--primary-color);
+      background-color: var(--alternative-bg-color);
+      text-align: center;
+    }
+    .goal-card {
+      width: 317px;
+      height: 100px;
+      border-radius: 5px;
+      background-color: var(--main-bg-color);
+      margin: 0 auto;
+    }
+    .goal-content {
+      display: flex;
+      gap: 20px;
+    }
+    .text-content {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+    }
+    .goal-image {
+      width: 100px;
+      height: 100px;
+      border-radius: 5px 0 0 5px;
+    }
+    .goal-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: first baseline;
+      width: 180px;
+    }
+    .program-name {
+      font-family: var(--main-font);
+      font-size: var(--fs-s);
+      font-weight: var(--fw-b);
+      margin-bottom: 4px;
+    }
+
+    p:has(span),
+    span {
+      font-family: var(--main-font);
+      font-size: var(--fs-xs);
+      font-weight: var(--fw-t);
+      margin: 2px 0;
+    }
+    .goal-progress {
+      display: flex;
+      width: 180px;
+      justify-content: space-between;
+    }
+    .progress-bar {
+      width: 154px;
+      height: 14px;
+      background-color: var(--alternative-bg-color);
+      margin-top: 10px;
+    }
+  </style>
+</Layout>

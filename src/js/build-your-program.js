@@ -1,5 +1,4 @@
 import { v4 as uuidv4 } from "uuid";
-import ExercisesList from "../components/ExercisesList.astro";
 
 const url = "https://jlgsxiynwqvvhwheexwo.supabase.co/rest/v1/user-data";
 const api =

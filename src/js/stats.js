@@ -17,9 +17,35 @@ const options = {
   },
 };
 
-const data = await fetch(url, options).then((res) => {
+const userData = await fetch(url, options).then((res) => {
   if (!res.ok) {
     window.location.href = "/";
   }
   return res.json();
 });
+
+const parentElement = document.querySelector(".goals-list");
+const template = document.querySelector(".goal-card-template").content;
+
+if (userData[0].goals) {
+  userData[0].goals.map((data) => {
+    const myClone = template.cloneNode(true);
+    myClone
+      .querySelector(".goal-card")
+      .setAttribute("data-card-id", data.programId);
+    myClone.querySelector(".program-name").textContent = data.goalTitle;
+    myClone
+      .querySelector(".edit-button")
+      .setAttribute("id", `edit-${data.programId}`);
+    myClone.querySelector(".start-date").textContent = data.startDate;
+    myClone.querySelector(".end-date").textContent = data.endDate;
+    myClone.querySelector(".goal-number").textContent = data.goalNumber;
+    myClone
+      .querySelector(".goal-image")
+      .setAttribute(
+        "src",
+        `../assets/images/${data.goalProgramList.slice(0, 3)}.webp`
+      );
+    parentElement.appendChild(myClone);
+  });
+}
