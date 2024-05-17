@@ -23,7 +23,7 @@ import "../css/generel.css";
 <Layout title="Welcome to Astro.">
   <main>
     <Menu />
-    <h1>Profil</h1>
+    <div class="fade-img"><img src="../../assets/images/023.webp" alt="person"></div>
         <article class="person-data">
             <img class="profile-pic" src="../../public/assets/placeholder-foto.svg" alt="profilbillede">
             <div>
@@ -86,12 +86,7 @@ import "../css/generel.css";
         display: flex;
         flex-direction: column;
         gap: 3rem;
-    }
-    h1 {
-        font-size: var(--fs-l);
-        font-family: var(--main-font);
-        font-weight: var(--fw-b);
-        display: none;
+        margin-top: 7%;
     }
     h2 {
         margin-bottom: 6px;
@@ -142,3 +137,19 @@ import "../css/generel.css";
         }
     }
 </style>
+
+<style>
+    .fade-img > img {
+      filter: grayscale(1);
+      opacity: 0.1;
+      width: 70vw;
+      margin-top: -15%;
+    }
+    .fade-img {
+        position: absolute;
+        top: 0%;
+        right: -35%;
+        height: 100vh;
+        overflow: hidden;
+    }
+  </style>
