@@ -1,0 +1,213 @@
+---
+import Header from "../components/Header.astro";
+import Menu from "../components/Menu.astro";
+
+interface Props {
+  title: string;
+  metaDescription?: string;
+  backgroundColor?: string;
+}
+
+const { title, metaDescription, backgroundColor } = Astro.props;
+---
+
+<!doctype html>
+<html lang="da">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={metaDescription} />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manjari:wght@100;400;700&family=Marmelad&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body class={backgroundColor}>
+
+    <div class="top-right close-v">
+        <a href="/lav-dit-program">
+          <button id="close-vid"><img src="../assets/fat-close-btn-icon.svg" alt="Næste video"></button>
+        </a>
+        <p class="close-p">afbryd</p>
+    </div>
+    
+      <div class="top-left con-1">
+        <h2>Repition</h2>
+        <p>4/5</p>
+      </div>
+    
+      <div class="top-left con-2">
+        <h2>Øvelse</h2>
+        <p>Rynk brynene</p>
+      </div>
+    
+
+    <video id="background-video" autoplay muted loop>
+        <source src="../assets/videos/v003.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
+      <div class="control-buttons">
+        <button id="backward-button"><img src="../assets/backward-icon.svg" alt="Forrige video"></button>
+        <button id="play-button"><img src="../assets/play-btn-icon.svg" alt="Afspil"></button>
+        <button id="pause-button"><img src="../assets/pause-btn-icon.svg" alt="Pause"></button>
+        <button id="forward-button"><img src="../assets/forward-icon.svg" alt="Næste video"></button>
+      </div>
+
+      <div class="container">
+        <video id="video" autoplay></video>
+      </div>
+      <script src="../js/videocam.js"></script>
+   
+  </body>
+</html>
+<style is:global>
+  
+  body,
+html {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+h2{
+    color: var(--mrkerd, #901A36);
+font-family: Manjari;
+font-size: 1.875rem;
+font-style: normal;
+font-weight: 700;
+/* line-height: normal; */
+}
+
+p {
+    color: var(--sort, #141414);
+font-family: Manjari;
+font-size: 3.125rem;
+font-style: normal;
+font-weight: 100;
+/* line-height: 0.5; */
+}
+
+.close-p{
+    color: #FFF;
+text-align: center;
+font-family: Manjari;
+font-size: 1.19769rem;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+
+#background-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.container {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  width: 25%;
+  max-width: 300px;
+  border: 2px solid white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+video {
+  width: 100%;
+  height: auto;
+  transform: scaleX(-1);
+  border-radius: 10px;
+}
+
+button{
+    border: none;
+    background: none;
+    opacity: 50%;
+}
+
+.control-buttons {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 20px; 
+  text-align: center; 
+}
+
+
+#play-button,#pause-button{
+    width: 6.13806rem;
+height: 6.4375rem;
+background-color: #901A36;
+    border-radius: 6px;
+}
+
+.close-v{
+    display: flex;
+height: 2.8125rem;
+padding: 0.625rem 1.25rem;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+border-radius: 0.09375rem;
+background: rgba(144, 26, 54, 0.50);
+}
+
+.top-right {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  text-align: right;
+}
+
+.top-left {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+/* .top-left:nth-child(2) {
+  top: 20%; 
+} */
+
+.con-1{
+    top:75%;
+/* width: 22.8125rem;
+height: 7.1875rem; */
+padding: 0.625rem 1.875rem;
+border-radius: 0rem 0.375rem 0.375rem 0rem;
+opacity: 0.8;
+background: rgba(249, 247, 244, 0.50);
+gap: 0.4375rem;
+}
+
+.con-2 {
+    display: flex;
+    width: 22.8125rem;
+    /* height: 7.1875rem; */
+    padding: 0.625rem 1.875rem;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: flex-start;
+    /* gap: 0.4375rem; */
+    border-radius: 0rem 0.375rem 0.375rem 0rem;
+    opacity: 0.8;
+    background: rgba(249, 247, 244, 0.50);
+}
+
+
+</style>
