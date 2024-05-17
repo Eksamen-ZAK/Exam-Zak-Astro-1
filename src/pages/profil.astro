@@ -36,154 +36,178 @@ import "../css/generel.css";
           <div class="info-lists">
             <ul class="person-info">
               <li>
-                Navn: <input disabled id="name" name="name" type="text" />
+                <p>Navn:</p><input disabled id="name" name="name" type="text" />
               </li>
               <li>
-                Fødselsdag: <input
+                <p>Fødselsdag</p><input
                   disabled
                   id="birthday"
                   name="birthday"
                   type="date"
                 />
-              </li>
-              <li>
-                Tlf. Nr.:<input disabled id="tlf" name="tlf" type="tel" />
-              </li>
-              <li>
-                Mail:<input disabled id="mail" name="mail" type="email" />
+
+                <li>
+                  <p>Tlf. Nr.:</p><input
+                    disabled
+                    id="tlf"
+                    name="tlf"
+                    type="tel"
+                  />
+                </li>
+                <li>
+                  <p>Mail:</p><input
+                    disabled
+                    id="mail"
+                    name="mail"
+                    type="email"
+                  />
+                </li>
               </li>
             </ul>
+          </div>
+          <div id="gen-info">
+            <div id="locked-info">
+              <h2>Generel information</h2>
+              <img src="" alt="" />
+            </div>
+            <div class="info-lists">
+              <ul class="colored-text">
+                <li>Bruger navn:</li>
+                <li>BrugerID:</li>
+                <li>Oprettet:</li>
+              </ul>
+              <ul>
+                <li id="user-name"></li>
+                <li id="userID"></li>
+                <li id="accessdate"></li>
+              </ul>
+            </div>
           </div>
         </div>
-        <div id="gen-info">
-          <div id="locked-info">
-            <h2>Generel information</h2>
-            <img src="" alt="" />
-          </div>
-          <div class="info-lists">
-            <ul class="colored-text">
-              <li>Bruger navn:</li>
-              <li>BrugerID:</li>
-              <li>Oprettet:</li>
-            </ul>
-            <ul>
-              <li id="user-name"></li>
-              <li id="userID"></li>
-              <li id="accessdate"></li>
-            </ul>
-          </div>
+        <div class="buttons">
+          <Button
+            type="button"
+            text="Log af"
+            icon="log-out"
+            variant="red fullWidth small log-out"
+          /><Button
+            type="submit"
+            text="Rediger"
+            icon="edit"
+            variant="invertedGreen fullWidth small edit"
+          /><Button
+            type="submit"
+            text="Gem"
+            variant="green fullWidth small hide save"
+          />
         </div>
-      </div>
-      <div class="buttons">
-        <Button
-          type="button"
-          text="Log af"
-          icon="log-out"
-          variant="red fullWidth small log-out"
-        /><Button
-          type="submit"
-          text="Rediger"
-          icon="edit"
-          variant="invertedGreen fullWidth small edit"
-        /><Button
-          type="submit"
-          text="Gem"
-          variant="green fullWidth small hide save"
-        />
       </div>
     </form>
+    <script src="../js/profile.js"></script>
   </main>
-  <script src="../js/profile.js"></script>
-</Layout>
 
-<style>
-  main {
-    margin: 0rem 5rem;
-    padding-top: 50px;
-  }
-  * {
-    margin: 0;
-    padding: 0;
-  }
+  <style>
+    main {
+      margin: 0rem 5rem;
+      padding-top: 50px;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+    }
 
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 3rem;
-  }
-  h1 {
-    font-size: var(--fs-l);
-    font-family: var(--main-font);
-    font-weight: var(--fw-b);
-    display: none;
-  }
-  input {
-    background-color: transparent;
-    border: 0;
-  }
-  h2 {
-    margin-bottom: 6px;
-    font-size: var(--fs-m);
-    font-family: var(--main-font);
-    font-weight: var(--fw-b);
-  }
-  ul {
-    display: grid;
-    gap: 0.2rem;
-    align-items: center;
-    > li {
-      font-size: 16px;
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+    }
+    h1 {
+      font-size: var(--fs-l);
+      font-family: var(--main-font);
+      font-weight: var(--fw-b);
+      display: none;
+    }
+    input {
+      background-color: transparent;
+      border: 0;
+      font-size: var(--fs-small-card);
       font-family: var(--main-font);
       font-weight: var(--fw-n);
+      color: black;
     }
-  }
-  li {
-    list-style: none;
-  }
-  form > img {
-    height: 120px;
-    width: 120px;
-    margin: 0 2rem;
-  }
-  .buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    width: 260px;
-    height: 100px;
-  }
-  .person-info {
-    > li {
+    h2 {
+      margin-bottom: 6px;
+      font-size: var(--fs-m);
+      font-family: var(--main-font);
+      font-weight: var(--fw-b);
+    }
+    ul {
       display: grid;
-      grid-template-columns: 1fr 2fr;
+      gap: 0.2rem;
+      align-items: center;
+      > li {
+        font-size: var(--fs-small-card);
+        font-family: var(--main-font);
+        font-weight: var(--fw-n);
+      }
     }
-  }
-  .info-lists {
-    display: flex;
-    gap: 1.5rem;
-    > .colored-text {
-      color: var(--primary-color);
-      font-weight: bold;
+    li {
+      list-style: none;
     }
-  }
-  #personal-info {
-    margin-bottom: 2rem;
-  }
-  #locked-info {
-    display: flex;
-    gap: 0.5rem;
-    > img {
-      width: 1rem;
-      height: 1rem;
+    form > img {
+      height: 120px;
+      width: 120px;
+      margin: 0 2rem;
     }
-  }
-  input {
-    padding-left: 12px;
-  }
-  .active {
-    background: var(--alternative-bg-color);
-    border-radius: 10px;
-    border: 0;
-    font-size: var(--fs-s);
-  }
-</style>
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      width: 260px;
+      height: 100px;
+    }
+    .person-info {
+      > li {
+        display: grid;
+        grid-template-columns: 100px 150px;
+
+        > p {
+          color: var(--primary-color);
+          font-weight: var(--fw-b);
+        }
+      }
+    }
+    .info-lists {
+      display: flex;
+      gap: 1.5rem;
+      > .colored-text {
+        color: var(--primary-color);
+        font-weight: var(--fw-b);
+      }
+    }
+    #gen-info {
+      margin-top: 30px;
+    }
+    #personal-info {
+      margin-bottom: 2rem;
+    }
+    #locked-info {
+      display: flex;
+      gap: 0.5rem;
+      > img {
+        width: 1rem;
+        height: 1rem;
+      }
+    }
+    input {
+      padding-left: 12px;
+      margin-left: 5px;
+    }
+    .active {
+      background: var(--alternative-bg-color);
+      border-radius: 10px;
+      border: 0;
+      font-size: var(--fs-s);
+    }
+  </style>
+</Layout>
