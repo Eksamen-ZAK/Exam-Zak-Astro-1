@@ -24,7 +24,7 @@ import "../css/generel.css";
   <main>
     <Menu />
     <h1>Profil</h1>
-    <article class="person-data">
+    <form id="person-data">
       <img
         class="profile-pic"
         src="../../public/assets/placeholder-foto.svg"
@@ -34,17 +34,24 @@ import "../css/generel.css";
         <div id="personal-info">
           <h2>Person information</h2>
           <div class="info-lists">
-            <ul class="colored-text">
-              <p>Navn:</p>
-              <p>Fødselsdag:</p>
-              <p>Tlf. Nr.:</p>
-              <p>Mail:</p>
-            </ul>
-            <ul>
-              <p id="name">Ukendt</p>
-              <p id="birthday">Ukendt</p>
-              <p id="tlf">Ukendt</p>
-              <p id="mail">Ukendt</p>
+            <ul class="person-info">
+              <li>
+                Navn: <input disabled id="name" name="name" type="text" />
+              </li>
+              <li>
+                Fødselsdag: <input
+                  disabled
+                  id="birthday"
+                  name="birthday"
+                  type="date"
+                />
+              </li>
+              <li>
+                Tlf. Nr.:<input disabled id="tlf" name="tlf" type="tel" />
+              </li>
+              <li>
+                Mail:<input disabled id="mail" name="mail" type="email" />
+              </li>
             </ul>
           </div>
         </div>
@@ -55,14 +62,14 @@ import "../css/generel.css";
           </div>
           <div class="info-lists">
             <ul class="colored-text">
-              <p>Bruger navn:</p>
-              <p>BrugerID:</p>
-              <p>Oprettet:</p>
+              <li>Bruger navn:</li>
+              <li>BrugerID:</li>
+              <li>Oprettet:</li>
             </ul>
             <ul>
-              <p id="user-name">Ukendt</p>
-              <p id="userID">Ukendt</p>
-              <p id="accessdate">Ukendt</p>
+              <li id="user-name"></li>
+              <li id="userID"></li>
+              <li id="accessdate"></li>
             </ul>
           </div>
         </div>
@@ -74,13 +81,17 @@ import "../css/generel.css";
           icon="log-out"
           variant="red fullWidth small log-out"
         /><Button
-          type="button"
+          type="submit"
           text="Rediger"
           icon="edit"
-          variant="green fullWidth small "
+          variant="invertedGreen fullWidth small edit"
+        /><Button
+          type="submit"
+          text="Gem"
+          variant="green fullWidth small hide save"
         />
       </div>
-    </article>
+    </form>
   </main>
   <script src="../js/profile.js"></script>
 </Layout>
@@ -94,7 +105,8 @@ import "../css/generel.css";
     margin: 0;
     padding: 0;
   }
-  article {
+
+  form {
     display: flex;
     flex-direction: column;
     gap: 3rem;
@@ -104,6 +116,10 @@ import "../css/generel.css";
     font-family: var(--main-font);
     font-weight: var(--fw-b);
     display: none;
+  }
+  input {
+    background-color: transparent;
+    border: 0;
   }
   h2 {
     margin-bottom: 6px;
@@ -115,14 +131,16 @@ import "../css/generel.css";
     display: grid;
     gap: 0.2rem;
     align-items: center;
-    > p {
+    > li {
       font-size: 16px;
       font-family: var(--main-font);
       font-weight: var(--fw-n);
     }
   }
-
-  article > img {
+  li {
+    list-style: none;
+  }
+  form > img {
     height: 120px;
     width: 120px;
     margin: 0 2rem;
@@ -133,6 +151,12 @@ import "../css/generel.css";
     gap: 1rem;
     width: 260px;
     height: 100px;
+  }
+  .person-info {
+    > li {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+    }
   }
   .info-lists {
     display: flex;
@@ -152,5 +176,14 @@ import "../css/generel.css";
       width: 1rem;
       height: 1rem;
     }
+  }
+  input {
+    padding-left: 12px;
+  }
+  .active {
+    background: var(--alternative-bg-color);
+    border-radius: 10px;
+    border: 0;
+    font-size: var(--fs-s);
   }
 </style>
