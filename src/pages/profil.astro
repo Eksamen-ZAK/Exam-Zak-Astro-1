@@ -1,0 +1,213 @@
+---
+/* let headersList = {
+  apikey:
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpsZ3N4aXlud3F2dmh3aGVleHdvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTQ0NzA5MjksImV4cCI6MjAzMDA0NjkyOX0.U40ZZWRh_MC7612vdwFHVKFZxwRHq_TECCnnzovEXKE",
+};
+
+let response = await fetch(
+  "https://jlgsxiynwqvvhwheexwo.supabase.co/rest/v1/exercises",
+  {
+    method: "GET",
+    headers: headersList,
+  }
+);
+
+const data = await response.json(); */
+
+import Layout from "../layouts/Layout.astro";
+import Button from "../components/Button.astro";
+import Menu from "../components/Menu.astro";
+import "../css/generel.css";
+---
+
+<Layout title="Welcome to Astro.">
+  <main>
+    <Menu />
+    <h1>Profil</h1>
+    <form id="person-data">
+      <img
+        class="profile-pic"
+        src="../../public/assets/placeholder-foto.svg"
+        alt="profilbillede"
+      />
+      <div>
+        <div id="personal-info">
+          <h2>Person information</h2>
+          <div class="info-lists">
+            <ul class="person-info">
+              <li>
+                <p>Navn:</p><input disabled id="name" name="name" type="text" />
+              </li>
+              <li>
+                <p>Fødselsdag</p><input
+                  disabled
+                  id="birthday"
+                  name="birthday"
+                  type="date"
+                />
+
+                <li>
+                  <p>Tlf. Nr.:</p><input
+                    disabled
+                    id="tlf"
+                    name="tlf"
+                    type="tel"
+                  />
+                </li>
+                <li>
+                  <p>Mail:</p><input
+                    disabled
+                    id="mail"
+                    name="mail"
+                    type="email"
+                  />
+                </li>
+              </li>
+            </ul>
+          </div>
+          <div id="gen-info">
+            <div id="locked-info">
+              <h2>Generel information</h2>
+              <img src="" alt="" />
+            </div>
+            <div class="info-lists">
+              <ul class="colored-text">
+                <li>Bruger navn:</li>
+                <li>BrugerID:</li>
+                <li>Oprettet:</li>
+              </ul>
+              <ul>
+                <li id="user-name"></li>
+                <li id="userID"></li>
+                <li id="accessdate"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="buttons">
+          <Button
+            type="button"
+            text="Log af"
+            icon="log-out"
+            variant="red fullWidth small log-out"
+          /><Button
+            type="submit"
+            text="Rediger"
+            icon="edit"
+            variant="invertedGreen fullWidth small edit"
+          /><Button
+            type="submit"
+            text="Gem"
+            variant="green fullWidth small hide save"
+          />
+        </div>
+      </div>
+    </form>
+    <script src="../js/profile.js"></script>
+  </main>
+
+  <style>
+    main {
+      margin: 0rem 5rem;
+      padding-top: 50px;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+    }
+    h1 {
+      font-size: var(--fs-l);
+      font-family: var(--main-font);
+      font-weight: var(--fw-b);
+      display: none;
+    }
+    input {
+      background-color: transparent;
+      border: 0;
+      font-size: var(--fs-small-card);
+      font-family: var(--main-font);
+      font-weight: var(--fw-n);
+      color: black;
+    }
+    h2 {
+      margin-bottom: 6px;
+      font-size: var(--fs-m);
+      font-family: var(--main-font);
+      font-weight: var(--fw-b);
+    }
+    ul {
+      display: grid;
+      gap: 0.2rem;
+      align-items: center;
+      > li {
+        font-size: var(--fs-small-card);
+        font-family: var(--main-font);
+        font-weight: var(--fw-n);
+      }
+    }
+    li {
+      list-style: none;
+    }
+    form > img {
+      height: 120px;
+      width: 120px;
+      margin: 0 2rem;
+    }
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      width: 260px;
+      height: 100px;
+    }
+    .person-info {
+      > li {
+        display: grid;
+        grid-template-columns: 100px 150px;
+
+        > p {
+          color: var(--primary-color);
+          font-weight: var(--fw-b);
+        }
+      }
+    }
+    .info-lists {
+      display: flex;
+      gap: 1.5rem;
+      > .colored-text {
+        color: var(--primary-color);
+        font-weight: var(--fw-b);
+      }
+    }
+    #gen-info {
+      margin-top: 30px;
+    }
+    #personal-info {
+      margin-bottom: 2rem;
+    }
+    #locked-info {
+      display: flex;
+      gap: 0.5rem;
+      > img {
+        width: 1rem;
+        height: 1rem;
+      }
+    }
+    input {
+      padding-left: 12px;
+      margin-left: 5px;
+    }
+    .active {
+      background: var(--alternative-bg-color);
+      border-radius: 10px;
+      border: 0;
+      font-size: var(--fs-s);
+    }
+  </style>
+</Layout>

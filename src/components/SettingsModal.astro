@@ -1,21 +1,257 @@
 ---
 interface Props {
-  type: string;
+  variant: string;
 }
-const { type } = Astro.props;
+const { variant } = Astro.props;
+import Button from "./Button.astro";
+import ExerciseCard from "./ExerciseCard.astro";
 ---
 
-<div class=`${type} modal`></div>
+<dialog id={variant}>
+  <div class="content-container">
+    <div>
+      <img
+        src={variant === "text-setting-modal"
+          ? "../public/assets/text-setting-modal.svg"
+          : "../public/assets/contrast-setting-modal.svg"}
+        alt={variant === "text-setting-modal"
+          ? "tekst indstilling ikon"
+          : "kontrast indstilling ikon"}
+      /><h2>
+        {variant === "text-setting-modal" ? "Tekst størrelse" : "Kontrast"}
+      </h2>
+    </div>
+
+    <button
+      id="close-button"
+      class={variant === "text-setting-modal"
+        ? "text-close-button"
+        : "contrast-close-button"}
+    >
+      <img src="../public/assets/x-red.svg" alt="red x" />
+    </button>
+  </div>
+  <div>
+    <div>
+      <p
+        class={variant === "text-setting-modal" ? "small-text" : "medium-text"}
+      >
+        {variant === "text-setting-modal" ? "Aa" : "Lav"}
+      </p>
+      <p
+        class={variant === "text-setting-modal" ? "large-text" : "medium-text"}
+      >
+        {variant === "text-setting-modal" ? "Aa" : "Høj"}
+      </p>
+    </div>
+    <input
+      type="range"
+      id={variant === "text-setting-modal"
+        ? "text-size-slider"
+        : "contrast-slider"}
+      name={variant === "text-setting-modal" ? "text-size" : "contrast"}
+      min="18"
+      max={variant === "text-setting-modal" ? "34" : "30"}
+      value="18"
+      step={variant === "text-setting-modal" ? "4" : "6"}
+    />
+  </div>
+  {
+    variant === "text-setting-modal" ? (
+      <div>
+        <div class="example">
+          <p>Rediger tekst størrelse</p>
+        </div>
+      </div>
+    ) : (
+      <div class="flex-box">
+        <div>
+          <Button
+            type="button"
+            text="Fjern"
+            variant="exerciseButton red"
+            icon="trashcan"
+          />
+        </div>
+        <div>
+          <ExerciseCard
+            title="Løft brynene"
+            image="../assets/images/001.webp"
+            variant="remove"
+          />
+        </div>
+      </div>
+    )
+  }
+</dialog>
 
 <style>
-  .modal {
-    width: 66vw;
+  dialog {
+    width: 60vw;
     height: 55vh;
     border-radius: 10px;
     background: #fff;
-    display: none;
+    border: none;
+    padding: 10px 21px;
   }
-  .display {
-    display: block;
+  .flex-box {
+    display: flex;
+    gap: 16px;
+    margin-top: 10px;
+    margin-left: 80px;
+    > div {
+      display: flex;
+      width: 255px;
+      height: 201px;
+      padding: 0px 43.857px 0px 44px;
+      justify-content: center;
+      align-items: center;
+      background-color: var(--alternative-bg-color);
+      border-radius: 4px;
+    }
+  }
+  button {
+    background-color: transparent;
+    border: none;
+  }
+  .content-container {
+    display: grid;
+    grid-template-columns: 9fr 1fr;
+    align-items: center;
+
+    > div:has(h2) {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 11px;
+      > h2 {
+        margin-top: 30px;
+      }
+    }
+  }
+  #close-button {
+    cursor: pointer;
+  }
+  div:has(input) {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    margin-top: 10px;
+    > div {
+      display: flex;
+      height: 75px;
+      justify-content: space-between;
+      align-items: baseline;
+      width: 50%;
+      padding: 0;
+    }
+  }
+
+  h2 {
+    font-family: var(--main-font);
+    color: var(--primary-color);
+    font-size: var(--fs-ml);
+  }
+  .large-text {
+    font-family: var(--main-font);
+    font-size: 38px;
+    font-weight: var(--fw-b);
+  }
+  .small-text {
+    font-family: var(--main-font);
+    font-size: 18px;
+    font-weight: var(--fw-b);
+  }
+
+  .medium-text {
+    font-family: var(--main-font);
+    font-size: var(--fs-m);
+    font-weight: var(--fw-b);
+  }
+
+  div:has(.example) {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    > .example {
+      position: relative;
+      grid-column: 2;
+      width: 70%;
+      height: 200px;
+      background-color: var(--alternative-bg-color);
+      border-radius: 4px;
+      > p {
+        position: absolute;
+        top: 45%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        font-family: var(--main-font);
+        font-size: var(--fs-m);
+        font-weight: 700;
+      }
+    }
+  }
+  input[type="range"] {
+    -webkit-appearance: none;
+    margin: 18px 0;
+    width: 50%;
+  }
+  input[type="range"]:focus {
+    outline: none;
+  }
+  input[type="range"]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 13px;
+    cursor: pointer;
+    background: #d3a3af;
+    border-radius: 11px;
+    border: 0;
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    width: 45px;
+    height: 45px;
+    border-radius: 30px;
+    background: var(--primary-color);
+    border: 0;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -14px;
+  }
+
+  input[type="range"]::-moz-range-track {
+    width: 100%;
+    height: 13px;
+    cursor: pointer;
+    background: #d3a3af;
+    border-radius: 11px;
+    border: 0;
+  }
+  input[type="range"]::-moz-range-thumb {
+    width: 45px;
+    height: 45px;
+    border-radius: 30px;
+    background: var(--primary-color);
+    border: 0;
+    cursor: pointer;
+  }
+  input[type="range"]::-ms-track {
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+    background: transparent;
+    border-color: transparent;
+    border-width: 16px 0;
+    color: transparent;
+  }
+
+  input[type="range"]::-ms-thumb {
+    width: 45px;
+    height: 45px;
+    border-radius: 30px;
+    background: var(--primary-color);
+    border: 0;
+    cursor: pointer;
   }
 </style>

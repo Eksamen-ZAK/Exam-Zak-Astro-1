@@ -1,0 +1,183 @@
+---
+import Layout from "../layouts/Layout.astro";
+import GoalModal from "../components/GoalModal.astro";
+import StatCard from "../components/StatCard.astro";
+---
+
+<Layout title="Statistik">
+  <main>
+    <GoalModal />
+    <div class="goals-side-bar">
+      <h1>Målsætninger</h1>
+      <div class="goals-list">
+        <template class="goal-card-template">
+          <article class="goal-card">
+            <div class="goal-content">
+              <img class="goal-image" alt="goal image" /><div>
+                <div class="text-content">
+                  <div class="goal-heading">
+                    <h3 class="program-name"></h3>
+                    <button class="edit-button">
+                      <img src="assets/pen-black.svg" alt="Pen ikon" /></button
+                    >
+                  </div>
+                  <p>Start dato:<span class="start-date"></span></p>
+                  <p>Slut dato:<span class="end-date"></span></p>
+                  <div class="goal-progress">
+                    <div class="progress-bar"></div>
+                    <p>0/<span class="goal-number"></span></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+          <div class="divider"></div>
+        </template>
+      </div>
+    </div>
+    <div>
+      <h2>Statistik</h2>
+      <p class="description">
+        Her kan du se din progression gennem forløbet og holde øje med dine mål
+      </p>
+      <div class="cards-container">
+        <StatCard image="weight-lifting-icon" title="Øvelser"
+          ><div class="card-description">
+            <p>Sikke en multitasker!</p><p>
+              Du har udført 15 ud af 22 forskellige øvelser.
+            </p><p>Både variation og repetition er vigtigt, godt gået.</p>
+          </div></StatCard
+        ><StatCard image="clock" title="Tid"
+          ><div class="card-description">
+            <p>Utroligt fokus!</p><p>
+              Du har brugt i alt 4t 15 minuter på at træne i denne periode.
+            </p><p>Gennemsnit pr. uge: 1t 5min</p>
+          </div></StatCard
+        ><StatCard image="streak-icon" title="Streak"
+          ><div class="card-description">
+            <p>Godt gået!</p><p>
+              Du har gennemført et program 6 dage i træk.
+            </p><p>Forsæt det stærke arbejde, vi hepper på dig.</p>
+          </div></StatCard
+        >
+      </div>
+    </div>
+
+    <script src="../js/stats.js"></script>
+    <script src=`../js/generel.js`></script>
+  </main>
+
+  <style>
+    h1,
+    h2 {
+      font-size: var(--fs-l);
+      font-family: var(--main-font);
+      font-weight: var(--fw-b);
+    }
+    div:has(h2) {
+      margin-top: 50px;
+      margin-left: 500px;
+    }
+    p {
+      margin-left: 10px;
+      font-size: var(--fs-m);
+      font-family: var(--main-font);
+      font-weight: var(--fw-b);
+    }
+    .divider {
+      width: 57px;
+      border-bottom: 1px solid var(--primary-color);
+    }
+    .goals-side-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 430px;
+      height: 1053px;
+      margin: 0;
+      padding: 30px 6px;
+      border-right: 5px solid var(--primary-color);
+      background-color: var(--alternative-bg-color);
+      text-align: center;
+    }
+    .goals-list {
+      display: flex;
+      gap: 8px;
+      flex-direction: column;
+      align-items: center;
+    }
+    .goal-card {
+      width: 350px;
+      height: 130px;
+      border-radius: 5px;
+      background-color: var(--main-bg-color);
+      margin: 0 auto;
+    }
+    .edit-button {
+      background-color: transparent;
+      border: 0;
+      cursor: pointer;
+    }
+    .goal-content {
+      display: flex;
+      gap: 20px;
+    }
+    .text-content {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+    }
+    .goal-image {
+      width: 130px;
+      height: 130px;
+      border-radius: 5px 0 0 5px;
+    }
+
+    .goal-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: first baseline;
+      width: 180px;
+    }
+    .program-name {
+      font-family: var(--main-font);
+      font-size: var(--fs-m);
+      font-weight: var(--fw-b);
+      margin-bottom: 4px;
+    }
+
+    p:has(span),
+    span {
+      font-family: var(--main-font);
+      font-size: var(--fs-s);
+      font-weight: var(--fw-t);
+      margin: 2px 0;
+    }
+    .goal-progress {
+      display: flex;
+      width: 180px;
+      justify-content: space-between;
+      align-items: center;
+      > p {
+        padding-top: 13px;
+      }
+    }
+    .progress-bar {
+      width: 154px;
+      height: 14px;
+      background-color: var(--alternative-bg-color);
+      margin-top: 10px;
+    }
+    .cards-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+    .card-description {
+      text-align: center;
+      > p {
+        font-size: var(--fs-small-card);
+        font-weight: var(--fw-t);
+      }
+    }
+  </style>
+</Layout>

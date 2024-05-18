@@ -1,0 +1,18 @@
+h1 {
+  font-size: var(--fs-xl);
+  font-family: var(--main-font);
+  font-weight: var(--fw-b);
+  margin-bottom: 2rem;
+}
+h2 {
+  margin-bottom: 16px;
+  font-size: var(--fs-ml);
+  font-family: var(--main-font);
+  font-weight: var(--fw-n);
+}
+/* p {
+  margin-bottom: 16px;
+  font-size: var(--fs-m);
+  font-family: var(--main-font);
+  font-weight: var(--fw-n);
+} */

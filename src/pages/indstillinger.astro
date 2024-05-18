@@ -1,26 +1,34 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import SettingItem from "../components/SettingItem.astro";
+import SettingsModal from "../components/SettingsModal.astro";
+import Menu from "../components/Menu.astro";
 ---
 
-<Layout title="Welcome to Astro." backgroundColor="alternative">
+<Layout title="Indstillinger" backgroundColor="alternative">
   <main>
+    <Menu />
+    <SettingsModal variant="text-setting-modal" />
+    <SettingsModal variant="contrast-setting-modal" />
     <h1>Indstillinger</h1>
     <div>
       <SettingItem
         text="Tekst størrelse"
         image="assets/text-icon.svg"
         altText="text icon"
+        type="pop-up text-size-setting"
       />
       <SettingItem
         text="Kontrast"
         image="assets/contrast-icon.svg"
         altText="contrast icon"
+        type="pop-up contrast-setting"
       />
       <SettingItem
-        text="Farver: til"
+        text="Farver: "
         image="assets/palette-icon.svg"
         altText="palette icon"
+        type="toggle"
       />
       <SettingItem
         text="Tekst oplæser: til"
@@ -29,11 +37,16 @@ import SettingItem from "../components/SettingItem.astro";
       />
     </div>
   </main>
+  <script src="../js/settings.js"></script>
+  <script src=`../js/generel.js`></script>
 </Layout>
 
 <style>
+  main {
+    margin-top: 200px;
+  }
   h1 {
-    margin-top: 150px;
+    margin-top: 140px;
     margin-bottom: 36px;
     font-size: var(--fs-l);
     font-family: var(--main-font);

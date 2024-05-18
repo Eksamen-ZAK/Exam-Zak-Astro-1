@@ -13,15 +13,16 @@ let response = await fetch(
 );
 
 let data = await response.json();
-console.log(data);
 
 import Layout from "../layouts/Layout.astro";
-import ProgramCard from "../components/ProgramCard.astro";
 import Menu from "../components/Menu.astro";
+import GoalModal from "../components/GoalModal.astro";
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title="Gemte programmer">
   <main>
+    <Menu />
+    <GoalModal />
     <div>
       <h1>Dine programmer</h1>
       <p>
@@ -35,24 +36,46 @@ import Menu from "../components/Menu.astro";
             <p>Lav nyt program</p>
           </div></button
         >
-        <ProgramCard
-          title="Ansigtsprogram 1"
-          description="Primære ansigtsprogram for ansigtsmuskulatur"
-          image="../assets/images/001.webp"
-        />
-        <ProgramCard
-          title="Ansigtsprogram 1"
-          description="Primære ansigtsprogram for ansigtsmuskulatur"
-          image="../assets/images/001.webp"
-        />
-        <ProgramCard
-          title="Ansigtsprogram 1"
-          description="Primære ansigtsprogram for ansigtsmuskulatur"
-          image="../assets/images/001.webp"
-        />
+        <template class="card-template">
+          <article class="program-card">
+            <div class="image-container">
+              <img class="program-image" src="" alt="program image" />
+            </div>
+            <div class="text-container">
+              <h3 class="program-title"></h3>
+              <p class="program-description"></p>
+              <div class="functions-list">
+                <button class="set-goal">
+                  <img src="assets/target-icon.png" alt="mål ikon" /><p>
+                    Tilføj målsætning
+                  </p>
+                </button>
+                <button class="edit">
+                  <img src="assets/pen-black.svg" alt="pen ikon" /><p>
+                    Rediger
+                  </p>
+                </button>
+              </div>
+              <div class="buttons">
+                <button type="button" class="fullWidth red small delete">
+                  <p>Slet</p>
+                  <div class="icon" id="assets/trashcan-white.svg">
+                  </div></button
+                >
+                <button type="button" class="fullWidth green small">
+                  <p>Afspil</p>
+                  <div class="icon" id="assets/play-icon-white.svg">
+                  </div></button
+                >
+              </div>
+            </div>
+          </article>
+        </template>
       </div>
     </div>
   </main>
+  <script src=`../js/generel.js`></script>
+  <script src=`../js/saved-programs.js`></script>
 </Layout>
 
 <script src=`../js/text-to-speech.js`></script>
@@ -71,10 +94,14 @@ import Menu from "../components/Menu.astro";
 </script>
 
 <style>
+  main {
+    margin-top: 50px;
+  }
   div:has(h1) {
-    padding: 40px;
+    padding: 0 40px 20px 40px;
     max-width: 1148px;
   }
+
   h1 {
     font-size: var(--fs-l);
     font-family: var(--main-font);
@@ -87,18 +114,18 @@ import Menu from "../components/Menu.astro";
     font-family: var(--main-font);
     font-weight: var(--fw-n);
   }
-  button {
+  .new-program {
     width: 264px;
-    height: 469px;
+    height: 100%;
+    min-height: 380px;
     padding: 16px;
     border: 2px dashed var(--secondary-color);
     border-radius: 10px;
     background-color: var(--main-bg-color);
     cursor: "pointer";
-  }
-
-  button:hover {
-    background-color: var(--alternative-bg-color);
+    &:hover {
+      background-color: var(--alternative-bg-color);
+    }
   }
   button div > p {
     font-family: var(--main-font);
@@ -111,5 +138,137 @@ import Menu from "../components/Menu.astro";
     grid-template-columns: repeat(4, 1fr);
     gap: 10px;
     max-width: 1180px;
+  }
+
+  article {
+    width: 264px;
+    max-height: 700px;
+    padding: 16px;
+  }
+  .image-container {
+    width: 252px;
+    height: 180px;
+  }
+  .program-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    margin-bottom: 27px;
+  }
+  .program-title {
+    font-family: var(--main-font);
+    font-size: var(--fs-ml);
+    font-weight: var(--fw-b);
+    margin-bottom: 3px;
+  }
+  .program-description {
+    font-family: var(--main-font);
+    font-size: var(--fs-m);
+    font-weight: var(--fw-l);
+  }
+  .text-container {
+    padding: 0 15px;
+    margin-bottom: 12px;
+  }
+  .functions-list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 26px;
+    > button {
+      display: flex;
+      gap: 13px;
+      align-items: center;
+      height: 31px;
+      background-color: transparent;
+      border: 0;
+      padding: 0;
+      > p {
+        font-size: var(--fs-m);
+        font-family: var(--main-font);
+        font-weight: var(--fw-l);
+      }
+      > img {
+        width: 30px;
+        height: 30px;
+      }
+    }
+  }
+  .buttons {
+    display: flex;
+    width: 225px;
+    gap: 7px;
+    margin: 0 auto;
+  }
+
+  button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    height: 31px;
+    padding: 6px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    > p {
+      margin-top: 15px;
+      margin-left: 15px;
+      font-size: var(--fs-m);
+      font-family: var(--main-font);
+    }
+  }
+
+  .fullWidth {
+    width: 100%;
+    flex-grow: 1;
+  }
+
+  .red {
+    color: var(--main-bg-color);
+    background-color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    > #trashcan {
+      background-image: url(../public/assets/trashcan-white.svg);
+    }
+  }
+  .red:hover {
+    color: var(--primary-color);
+    background-color: var(--main-bg-color);
+    border: 2px solid var(--primary-color);
+    > #trashcan {
+      background-image: url(../public/assets/trashcan-red.svg);
+    }
+  }
+  .green {
+    color: var(--main-bg-color);
+    background-color: var(--secondary-color);
+    border: 2px solid var(--secondary-color);
+  }
+  .green:hover {
+    color: var(--secondary-color);
+    background-color: var(--main-bg-color);
+    border: 2px solid var(--secondary-color);
+    > #play {
+      background-image: url(../public/assets/play-icon-green.svg);
+    }
+  }
+
+  #play {
+    background-image: url(../public/assets/play-icon-white.svg);
+  }
+
+  .icon {
+    width: 17px;
+    height: 17px;
+    background-size: contain;
+  }
+
+  .small {
+    height: 33px;
+    > p {
+      padding-top: 6px;
+      font-size: 20px;
+    }
   }
 </style>

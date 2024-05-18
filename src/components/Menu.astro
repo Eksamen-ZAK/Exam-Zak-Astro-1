@@ -2,11 +2,18 @@
 import MenuItem from "./MenuItem.astro";
 ---
 
-<div id="nav" class="menu-overlay">
-  <button><img src="assets/close-icon.svg" alt="kryds ikon" /> </button>
+<div class="hide menu-overlay">
+  <button class="close-menu"
+    ><img src="assets/close-icon.svg" alt="kryds ikon" />
+  </button>
 
   <div class="menu-content">
-    <MenuItem text="Hjem" image="home-icon" altText="Hjem ikon" link="#" />
+    <MenuItem
+      text="Profil"
+      image="profile-icon"
+      altText="Profil ikon"
+      link="/profil"
+    />
     <MenuItem
       text="Lav dit program"
       image="build-icon"
@@ -21,7 +28,7 @@ import MenuItem from "./MenuItem.astro";
       text="Statistik"
       image="stats-icon"
       altText="Statistik ikon"
-      link="#"
+      link="/statistik"
     />
     <MenuItem
       text="Om os"
@@ -38,28 +45,6 @@ import MenuItem from "./MenuItem.astro";
   </div>
 
   <style>
-    .menu-overlay {
-      height: 100vh;
-      width: 100%;
-      position: fixed;
-      z-index: 1;
-      left: 0;
-      top: 0;
-      background-color: var(--primary-color);
-      overflow-x: hidden;
-      transition: 0.5s;
-      display: none;
-    }
-    .menu-content {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      width: 995px;
-      margin: 158px auto;
-    }
-
-    .display {
-      display: block;
-    }
     button {
       position: absolute;
       right: 45px;
@@ -69,6 +54,27 @@ import MenuItem from "./MenuItem.astro";
       background-color: transparent;
       border: none;
       cursor: pointer;
+    }
+    .menu-overlay {
+      height: 100vh;
+      width: 100vw;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      overflow-x: hidden;
+      background-color: var(--primary-color);
+      transition: all 2s linear;
+    }
+    .hide {
+      opacity: 0;
+      display: none;
+    }
+    .menu-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      width: 995px;
+      margin: 158px auto;
     }
   </style>
 </div>

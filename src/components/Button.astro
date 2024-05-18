@@ -16,6 +16,7 @@ const { text, icon, variant, href, type, buttonId } = Astro.props;
   class={variant}
   data-link={href && href}
   data-button-id={buttonId && buttonId}
+  id={buttonId && buttonId}
 >
   <p id=`text-${buttonId}`>{text}</p>
   {icon && <div class="icon" id={icon} />}
@@ -48,7 +49,9 @@ const { text, icon, variant, href, type, buttonId } = Astro.props;
     border-radius: 10px;
     cursor: pointer;
   }
-
+  .hide {
+    display: none;
+  }
   .fullWidth {
     width: 100%;
     flex-grow: 1;
@@ -66,6 +69,12 @@ const { text, icon, variant, href, type, buttonId } = Astro.props;
     > #trashcan {
       background-image: url(../public/assets/trashcan-white.svg);
     }
+    > #log-out {
+      background-image: url(../public/assets/log-out-white.svg);
+      width: 13px;
+      height: 13px;
+      margin-left: 0.5rem;
+    }
   }
   .red:hover {
     color: var(--primary-color);
@@ -74,6 +83,9 @@ const { text, icon, variant, href, type, buttonId } = Astro.props;
     > #trashcan {
       background-image: url(../public/assets/trashcan-red.svg);
     }
+    > #log-out {
+      background-image: url(../public/assets/log-out-red.svg);
+    }
   }
   .green {
     color: var(--main-bg-color);
@@ -81,6 +93,12 @@ const { text, icon, variant, href, type, buttonId } = Astro.props;
     border: 2px solid var(--secondary-color);
     > #plus {
       background-image: url(../public/assets/plus-icon-white.svg);
+    }
+    > #edit {
+      background-image: url(../public/assets/edit-white.svg);
+      margin-left: 0.5rem;
+      width: 13px;
+      height: 13px;
     }
   }
   .green:hover {
@@ -92,6 +110,10 @@ const { text, icon, variant, href, type, buttonId } = Astro.props;
     }
     > #plus {
       background-image: url(../public/assets/plus-icon-green.svg);
+    }
+    > #edit {
+      background-image: url(../public/assets/edit-green.svg);
+      width: 13px;
     }
   }
 
@@ -109,6 +131,12 @@ const { text, icon, variant, href, type, buttonId } = Astro.props;
       background-image: url(../public/assets/bookmark-green.svg);
       width: 13px;
     }
+    > #edit {
+      background-image: url(../public/assets/pen.svg);
+      margin-left: 0.5rem;
+      width: 13px;
+      height: 13px;
+    }
   }
   .invertedGreen:hover {
     color: var(--main-bg-color);
@@ -117,6 +145,12 @@ const { text, icon, variant, href, type, buttonId } = Astro.props;
     > #bookmark {
       background-image: url(../public/assets/bookmark.svg);
       width: 18px;
+    }
+    > #edit {
+      background-image: url(../public/assets/edit-white.svg);
+      margin-left: 0.5rem;
+      width: 13px;
+      height: 13px;
     }
   }
   #play {
@@ -158,7 +192,7 @@ const { text, icon, variant, href, type, buttonId } = Astro.props;
     height: 44px;
     > p {
       padding-top: 10px;
-      font-size: 24px;
+      font-size: var(--fs-ml);
     }
   }
   .large {

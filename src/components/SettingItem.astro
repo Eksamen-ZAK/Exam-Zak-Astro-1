@@ -3,13 +3,14 @@ interface Props {
   text: string;
   image: string;
   altText: string;
+  type: string;
 }
-const { image, altText, text } = Astro.props;
+const { image, altText, text, type } = Astro.props;
 ---
 
-<button>
+<button class={type}>
   <img src={image} alt={altText} />
-  <p>{text}</p>
+  <p>{text}{type === "toggle" && <span class="color-status">til</span>}</p>
 </button>
 
 <style>
@@ -22,6 +23,9 @@ const { image, altText, text } = Astro.props;
     cursor: pointer;
     border: 4px solid var(--main-bg-color);
     border-radius: 10px;
+  }
+  .off {
+    background-color: var(--alternative-bg-color);
   }
   button:hover {
     border: 4px solid var(--primary-color);

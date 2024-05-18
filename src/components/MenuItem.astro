@@ -8,22 +8,33 @@ interface Props {
 const { link, image, altText, text } = Astro.props;
 ---
 
-<button data-link={link}>
+<button class="menu-item" data-link={link}>
   <div class={image}></div>
   <p>{text}</p>
 </button>
 
 <script>
-  const buttons = document.querySelectorAll("button");
+  const buttons = document.querySelectorAll(".menu-item");
   buttons.forEach((button) => {
     const href = button.getAttribute("data-link");
-    button.addEventListener(
-      "mousedown",
-      () => (window.location.href = `${href}`)
-    );
+    button.addEventListener("mousedown", () => {
+      window.location.href = `${href}`;
+      if (sessionStorage.getItem("program-list")) {
+        sessionStorage.setItem("program-title", "");
+        sessionStorage.setItem("program-id", "");
+        sessionStorage.setItem("program-list", "");
+        sessionStorage.setItem("program-description", "");
+      }
+    });
     button.addEventListener("keypress", function (e) {
       if (e.key === "Enter") {
         window.location.href = `${href}`;
+        if (sessionStorage.getItem("program-list")) {
+          sessionStorage.setItem("program-title", "");
+          sessionStorage.setItem("program-id", "");
+          sessionStorage.setItem("program-list", "");
+          sessionStorage.setItem("program-description", "");
+        }
       }
     });
   });
@@ -34,6 +45,7 @@ const { link, image, altText, text } = Astro.props;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
     text-decoration: none;
     cursor: pointer;
     border: none;
@@ -49,6 +61,8 @@ const { link, image, altText, text } = Astro.props;
     height: 125px;
     padding: 2px;
     background-image: url(../public/assets/home-icon.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
   }
   .home-icon:hover {
     width: 150px;
@@ -61,6 +75,17 @@ const { link, image, altText, text } = Astro.props;
     height: 125px;
     padding: 2px;
     background-image: url(../public/assets/build-icon.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  .profile-icon {
+    width: 125px;
+    height: 125px;
+    margin-left: 10px;
+    padding: 2px;
+    background-image: url(../public/assets/profile-icon.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
   }
   .build-icon:hover {
     width: 125px;
@@ -73,6 +98,8 @@ const { link, image, altText, text } = Astro.props;
     height: 121px;
     padding: 2px;
     background-image: url(../public/assets/bookmark-icon.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
   }
   .bookmark-icon:hover {
     width: 93px;
@@ -81,22 +108,26 @@ const { link, image, altText, text } = Astro.props;
     background-image: url(../public/assets/bookmark-filled-icon.svg);
   }
   .stats-icon {
-    width: 123px;
+    width: 120px;
     height: 123px;
     padding: 2px;
-    background-image: url(../public/assets/stats-icon.svg);
+    background-image: url(../public/assets/stats-icon2.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
   }
   .stats-icon:hover {
-    width: 123px;
+    width: 120px;
     height: 123px;
     padding: 2px;
     background-image: url(../public/assets/stats-filled-icon.svg);
   }
   .about-us-icon {
-    width: 171px;
+    width: 153px;
     height: 110px;
     padding: 2px;
     background-image: url(../public/assets/about-us-icon.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
   }
   .about-us-icon:hover {
     width: 153px;
@@ -109,6 +140,8 @@ const { link, image, altText, text } = Astro.props;
     height: 121px;
     padding: 2px;
     background-image: url(../public/assets/settings-icon.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
   }
   .settings-icon:hover {
     width: 111px;

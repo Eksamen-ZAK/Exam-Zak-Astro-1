@@ -16,12 +16,15 @@ const data = await response.json();
 
 import Layout from "../layouts/Layout.astro";
 import ExercisesList from "../components/ExercisesList.astro";
-import ExerciseCard from "../components/ExerciseCard.astro";
 import Button from "../components/Button.astro";
+import Menu from "../components/Menu.astro";
+import ProgramModal from "../components/ProgramModal.astro";
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title="Lav dit program">
   <main>
+    <Menu />
+    <ProgramModal />
     <div class="sidebar">
       <h1>Dit program</h1>
       <div class="program-list">
@@ -59,7 +62,7 @@ import Button from "../components/Button.astro";
           type="button"
           text="Gem"
           icon="bookmark"
-          variant="invertedGreen fullWidth small"
+          variant="invertedGreen fullWidth small save"
         /><Button
           type="button"
           text="Afspil"
@@ -127,12 +130,15 @@ import Button from "../components/Button.astro";
       })}
     />
   </main>
+  <script src="../js/build-your-program.js"></script>
+  <script src=`../js/generel.js`></script>
+  <script src=`../js/text-to-speech.js`></script>
 </Layout>
 
-<script src="../js/build-your-program.js"></script>
-<script src=`../js/text-to-speech.js`></script>
-
 <style>
+  main {
+    margin-top: 50px;
+  }
   h1,
   h2 {
     font-size: var(--fs-l);

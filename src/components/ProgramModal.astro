@@ -1,0 +1,121 @@
+---
+import Button from "./Button.astro";
+import InputField from "./InputField.astro";
+---
+
+<dialog class="program-modal">
+  <div class="content">
+    <h1>Gem program</h1>
+    <div id="save_disc">
+      <p>
+        Når du gemmer et program, skal du give det et navn. Vær opmærksom på at
+        navnet skal give mening for dig, så du kan skelne mellem de forskellige
+        programmer.
+      </p>
+      <p>
+        Vi anbefaler også, at du giver programmet en beskrivelse, som kan hjælpe
+        dig med at huske indholdet af øvelser.
+      </p>
+    </div>
+    <form id="program-form">
+      <InputField
+        label="Navngiv dit program"
+        id="program_title"
+        type="text"
+        required
+      />
+      <label for="program_description">Beskrivelse (valgfrit)</label>
+      <textarea
+        placeholder="Tilføj en beskrivelse (valgfrit)"
+        id="program_description"
+        name="program_description"
+        rows="6"
+      >
+      </textarea>
+
+      <div>
+        <p>Her kan du tilføje målsætning for programmet.</p>
+        <div class="additional_buttons">
+          <Button
+            type="button"
+            text="Målsætning"
+            variant="black fullWidth small"
+          />
+        </div>
+      </div>
+      <div class="buttons">
+        <Button
+          type="button"
+          text="Fortryd"
+          variant="red fullWidth small back-button"
+        />
+        <Button type="submit" text="Gem" variant="green fullWidth small " />
+      </div>
+    </form>
+  </div>
+</dialog>
+
+<style>
+  dialog {
+    position: fixed;
+    width: 580px;
+    height: 630px;
+    border-radius: 10px;
+    background: #fff;
+    border: none;
+    top: 6%;
+    padding: 10px 21px;
+  }
+  .content{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);}
+  form {
+    display: flex;
+    flex-direction: column;
+    width: 30rem;
+    gap: 3px; */
+  }
+  #save_disc {
+    width: 30rem;
+  }
+  .buttons {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0 auto;
+    width: 315px;
+    margin-top: 23px;
+    gap: 20px;
+  }
+  label {
+    font-size: var(--fs-m);
+    font-family: var(--main-font);
+    font-weight: var(--fw-b);
+  }
+  textarea {
+    height: 120px;
+    background: var(--alternative-bg-color);
+    border-radius: 10px;
+    border: 0;
+    font-size: var(--fs-m);
+    
+  }
+  h1 {
+    font-size: var(--fs-l);
+    font-family: var(--main-font);
+    font-weight: var(--fw-b);
+    margin-bottom: -0.2rem;
+  }
+  p {
+    font-size: var(--fs-s);
+    font-family: var(--main-font);
+    font-weight: var(--fw-n);
+  }
+  .additional_buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 30rem;
+  }
+</style>

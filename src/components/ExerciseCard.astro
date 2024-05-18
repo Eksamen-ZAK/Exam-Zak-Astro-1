@@ -25,12 +25,12 @@ const { title, description, note, image, variant, cardId, imageNumber } =
     <div>
       <RepititionButton
         cardId={cardId}
-        variant="repitition-button normal-card"
+        variant=`repitition-button ${variant==="remove"?"small-card":"normal-card"}`
       />
       <Button
         type="button"
         text="Tilføj"
-        variant="exerciseButton green"
+        variant=`exerciseButton green ${variant==="remove"&&"x-small"}`
         icon="plus"
         buttonId={imageNumber}
       />
@@ -44,7 +44,8 @@ const { title, description, note, image, variant, cardId, imageNumber } =
     align-items: center;
     gap: 12px;
     width: 421px;
-    height: 178px;
+
+    max-height: 300px;
     padding: 11px 12px;
     border-radius: 10px;
     background-color: var(--main-bg-color);

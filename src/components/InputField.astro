@@ -6,13 +6,14 @@ interface Props {
   pattern?: string;
   title?: string;
   required: boolean;
+  variant?: string;
 }
 
-const { label, id, type, pattern, title, required = false } = Astro.props;
+const { label, id, type, variant, required = false } = Astro.props;
 ---
 
 <label for={id}>{label}</label>
-<input id={id} name={id} type={type} required />
+<input class={variant && variant} id={id} name={id} type={type} required />
 
 <style>
   input:focus {
@@ -26,5 +27,14 @@ const { label, id, type, pattern, title, required = false } = Astro.props;
     border: 0;
     font-size: var(--fs-m);
     padding-left: 12px;
+  }
+  label {
+    font-size: var(--fs-m);
+    font-family: var(--main-font);
+    font-weight: var(--fw-b);
+  }
+  .fullWidth {
+    width: 100%;
+    margin-bottom: 10px;
   }
 </style>
