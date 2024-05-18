@@ -1,5 +1,7 @@
 let uuid;
 
+//Getting the uuid from either localStorage or sessionStorage
+//If the user is automatically logged in, the uuid will be stored in localStorage. Otherwise it is stored in sessionStorage
 if (localStorage.getItem("uuid")) {
   uuid = localStorage.getItem("uuid");
 } else {
@@ -17,6 +19,8 @@ const options = {
   },
 };
 
+//Fetching the data filtered by the uuid. If the uuid isn't stored in either localStorage or sessionStorage
+// then the user isn't logged in and will therefore be send to the starting page.
 const data = await fetch(url, options).then((res) => {
   if (!res.ok) {
     window.location.href = "/";

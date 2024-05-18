@@ -164,11 +164,11 @@ function mappingProgram(filteredData, programArray, exercisesList) {
   });
 }
 
-// Funktioner, som holder styr på antallet af repitioner for hver enkel øvelse
+// Functions that changes the number of repititions for every exercise
 
 let count;
 
-// Funktion, der lægger 5 repititioner til
+// Function that adds 5 repititions
 function addRepitition(id) {
   count = parseInt(
     document
@@ -192,7 +192,7 @@ const options = {
   },
 };
 
-// Funktion, der trækker 5 repititioner fra
+// Function that subtracts 5 repititions
 function retractRepitition(id) {
   count = parseInt(
     document
@@ -234,11 +234,18 @@ const userData = await fetch(url + `?id=eq.${uuid}`, {
 });
 
 let programUuid;
+
+// An eventListener is added to the back button in order to close the program modal when clicking the button
 document
   .querySelector(".back-button")
   .addEventListener("mousedown", () =>
     document.querySelector(".program-modal").close()
   );
+
+// When clicking the submit button "gem" in the program modal, the form data will be stored in an object
+// If the program uuid already exists in the database it will be removed and replaced with the new program list
+// The program will be added to the list of saved programs in the database by sending the object as a parameter
+// to the saveProgram function
 const form = document.getElementById("program-form");
 form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -284,7 +291,8 @@ form.addEventListener("submit", (e) => {
   saveProgram(obj);
 });
 
-//patching program liste
+// A fetch request is being sent to the database in order to patch the program list
+// The program modal will close when the program has been sent to the database
 async function saveProgram(program) {
   fetch(
     `https://jlgsxiynwqvvhwheexwo.supabase.co/rest/v1/user-data?id=eq.${uuid}`,
