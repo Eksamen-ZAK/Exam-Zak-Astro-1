@@ -4,7 +4,7 @@ const url = "https://jlgsxiynwqvvhwheexwo.supabase.co/rest/v1/user-data";
 const api =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpsZ3N4aXlud3F2dmh3aGVleHdvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTQ0NzA5MjksImV4cCI6MjAzMDA0NjkyOX0.U40ZZWRh_MC7612vdwFHVKFZxwRHq_TECCnnzovEXKE";
 
-// fetching
+// fetching the different exercises that are stored in the database
 let response = await fetch(
   "https://jlgsxiynwqvvhwheexwo.supabase.co/rest/v1/exercises",
   {
@@ -23,22 +23,20 @@ const addButtons = document.querySelectorAll(".exerciseButton");
 const parentElement = document.querySelector(".program-list");
 const template = document.querySelector(".small-exercise-card").content;
 
-// Tilføjer eventListeners til "tilføj"-knapperne
-// Øvelsen, som man har klikket på, har et id, som bliver indsat i et array "programArray".
-// De fetchede data bliver filtreret, så det kun er de id'er fra arrayet, hvis data bliver mappet igennem
-// Under mappingen bliver der clonet et template for hver tilføjet øvelse, og data fra øvelserne indsættes i templatet.
-// Der tilføjes eventListeners til fjern-knapperne, som fjerner øvelsens id fra arrayet
-// Til sidst bliver templatet tilføjet til parenElement "program-list" vha. appendChild
-
+// If the program-list is stored in sessionStorage, the programArray will be set to a list consisting of the exercises from the stored program list.
 if (sessionStorage.getItem("program-list")) {
   exercisesList = JSON.parse(sessionStorage.getItem("program-list"));
   programArray = exercisesList.map((arr) => arr[0]);
 }
 
+// If the program title is stored in sessionStorage, the inputfield with id: "program-title" in
+// the pop up modal "ProgramModal" will be set to the stored program title.
 if (sessionStorage.getItem("program-title")) {
   document.getElementById("program_title").value =
     sessionStorage.getItem("program-title");
 }
+// If the program description is stored in sessionStorage, the inputfield with id: "program-description in
+// the pop up modal "ProgramModal" will be set to the stored program description.
 if (sessionStorage.getItem("program-description")) {
   document.getElementById("program_description").value = sessionStorage.getItem(
     "program-description"
@@ -56,12 +54,16 @@ if (programArray.length > 0) {
   mappingProgram(filteredData, programArray, exercisesList);
 }
 
+// Adding evenListener to the "Gem" button, when minimum one exercise has been added.
 document.querySelector(".save").addEventListener("mousedown", () => {
   if (exercisesList.length > 0) {
     document.querySelector(".program-modal").showModal();
   }
 });
 
+// Adding eventListeners to the "Tilføj"-buttons
+// The exercise, that is clicked on, has an id, that is getting pushed into the array "programArray".
+// The fetched data is being filtrered, in order to only show the id's from the array, that is being mapped through
 addButtons.forEach((button) => {
   const buttonId = button.getAttribute("data-button-id");
   button.addEventListener("mousedown", () => {
@@ -89,6 +91,9 @@ addButtons.forEach((button) => {
   });
 });
 
+// When mapping, the template is being cloned for each added exercise, and the data from the exercises is added to the template.
+// There is added  eventListeners to the "fjern"-buttons, that removes the exercise id from the array
+// In the end the template is added to the parenElement "program-list" by using appendChild
 function mappingProgram(filteredData, programArray, exercisesList) {
   filteredData.map((exercise) => {
     document.getElementById(`text-${exercise.image}`).textContent = "Tilføjet";
@@ -208,12 +213,16 @@ function retractRepitition(id) {
 let uuid;
 let obj;
 
+//Getting the uuid from either localStorage or sessionStorage
+//If the user is automatically logged in, the uuid will be stored in localStorage. Otherwise it is stored in sessionStorage
 if (localStorage.getItem("uuid")) {
   uuid = localStorage.getItem("uuid");
 } else {
   uuid = sessionStorage.getItem("uuid");
 }
 
+//Fetching the data filtered by the uuid. If the uuid isn't stored in either localStorage or sessionStorage
+// then the user isn't logged in and will therefore be send to the starting page.
 const userData = await fetch(url + `?id=eq.${uuid}`, {
   method: "GET",
   headers: { apikey: api },

@@ -3,12 +3,16 @@ const url = "https://jlgsxiynwqvvhwheexwo.supabase.co/rest/v1/user-data";
 const api =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpsZ3N4aXlud3F2dmh3aGVleHdvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTQ0NzA5MjksImV4cCI6MjAzMDA0NjkyOX0.U40ZZWRh_MC7612vdwFHVKFZxwRHq_TECCnnzovEXKE";
 
+//Getting the uuid from either localStorage or sessionStorage
+//If the user is automatically logged in, the uuid will be stored in localStorage. Otherwise it is stored in sessionStorage
 if (localStorage.getItem("uuid")) {
   uuid = localStorage.getItem("uuid");
 } else {
   uuid = sessionStorage.getItem("uuid");
 }
 
+//Fetching the data filtered by the uuid. If the uuid isn't stored in either localStorage or sessionStorage
+// then the user isn't logged in and will therefore be send to the starting page.
 const userData = await fetch(url + `?id=eq.${uuid}`, {
   method: "GET",
   headers: { apikey: api },
@@ -21,6 +25,9 @@ const userData = await fetch(url + `?id=eq.${uuid}`, {
 
 let obj;
 
+// When mapping the saved programs, the template is being cloned for each added exercise, and the data from the exercises is added to the template.
+// There is added  eventListeners to the "delete"-buttons, that deletes the program with the specific program id from the array
+// In the end the template is added to the parenElement "program-list" by using appendChild
 const parentElement = document.querySelector(".program-list");
 const template = document.querySelector(".card-template").content;
 
