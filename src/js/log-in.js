@@ -3,6 +3,8 @@ window.addEventListener("load", () => {
   document.getElementById("error").classList.add("hide");
 });
 
+// When clicking submit a fetch request will be sent to the database
+// Data that matches the username (which the user has put in the inputfield log-in-username) will be fetched
 const form = document.querySelector("form");
 
 form.addEventListener("submit", logInFunction);
@@ -24,6 +26,8 @@ async function logInFunction(e) {
     },
   };
 
+  // If the fetch request fails, the data don't exist in the database and an error message will be displayed
+  // telling the user that either the username or the password is wrong
   const data = await fetch(url, options).then((res) => {
     if (!res.ok) {
       document.getElementById("error").classList.remove("hide");
@@ -31,6 +35,9 @@ async function logInFunction(e) {
     return res.json();
   });
 
+  // If the password that the user has inserted in the inputfield doesn't match the password in the database
+  // and error message will be displayed, telling the user that either the username or the password is wrong
+  // If the password is equal to the password from the database, the user will be redirected to the page /gemte-programmer
   if (data.length > 0 && data[0].password === password) {
     if (document.getElementById("auto-log-in").checked) {
       localStorage.setItem("uuid", data[0].id);

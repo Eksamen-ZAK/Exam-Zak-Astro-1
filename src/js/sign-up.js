@@ -23,6 +23,7 @@ const url = "https://jlgsxiynwqvvhwheexwo.supabase.co/rest/v1/user-data";
 const api =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpsZ3N4aXlud3F2dmh3aGVleHdvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTQ0NzA5MjksImV4cCI6MjAzMDA0NjkyOX0.U40ZZWRh_MC7612vdwFHVKFZxwRHq_TECCnnzovEXKE";
 
+// A fetch request is being sent in order to post the data that the user has put in
 function signUp(newUser) {
   const options = {
     method: "POST",
@@ -44,10 +45,9 @@ function signUp(newUser) {
 
 const form = document.querySelector(".sign-up");
 
-// passwordInput.addEventListener("focus", validator);
-// passwordInput.addEventListener("keyup", validator);
-// document.getElementById("repeatPassword").addEventListener("keyup", validator);
-
+// The following function checks if the password includes an upper and a lower case letter and a number.
+// It also checks if the password is at least 8 characters long
+// An error message will be displayed if one of the four requirements is not being met
 function displayErrorMessage() {
   document.getElementById("error").classList.add("hide");
   if (
@@ -77,6 +77,11 @@ function displayErrorMessage() {
   }
 }
 
+// When clicking submit (the button fortsæt) an uuid will be set as user id and the username will be set
+// according to the inputfield "username" value. The password will be set to the value of the inputfield "password"
+// This will be stored in an object. If all requirements for the password is met it will execute the signUp function
+// where obj will be sent as a parameter. If the two password inputfields values are different from eachother
+// an error message will be displayed. If the requirements are not fulfilled the displayErrorMessage function will be executed
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 

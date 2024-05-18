@@ -91,7 +91,7 @@ if (userData[0].saved_programs) {
   });
 }
 
-//patching program liste
+//patching program list
 async function saveProgram(program) {
   fetch(
     `https://jlgsxiynwqvvhwheexwo.supabase.co/rest/v1/user-data?id=eq.${uuid}`,
@@ -167,7 +167,7 @@ form.addEventListener("submit", (e) => {
   saveGoal(item);
 });
 
-//patching program liste
+// A fetch request is being sent to the database in order to patch the program list
 async function saveGoal(program) {
   fetch(
     `https://jlgsxiynwqvvhwheexwo.supabase.co/rest/v1/user-data?id=eq.${uuid}`,
