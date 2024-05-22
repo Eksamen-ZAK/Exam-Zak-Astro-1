@@ -18,7 +18,10 @@ const { label, id, type, variant, icon, required = false } = Astro.props;
     icon && <img class={icon} src={`../assets/${icon}.svg`} alt={icon} />
   }</label
 >
-<input class={variant && variant} id={id} name={id} type={type} required />
+<div class={variant}>
+  <input class={variant && variant} id={id} name={id} type={type} required />
+  {variant === "password" && <div class="password-on" id={`${id}-button`} />}
+</div>
 
 <style>
   input:focus {
@@ -43,9 +46,48 @@ const { label, id, type, variant, icon, required = false } = Astro.props;
   img {
     margin-left: 5px;
     margin-bottom: 5px;
+    cursor: pointer;
   }
   .fullWidth {
     width: 100%;
     margin-bottom: 10px;
+  }
+  div {
+    position: relative;
+    display: flex;
+    width: 100%;
+    > input {
+      width: 100%;
+    }
+  }
+  .password {
+    width: 315px;
+  }
+
+  .password-off {
+    width: 25px;
+    height: 26px;
+    background-image: url(../public/assets/eye-on.svg);
+    object-fit: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    right: 5%;
+    top: 35%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+  .password-on {
+    width: 25px;
+    height: 26px;
+    background-image: url(../public/assets/eye-off.svg);
+    object-fit: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    right: 5%;
+    top: 35%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    cursor: pointer;
   }
 </style>

@@ -1,22 +1,24 @@
+// An eventListener is added to every the burger-menu button. When clicking on the burger menu button the class "hide"
+// will be removed from the menu and the navigation bar will be displayed
 document.querySelectorAll(".burger-menu").forEach((menu) =>
   menu.addEventListener("mousedown", () => {
-    document.querySelectorAll(".menu-overlay").forEach((overlay) => overlay.classList.remove("hide"));
+    document
+      .querySelectorAll(".menu-overlay")
+      .forEach((overlay) => overlay.classList.remove("hide"));
   })
 );
+
+// An eventListener is added to every close-menu button. When clicking on the button the class "hide"
+// will be added to the menu and the navigation bar will be hidden
 document.querySelectorAll(".close-menu").forEach((menu) =>
   menu.addEventListener("mousedown", () => {
-    document.querySelectorAll(".menu-overlay").forEach((overlay) => overlay.classList.add("hide"));
+    document
+      .querySelectorAll(".menu-overlay")
+      .forEach((overlay) => overlay.classList.add("hide"));
   })
 );
-// --fs-xs: 10px;
-// --fs-s: 14px;
-// --fs-small-card: 16px;
-// --fs-m: 18px;
-// --fs-ml: 24px;
-// --fs-l: 30px;
-// --fs-xl: 32px;
-// --primary-color: #901a36;
-//     --secondary-color: #749e2e;
+
+// When the window loads the following 4 functions will be executed. Each function is checking if settings has been set by the user
 window.addEventListener("load", () => {
   getFontSize();
   getColors();
@@ -24,6 +26,8 @@ window.addEventListener("load", () => {
   getSpeech();
 });
 
+// If font size is stored in localStorage the html variables that sets the font size will be changed according to
+// the stored font size
 function getFontSize() {
   if (localStorage.getItem("font-size")) {
     const html = document.querySelector("html");
@@ -52,6 +56,9 @@ function getFontSize() {
     }
   }
 }
+
+// If color status is stored in localStorage the html variables that sets the color will be changed according to
+// the stored color status
 function getColors() {
   if (localStorage.getItem("color-status")) {
     const html = document.querySelector("html");
@@ -67,6 +74,9 @@ function getColors() {
     }
   }
 }
+
+// If contrast is stored in localStorage the html variables that sets the colors will be changed according to
+// the stored contrast
 function getContrast() {
   if (localStorage.getItem("contrast")) {
     const html = document.querySelector("html");

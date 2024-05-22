@@ -8,40 +8,22 @@ import MenuItem from "./MenuItem.astro";
   </button>
 
   <div class="menu-content">
-    <MenuItem
-      text="Profil"
-      image="profile-icon"
-      altText="Profil ikon"
-      link="/profil"
-    />
+    <MenuItem text="Profil" image="profile-icon" link="/profil" />
     <MenuItem
       text="Lav dit program"
       image="build-icon"
-      altText="Værktøj ikon"
       link="/lav-dit-program"
     /><MenuItem
       text="Gemte programmer"
       image="bookmark-icon"
-      altText="Bogmærke ikon"
       link="/gemte-programmer"
-    /><MenuItem
-      text="Statistik"
-      image="stats-icon"
-      altText="Statistik ikon"
-      link="/statistik"
-    />
-    <MenuItem
-      text="Om os"
-      image="about-us-icon"
-      altText="Gruppe personer ikon"
-      link="#"
-    />
+    /><MenuItem text="Statistik" image="stats-icon" link="/statistik" />
     <MenuItem
       text="Indstillinger"
       image="settings-icon"
-      altText="Tandhjul ikon"
       link="/indstillinger"
     />
+    <MenuItem text="Log af" image="exit-icon" link="/" id="exit" />
   </div>
 
   <style>

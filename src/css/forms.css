@@ -62,4 +62,5 @@ li {
 }
 .close-button {
   width: 25px;
+  cursor: pointer;
 }

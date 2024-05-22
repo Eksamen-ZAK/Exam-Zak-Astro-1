@@ -29,6 +29,32 @@ document.querySelector(".close-button").addEventListener("mousedown", () => {
   document.querySelector(".password-dialog").close();
 });
 
+const passwordButton = document.getElementById("password-button");
+passwordButton.addEventListener("mousedown", () => {
+  if (passwordButton.classList.contains("password-on")) {
+    passwordButton.classList.remove("password-on");
+    passwordButton.classList.add("password-off");
+    document.getElementById("password").type = "text";
+  } else {
+    passwordButton.classList.remove("password-off");
+    passwordButton.classList.add("password-on");
+    document.getElementById("password").type = "password";
+  }
+});
+
+const repeatPasswordButton = document.getElementById("repeatPassword-button");
+repeatPasswordButton.addEventListener("mousedown", () => {
+  if (repeatPasswordButton.classList.contains("password-on")) {
+    repeatPasswordButton.classList.remove("password-on");
+    repeatPasswordButton.classList.add("password-off");
+    document.getElementById("repeatPassword").type = "text";
+  } else {
+    repeatPasswordButton.classList.remove("password-off");
+    repeatPasswordButton.classList.add("password-on");
+    document.getElementById("repeatPassword").type = "password";
+  }
+});
+
 const url = "https://jlgsxiynwqvvhwheexwo.supabase.co/rest/v1/user-data";
 const api =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpsZ3N4aXlud3F2dmh3aGVleHdvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTQ0NzA5MjksImV4cCI6MjAzMDA0NjkyOX0.U40ZZWRh_MC7612vdwFHVKFZxwRHq_TECCnnzovEXKE";

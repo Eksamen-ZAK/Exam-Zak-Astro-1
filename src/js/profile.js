@@ -117,7 +117,7 @@ saveButton.addEventListener("mousedown", (e) => {
   savePersonalInformation(obj);
 });
 
-// The object is being patched through a fetch request to the data-base
+// The object is being patched through a fetch request to the database
 async function savePersonalInformation(info) {
   console.log(JSON.stringify(info));
   fetch(

@@ -1,0 +1,86 @@
+---
+import Button from "./Button.astro";
+import IconListItem from "./IconListItem.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  image: string;
+  variant?: string;
+}
+
+const { title, description, image, variant } = Astro.props;
+---
+
+<article>
+  <div class="image-container">
+    <img src=`${image}` alt=`${title} image` />
+  </div>
+  <div class="text-container">
+    <h3>{title}</h3>
+    <p>{description}</p>
+    <div class="functions-list">
+      <IconListItem text="Tilføj målsætning" icon="assets/target-icon.png" />
+      <IconListItem text="Rediger" icon="assets/pen-black.svg" />
+    </div>
+    <div class="buttons">
+      <Button
+        type="button"
+        text="Slet"
+        variant="fullWidth red small"
+        icon="trashcan"
+      /><Button
+        type="button"
+        text="Afspil"
+        variant="fullWidth green small"
+        icon="play"
+      />
+    </div>
+  </div>
+</article>
+
+<style>
+  article {
+    width: 264px;
+    max-height: 700px;
+    padding: 16px;
+  }
+  .image-container {
+    width: 252px;
+    height: 180px;
+  }
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    margin-bottom: 27px;
+  }
+  h3 {
+    font-family: var(--main-font);
+    font-size: var(--fs-ml);
+    font-weight: var(--fw-b);
+    margin-bottom: 3px;
+  }
+  p {
+    font-family: var(--main-font);
+    font-size: var(--fs-m);
+    font-weight: var(--fw-l);
+  }
+  .text-container {
+    padding: 0 15px;
+    margin-bottom: 12px;
+  }
+  .functions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 26px;
+  }
+  .buttons {
+    display: flex;
+    width: 225px;
+
+    gap: 7px;
+    margin: 0 auto;
+  }
+</style>
