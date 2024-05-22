@@ -23,58 +23,9 @@ import "../css/generel.css";
 <Layout title="Profil">
   <main>
     <Menu />
-    <div class="fade-img"><img src="../../assets/images/023.webp" alt="person"></div>
-        <article class="person-data">
-            <img class="profile-pic" src="../../public/assets/placeholder-foto.svg" alt="profilbillede">
-            <div>
-                <div id="personal-info">
-                    <h2>Person information</h2>
-                    <div class="info-lists">
-                        <ul class="colored-text">
-                            <p>Navn:</p>
-                            <p>Fødselsdag:</p>
-                            <p>Tlf. Nr.:</p>
-                            <p>Mail:</p>
-                        </ul>
-                        <ul>
-                            <p id="name">Ukendt</p>
-                            <p id="birthday">Ukendt</p>
-                            <p id="tlf">Ukendt</p>
-                            <p id="mail">Ukendt</p>
-                        </ul>
-                    </div>
-                </div>
-                <div id="gen-info">
-                    <div id="locked-info">
-                        <h2>Generel information</h2>
-                        <img src="" alt="">
-                    </div>
-                    <div class="info-lists">
-                        <ul class="colored-text">
-                            <p>Bruger navn:</p>
-                            <p>BrugerID:</p>
-                            <p>Oprettet:</p>
-                        </ul>
-                        <ul>
-                            <p id="user-name">Ukendt</p>
-                            <p id="userID">Ukendt</p>
-                            <p id="accessdate">Ukendt</p>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="buttons">
-                <Button
-                  type="button"
-                  text="Log af"
-                  icon="log-out"
-                  variant="red fullWidth small"
-                /><Button
-                  type="button"
-                  text="Rediger"
-                  icon="edit"
-                  variant="green fullWidth small"
-    <h1>Profil</h1>
+    <div class="fade-img">
+      <img src="../../assets/images/023.webp" alt="person" />
+    </div>
     <form id="person-data">
       <img
         class="profile-pic"
@@ -95,193 +46,184 @@ import "../css/generel.css";
                   id="birthday"
                   name="birthday"
                   type="date"
-
-                <li>
-                  <p>Tlf. Nr.:</p><input
-                    disabled
-                    id="tlf"
-                    name="tlf"
-                    type="tel"
-                  />
-                </li>
-                <li>
-                  <p>Mail:</p><input
-                    disabled
-                    id="mail"
-                    name="mail"
-                    type="email"
-                  />
-                </li>
+                />
+              </li>
+              <li>
+                <p>Tlf. Nr.:</p><input
+                  disabled
+                  id="tlf"
+                  name="tlf"
+                  type="tel"
+                />
+              </li>
+              <li>
+                <p>Mail:</p><input
+                  disabled
+                  id="mail"
+                  name="mail"
+                  type="email"
+                />
               </li>
             </ul>
           </div>
-          <div id="gen-info">
-            <div id="locked-info">
-              <h2>Generel information</h2>
-              <img src="" alt="" />
-            </div>
-            <div class="info-lists">
-              <ul class="colored-text">
-                <li>Bruger navn:</li>
-                <li>BrugerID:</li>
-                <li>Oprettet:</li>
-              </ul>
-              <ul>
-                <li id="user-name"></li>
-                <li id="userID"></li>
-                <li id="accessdate"></li>
-              </ul>
-            </div>
+        </div>
+        <div id="gen-info">
+          <div id="locked-info">
+            <h2>Generel information</h2>
+            <img src="" alt="" />
+          </div>
+          <div class="info-lists">
+            <ul class="colored-text">
+              <li>Bruger navn:</li>
+              <li>BrugerID:</li>
+              <li>Oprettet:</li>
+            </ul>
+            <ul>
+              <li id="user-name"></li>
+              <li id="userID"></li>
+              <li id="accessdate"></li>
+            </ul>
           </div>
         </div>
-        <div class="buttons">
-          <Button
-            type="button"
-            text="Log af"
-            icon="log-out"
-            variant="red fullWidth small log-out"
-          /><Button
-            type="submit"
-            text="Rediger"
-            icon="edit"
-            variant="invertedGreen fullWidth small edit"
-          /><Button
-            type="submit"
-            text="Gem"
-            variant="green fullWidth small hide save"
-          />
-        </div>
+      </div>
+      <div class="buttons">
+        <Button
+          type="button"
+          text="Log af"
+          icon="log-out"
+          variant="red fullWidth small log-out"
+        /><Button
+          type="submit"
+          text="Rediger"
+          icon="edit"
+          variant="invertedGreen fullWidth small edit"
+        /><Button
+          type="submit"
+          text="Gem"
+          variant="green fullWidth small hide save"
+        />
       </div>
     </form>
-    <script src="../js/profile.js"></script>
-    <script src="../js/generel.js"></script>
-  </main></Layout>
-
+  </main>
+  <script src="../js/profile.js"></script>
+  <script src="../js/generel.js"></script>
+</Layout>
 
 <style>
-    article {
-        display: flex;
-        flex-direction: column;
-        gap: 3rem;
-        margin-top: 7%;
+  main {
+    margin: 0rem 5rem;
+    padding-top: 50px;
+  }
+  * {
+    margin: 0;
+    padding: 0;
+  }
 
-    main {
-      margin: 0rem 5rem;
-      padding-top: 50px;
-    }
-    * {
-      margin: 0;
-      padding: 0;
-    }
-
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 3rem;
-    }
-    h1 {
-      font-size: var(--fs-l);
-      font-family: var(--main-font);
-      font-weight: var(--fw-b);
-      display: none;
-    }
-    input {
-      background-color: transparent;
-      border: 0;
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+  h1 {
+    font-size: var(--fs-l);
+    font-family: var(--main-font);
+    font-weight: var(--fw-b);
+    display: none;
+  }
+  input {
+    background-color: transparent;
+    border: 0;
+    font-size: var(--fs-small-card);
+    font-family: var(--main-font);
+    font-weight: var(--fw-n);
+    color: black;
+  }
+  h2 {
+    margin-bottom: 6px;
+    font-size: var(--fs-m);
+    font-family: var(--main-font);
+    font-weight: var(--fw-b);
+  }
+  ul {
+    display: grid;
+    gap: 0.2rem;
+    align-items: center;
+    > li {
       font-size: var(--fs-small-card);
       font-family: var(--main-font);
       font-weight: var(--fw-n);
-      color: black;
-
     }
-    h2 {
-      margin-bottom: 6px;
-      font-size: var(--fs-m);
-      font-family: var(--main-font);
-      font-weight: var(--fw-b);
-    }
-    ul {
+  }
+  li {
+    list-style: none;
+  }
+  form > img {
+    height: 120px;
+    width: 120px;
+    margin: 0 2rem;
+  }
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 260px;
+    height: 100px;
+  }
+  .person-info {
+    > li {
       display: grid;
-      gap: 0.2rem;
-      align-items: center;
-      > li {
-        font-size: var(--fs-small-card);
-        font-family: var(--main-font);
-        font-weight: var(--fw-n);
-      }
-    }
-    li {
-      list-style: none;
-    }
-    form > img {
-      height: 120px;
-      width: 120px;
-      margin: 0 2rem;
-    }
-    .buttons {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      width: 260px;
-      height: 100px;
-    }
-    .person-info {
-      > li {
-        display: grid;
-        grid-template-columns: 100px 150px;
+      grid-template-columns: 100px 150px;
 
-        > p {
-          color: var(--primary-color);
-          font-weight: var(--fw-b);
-        }
-      }
-    }
-    .info-lists {
-      display: flex;
-      gap: 1.5rem;
-      > .colored-text {
+      > p {
         color: var(--primary-color);
         font-weight: var(--fw-b);
       }
     }
-    #gen-info {
-      margin-top: 30px;
+  }
+  .info-lists {
+    display: flex;
+    gap: 1.5rem;
+    > .colored-text {
+      color: var(--primary-color);
+      font-weight: var(--fw-b);
     }
-    #personal-info {
-      margin-bottom: 2rem;
+  }
+  #gen-info {
+    margin-top: 30px;
+  }
+  #personal-info {
+    margin-bottom: 2rem;
+  }
+  #locked-info {
+    display: flex;
+    gap: 0.5rem;
+    > img {
+      width: 1rem;
+      height: 1rem;
     }
-    #locked-info {
-      display: flex;
-      gap: 0.5rem;
-      > img {
-        width: 1rem;
-        height: 1rem;
-      }
-    }
-    .fade-img > img {
-      filter: grayscale(1);
-      opacity: 0.1;
-      width: 70vw;
-      margin-top: -15%;
-    }
-    .fade-img {
-        position: absolute;
-        top: 0%;
-        right: -35%;
-        height: 100vh;
-        overflow: hidden;
-    }
+  }
+  .fade-img > img {
+    filter: grayscale(1);
+    opacity: 0.1;
+    width: 70vw;
+    margin-top: -15%;
+  }
+  .fade-img {
+    position: absolute;
+    top: 0%;
+    right: -35%;
+    height: 100vh;
+    overflow: hidden;
+  }
 
-    input {
-      padding-left: 12px;
-      margin-left: 5px;
-    }
-    .active {
-      background: var(--alternative-bg-color);
-      border-radius: 10px;
-      border: 0;
-      font-size: var(--fs-s);
-    }
-  </style>
-
-
+  input {
+    padding-left: 12px;
+    margin-left: 5px;
+  }
+  .active {
+    background: var(--alternative-bg-color);
+    border-radius: 10px;
+    border: 0;
+    font-size: var(--fs-s);
+  }
+</style>
