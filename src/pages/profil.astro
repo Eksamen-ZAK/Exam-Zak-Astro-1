@@ -23,6 +23,57 @@ import "../css/generel.css";
 <Layout title="Profil">
   <main>
     <Menu />
+    <div class="fade-img"><img src="../../assets/images/023.webp" alt="person"></div>
+        <article class="person-data">
+            <img class="profile-pic" src="../../public/assets/placeholder-foto.svg" alt="profilbillede">
+            <div>
+                <div id="personal-info">
+                    <h2>Person information</h2>
+                    <div class="info-lists">
+                        <ul class="colored-text">
+                            <p>Navn:</p>
+                            <p>Fødselsdag:</p>
+                            <p>Tlf. Nr.:</p>
+                            <p>Mail:</p>
+                        </ul>
+                        <ul>
+                            <p id="name">Ukendt</p>
+                            <p id="birthday">Ukendt</p>
+                            <p id="tlf">Ukendt</p>
+                            <p id="mail">Ukendt</p>
+                        </ul>
+                    </div>
+                </div>
+                <div id="gen-info">
+                    <div id="locked-info">
+                        <h2>Generel information</h2>
+                        <img src="" alt="">
+                    </div>
+                    <div class="info-lists">
+                        <ul class="colored-text">
+                            <p>Bruger navn:</p>
+                            <p>BrugerID:</p>
+                            <p>Oprettet:</p>
+                        </ul>
+                        <ul>
+                            <p id="user-name">Ukendt</p>
+                            <p id="userID">Ukendt</p>
+                            <p id="accessdate">Ukendt</p>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="buttons">
+                <Button
+                  type="button"
+                  text="Log af"
+                  icon="log-out"
+                  variant="red fullWidth small"
+                /><Button
+                  type="button"
+                  text="Rediger"
+                  icon="edit"
+                  variant="green fullWidth small"
     <h1>Profil</h1>
     <form id="person-data">
       <img
@@ -44,7 +95,6 @@ import "../css/generel.css";
                   id="birthday"
                   name="birthday"
                   type="date"
-                />
 
                 <li>
                   <p>Tlf. Nr.:</p><input
@@ -105,9 +155,16 @@ import "../css/generel.css";
     </form>
     <script src="../js/profile.js"></script>
     <script src="../js/generel.js"></script>
-  </main>
+  </main></Layout>
 
-  <style>
+
+<style>
+    article {
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+        margin-top: 7%;
+
     main {
       margin: 0rem 5rem;
       padding-top: 50px;
@@ -135,6 +192,7 @@ import "../css/generel.css";
       font-family: var(--main-font);
       font-weight: var(--fw-n);
       color: black;
+
     }
     h2 {
       margin-bottom: 6px;
@@ -200,6 +258,20 @@ import "../css/generel.css";
         height: 1rem;
       }
     }
+    .fade-img > img {
+      filter: grayscale(1);
+      opacity: 0.1;
+      width: 70vw;
+      margin-top: -15%;
+    }
+    .fade-img {
+        position: absolute;
+        top: 0%;
+        right: -35%;
+        height: 100vh;
+        overflow: hidden;
+    }
+
     input {
       padding-left: 12px;
       margin-left: 5px;
@@ -211,4 +283,5 @@ import "../css/generel.css";
       font-size: var(--fs-s);
     }
   </style>
-</Layout>
+
+
