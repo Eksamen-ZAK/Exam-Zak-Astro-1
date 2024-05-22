@@ -17,18 +17,28 @@ import Menu from "../components/Menu.astro";
         image="assets/text-icon.svg"
         altText="text icon"
         type="pop-up text-size-setting"
+        klasse="color-status"
       />
       <SettingItem
         text="Kontrast"
         image="assets/contrast-icon.svg"
         altText="contrast icon"
         type="pop-up contrast-setting"
+        klasse="color-status"
       />
       <SettingItem
         text="Farver: "
         image="assets/palette-icon.svg"
         altText="palette icon"
         type="toggle"
+        klasse="color-status"
+      />
+      <SettingItem
+        text="Tekst oplæser: "
+        image="assets/speech-icon.svg"
+        altText="talebobbel icon"
+        type="toggle2"
+        klasse="speech-status"
       />
     </div>
   </main>
@@ -49,8 +59,8 @@ import Menu from "../components/Menu.astro";
   }
   div {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    width: 802px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    width: 75vw;
     margin: 0 auto;
   }
 </style>
