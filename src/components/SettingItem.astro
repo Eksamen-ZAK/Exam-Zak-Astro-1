@@ -4,13 +4,14 @@ interface Props {
   image: string;
   altText: string;
   type: string;
+  klasse: string;
 }
-const { image, altText, text, type } = Astro.props;
+const { image, altText, text, type, klasse } = Astro.props;
 ---
 
 <button class={type}>
   <img src={image} alt={altText} />
-  <p>{text}{type === "toggle" && <span class="color-status">til</span>}</p>
+  <p>{text}{type === "toggle" && <span class={klasse} >til</span>}{type === "toggle2" && <span class={klasse} >til</span>}</p>
 </button>
 
 <style>
@@ -36,7 +37,7 @@ const { image, altText, text, type } = Astro.props;
   }
   p {
     margin-top: 0;
-    font-size: var(--fs-l);
+    font-size: var(--fs-ml);
     font-family: var(--main-font);
     color: var(--primary-color);
   }
