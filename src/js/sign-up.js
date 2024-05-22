@@ -19,6 +19,16 @@ window.addEventListener("load", () => {
   passwordInput.classList.remove("invalid");
 });
 
+document
+  .querySelector(".info-icon")
+  .addEventListener("click", () =>
+    document.querySelector(".password-dialog").showModal()
+  );
+
+document.querySelector(".close-button").addEventListener("mousedown", () => {
+  document.querySelector(".password-dialog").close();
+});
+
 const url = "https://jlgsxiynwqvvhwheexwo.supabase.co/rest/v1/user-data";
 const api =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpsZ3N4aXlud3F2dmh3aGVleHdvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTQ0NzA5MjksImV4cCI6MjAzMDA0NjkyOX0.U40ZZWRh_MC7612vdwFHVKFZxwRHq_TECCnnzovEXKE";

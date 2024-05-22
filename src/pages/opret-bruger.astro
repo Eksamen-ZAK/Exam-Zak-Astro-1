@@ -7,6 +7,18 @@ import "../css/forms.css";
 
 <LoginLayout title="Opret bruger">
   <main>
+    <dialog class="password-dialog">
+      <div>
+        <img src="../assets/x-red.svg" alt="red x" class="close-button" />
+      </div>
+      <p>Din adgangskode skal bestå af:</p>
+      <ul>
+        <li>Mindst 8 tegn</li>
+        <li>Mindst et lille bogstav</li>
+        <li>Mindst et stort bogstav</li>
+        <li>Mindst et tal</li>
+      </ul>
+    </dialog>
     <div>
       <h1>Opret bruger:</h1>
       <form class="sign-up">
@@ -15,6 +27,7 @@ import "../css/forms.css";
           label="Adgangskode"
           id="password"
           type="password"
+          icon="info-icon"
           required
           pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
         />
