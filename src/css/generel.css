@@ -1,22 +1,3 @@
-root {
-  --fs-xs: 10px;
-  --fs-s: 14px;
-  --fs-small-card: 16px;
-  --fs-m: 18px;
-  --fs-ml: 24px;
-  --fs-l: 30px;
-  --fs-xl: 32px;
-  --primary-color: #901a36;
-  --secondary-color: #749e2e;
-}
-
-main {
-  margin: 0rem 5rem;
-}
-* {
-  margin: 0;
-  padding: 0;
-}
 h1 {
   font-size: var(--fs-xl);
   font-family: var(--main-font);

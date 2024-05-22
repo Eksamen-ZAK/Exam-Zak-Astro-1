@@ -49,7 +49,9 @@ const { text, icon, variant, href, type, buttonId } = Astro.props;
     border-radius: 10px;
     cursor: pointer;
   }
-
+  .hide {
+    display: none;
+  }
   .fullWidth {
     width: 100%;
     flex-grow: 1;
@@ -129,6 +131,12 @@ const { text, icon, variant, href, type, buttonId } = Astro.props;
       background-image: url(../public/assets/bookmark-green.svg);
       width: 13px;
     }
+    > #edit {
+      background-image: url(../public/assets/pen.svg);
+      margin-left: 0.5rem;
+      width: 13px;
+      height: 13px;
+    }
   }
   .invertedGreen:hover {
     color: var(--main-bg-color);
@@ -137,6 +145,12 @@ const { text, icon, variant, href, type, buttonId } = Astro.props;
     > #bookmark {
       background-image: url(../public/assets/bookmark.svg);
       width: 18px;
+    }
+    > #edit {
+      background-image: url(../public/assets/edit-white.svg);
+      margin-left: 0.5rem;
+      width: 13px;
+      height: 13px;
     }
   }
   #play {

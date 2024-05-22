@@ -1,0 +1,40 @@
+---
+interface Props {
+  image: string;
+  title: string;
+}
+const { image, title } = Astro.props;
+---
+
+<article>
+  <div>
+    <img src=`../assets/${image}.svg` alt="stat icon" /><h1>
+      {title}
+    </h1>
+  </div><slot />
+</article>
+
+<style>
+  article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 215px;
+    height: 370px;
+    padding: 30px 25px;
+    border-radius: 8px;
+    background-color: var(--alternative-bg-color);
+  }
+  div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 220px;
+  }
+  h1 {
+    font-family: var(--main-font);
+    font-size: var(--fs-ml);
+    font-weight: var(--fw-b);
+  }
+</style>

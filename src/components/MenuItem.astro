@@ -3,12 +3,12 @@ interface Props {
   text: string;
   link: string;
   image: string;
-  altText: string;
+  id?: string;
 }
-const { link, image, altText, text } = Astro.props;
+const { link, image, text, id } = Astro.props;
 ---
 
-<button class="menu-item" data-link={link}>
+<button class="menu-item" data-link={link} id={id}>
   <div class={image}></div>
   <p>{text}</p>
 </button>
@@ -18,6 +18,10 @@ const { link, image, altText, text } = Astro.props;
   buttons.forEach((button) => {
     const href = button.getAttribute("data-link");
     button.addEventListener("mousedown", () => {
+      if (href === "/") {
+        sessionStorage.setItem("uuid", "");
+        localStorage.setItem("uuid", "");
+      }
       window.location.href = `${href}`;
       if (sessionStorage.getItem("program-list")) {
         sessionStorage.setItem("program-title", "");
@@ -75,6 +79,24 @@ const { link, image, altText, text } = Astro.props;
     height: 125px;
     padding: 2px;
     background-image: url(../public/assets/build-icon.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  .profile-icon {
+    width: 125px;
+    height: 125px;
+    margin-left: 10px;
+    padding: 2px;
+    background-image: url(../public/assets/profile-icon.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  .profile-icon:hover {
+    width: 125px;
+    height: 125px;
+    margin-left: 10px;
+    padding: 2px;
+    background-image: url(../public/assets/profile-filled.svg);
     background-repeat: no-repeat;
     background-size: contain;
   }
@@ -139,5 +161,23 @@ const { link, image, altText, text } = Astro.props;
     height: 121px;
     padding: 2px;
     background-image: url(../public/assets/settings-filled-icon.svg);
+  }
+  .exit-icon {
+    width: 125px;
+    height: 125px;
+    padding: 2px;
+    margin-left: 20px;
+    background-image: url(../public/assets/exit-icon.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  .exit-icon:hover {
+    width: 125px;
+    height: 125px;
+    padding: 2px;
+    margin-left: 20px;
+    background-image: url(../public/assets/exit-filled.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
   }
 </style>
