@@ -23,7 +23,9 @@ import "../css/forms.css";
 
 <LoginLayout title="Log ind">
   <main>
-    <div class="fade-img"><img src="../../assets/images/023.webp" alt="person"></div>
+    <div class="fade-img">
+      <img src="../../assets/images/023.webp" alt="person" />
+    </div>
     <div>
       <h1>Log ind:</h1>
       <form>
@@ -37,9 +39,10 @@ import "../css/forms.css";
           label="Adgangskode"
           id="log-in-password"
           type="password"
+          variant="password"
+          icon="info-icon"
           required
           pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-          title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
         />
         <div>
           <input type="checkbox" id="auto-log-in" name="auto-log-in" />
@@ -67,16 +70,16 @@ import "../css/forms.css";
 
 <style>
   .fade-img > img {
-      filter: grayscale(1);
-      opacity: 0.1;
-      width: 70vw;
-      margin-top: -15%;
-    }
-    .fade-img {
-        position: absolute;
-        top: 0%;
-        right: -35%;
-        height: 100vh;
-        overflow: hidden;
-    }
+    filter: grayscale(1);
+    opacity: 0.1;
+    width: 70vw;
+    margin-top: -15%;
+  }
+  .fade-img {
+    position: absolute;
+    top: 0%;
+    right: -35%;
+    height: 100vh;
+    overflow: hidden;
+  }
 </style>

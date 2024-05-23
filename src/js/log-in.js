@@ -49,3 +49,16 @@ async function logInFunction(e) {
     document.getElementById("error").classList.remove("hide");
   }
 }
+
+const passwordButton = document.getElementById("log-in-password-button");
+passwordButton.addEventListener("mousedown", () => {
+  if (passwordButton.classList.contains("password-on")) {
+    passwordButton.classList.remove("password-on");
+    passwordButton.classList.add("password-off");
+    document.getElementById("log-in-password").type = "text";
+  } else {
+    passwordButton.classList.remove("password-off");
+    passwordButton.classList.add("password-on");
+    document.getElementById("log-in-password").type = "password";
+  }
+});
