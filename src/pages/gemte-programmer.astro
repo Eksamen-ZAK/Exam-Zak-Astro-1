@@ -59,13 +59,11 @@ import GoalModal from "../components/GoalModal.astro";
               <div class="buttons">
                 <button type="button" class="fullWidth red small delete">
                   <p>Slet</p>
-                  <div class="icon" id="/assets/trashcan-white.svg">
-                  </div></button
+                  <div class="icon" id="trashcan"></div></button
                 >
                 <button type="button" class="fullWidth green small play">
                   <p>Afspil</p>
-                  <div class="icon" id="/assets/play-icon-white.svg">
-                  </div></button
+                  <div class="icon" id="play"></div></button
                 >
               </div>
             </div>
@@ -212,7 +210,6 @@ import GoalModal from "../components/GoalModal.astro";
     cursor: pointer;
     > p {
       margin-top: 15px;
-      margin-left: 15px;
       font-size: var(--fs-m);
       font-family: var(--main-font);
     }
@@ -228,7 +225,7 @@ import GoalModal from "../components/GoalModal.astro";
     background-color: var(--primary-color);
     border: 2px solid var(--primary-color);
     > #trashcan {
-      background-image: url(../public/assets/trashcan-white.svg);
+      background-image: url(/assets/trashcan-white.svg);
     }
   }
   .red:hover {
@@ -236,7 +233,7 @@ import GoalModal from "../components/GoalModal.astro";
     background-color: var(--main-bg-color);
     border: 2px solid var(--primary-color);
     > #trashcan {
-      background-image: url(../public/assets/trashcan-red.svg);
+      background-image: url(/assets/trashcan-red.svg);
     }
   }
   .green {
@@ -249,12 +246,12 @@ import GoalModal from "../components/GoalModal.astro";
     background-color: var(--main-bg-color);
     border: 2px solid var(--secondary-color);
     > #play {
-      background-image: url(../public/assets/play-icon-green.svg);
+      background-image: url(/assets/play-icon-green.svg);
     }
   }
 
   #play {
-    background-image: url(../public/assets/play-icon-white.svg);
+    background-image: url(/assets/play-icon-white.svg);
   }
 
   .icon {
