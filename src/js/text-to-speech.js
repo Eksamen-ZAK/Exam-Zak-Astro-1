@@ -9,7 +9,7 @@ voices.forEach((voice) => {
   }
 });
 
-let strings = document.querySelectorAll("h1, h2, h3, p, a");
+let strings = document.querySelectorAll("h1, h2, h3, p, button");
 
 /* strings.forEach((string) => {
   string.addEventListener("click", (e) => {
