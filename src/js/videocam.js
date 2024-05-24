@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var pCon1 = document.querySelector(".con-1 p");
   var h2Con2 = document.querySelector(".con-2 h2");
   var pCon2 = document.querySelector(".con-2 p");
-
+  var closeButton = document.querySelector(".close-v");
   // liste over objekter / tekst der bliver skiftet ud
   var videoData = [
     {
@@ -85,6 +85,11 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     updateVideoAndText();
   });
+
+  closeButton.addEventListener(
+    "click",
+    () => (window.location.href = "/gemte-programmer")
+  );
 
   function updateVideoAndText() {
     var currentVideo = videoData[currentVideoIndex];

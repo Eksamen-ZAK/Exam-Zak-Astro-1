@@ -49,6 +49,7 @@ if (userData[0].saved_programs) {
     myClone
       .querySelector(".delete")
       .setAttribute("id", `delete-${data.programId}`);
+    myClone.querySelector(".play").setAttribute("id", `play-${data.programId}`);
     myClone
       .querySelector(".program-image")
       .setAttribute(
@@ -87,6 +88,11 @@ if (userData[0].saved_programs) {
           saved_programs: userData[0].saved_programs,
         };
         saveProgram(obj);
+      });
+    myClone
+      .getElementById(`play-${data.programId}`)
+      .addEventListener("mousedown", () => {
+        window.location.href = "/afspil-program";
       });
     parentElement.appendChild(myClone);
   });

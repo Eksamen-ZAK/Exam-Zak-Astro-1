@@ -177,5 +177,3 @@ function removeTextToSpeech() {
     }); */
   });
 }
-
-console.log(localStorage);

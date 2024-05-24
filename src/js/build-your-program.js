@@ -60,7 +60,11 @@ document.querySelector(".save").addEventListener("mousedown", () => {
     document.querySelector(".program-modal").showModal();
   }
 });
-
+document.querySelector(".play").addEventListener("mousedown", () => {
+  if (exercisesList.length > 0) {
+    window.location.href = "/afspil-program";
+  }
+});
 // Adding eventListeners to the "Tilføj"-buttons
 // The exercise, that is clicked on, has an id, that is getting pushed into the array "programArray".
 // The fetched data is being filtrered, in order to only show the id's from the array, that is being mapped through
