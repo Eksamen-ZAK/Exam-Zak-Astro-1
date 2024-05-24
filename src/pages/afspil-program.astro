@@ -33,7 +33,7 @@ const { title, metaDescription, backgroundColor } = Astro.props;
         <a href="/lav-dit-program">
           <button id="close-vid"><img src="../assets/fat-close-btn-icon.svg" alt="Næste video"></button>
         </a>
-        <p class="close-p">afbryd</p>
+        <p class="close-p">Afbryd</p>
     </div>
     
       <div class="top-left con-1">
@@ -47,7 +47,7 @@ const { title, metaDescription, backgroundColor } = Astro.props;
       </div>
     
 
-    <video id="background-video" autoplay muted loop>
+    <video id="background-video">
         <source src="../assets/videos/v003.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
@@ -72,28 +72,32 @@ const { title, metaDescription, backgroundColor } = Astro.props;
 html {
   height: 100%;
   margin: 0;
+  padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
 }
 
-h2{
+
+h2 {
     color: var(--mrkerd, #901A36);
-font-family: Manjari;
-font-size: 1.875rem;
-font-style: normal;
-font-weight: 700;
-/* line-height: normal; */
+    font-family: Manjari;
+    font-size: 1.875rem;
+    font-style: normal;
+    font-weight: 700;
+    margin: 0; 
+    line-height: 1.2; 
 }
 
 p {
     color: var(--sort, #141414);
-font-family: Manjari;
-font-size: 3.125rem;
-font-style: normal;
-font-weight: 100;
-/* line-height: 0.5; */
+    font-family: Manjari;
+    font-size: 3.125rem;
+    font-style: normal;
+    font-weight: 100;
+    margin: 0; 
+    line-height: 1.2;
 }
 
 .close-p{
@@ -131,7 +135,6 @@ video {
   width: 100%;
   height: auto;
   transform: scaleX(-1);
-  border-radius: 10px;
 }
 
 button{
@@ -156,7 +159,13 @@ background-color: #901A36;
     border-radius: 6px;
 }
 
+
+#pause-button {
+    display: none;
+}
+
 .close-v{
+    margin: 0;
     display: flex;
 height: 2.8125rem;
 padding: 0.625rem 1.25rem;
@@ -169,45 +178,51 @@ background: rgba(144, 26, 54, 0.50);
 
 .top-right {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 3%;
+  right: 0;
+  height: 2.8125rem;
+  padding: 0.625rem 1.25rem;
   text-align: right;
+  margin: 0;
 }
 
 .top-left {
   position: absolute;
-  top: 10px;
-  left: 10px;
+  top: 3%;
+  left: 0;
 }
 
-/* .top-left:nth-child(2) {
-  top: 20%; 
-} */
 
-.con-1{
-    top:75%;
-/* width: 22.8125rem;
-height: 7.1875rem; */
-padding: 0.625rem 1.875rem;
-border-radius: 0rem 0.375rem 0.375rem 0rem;
-opacity: 0.8;
-background: rgba(249, 247, 244, 0.50);
-gap: 0.4375rem;
+.con-1 h2, .con-1 p,
+.con-2 h2, .con-2 p {
+    margin: 0; 
+    line-height: 1.2; 
+}
+.con-1 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    top: 21%;
+    width: 12.3125rem;
+    height: 5.6875rem;
+    padding: 0.625rem 1.875rem;
+    border-radius: 0rem 0.375rem 0.375rem 0rem;
+    opacity: 0.8;
+    background: rgba(249, 247, 244, 0.50);
+    gap: 0.4375rem;
+    
 }
 
 .con-2 {
     display: flex;
-    width: 22.8125rem;
-    /* height: 7.1875rem; */
+    /* width: 22.8125rem; */
     padding: 0.625rem 1.875rem;
     flex-direction: column;
-    /* justify-content: center; */
     align-items: flex-start;
-    /* gap: 0.4375rem; */
     border-radius: 0rem 0.375rem 0.375rem 0rem;
     opacity: 0.8;
     background: rgba(249, 247, 244, 0.50);
+    gap: 0.4375rem;
 }
-
 
 </style>
