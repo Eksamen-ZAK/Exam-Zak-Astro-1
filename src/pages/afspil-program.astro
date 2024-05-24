@@ -176,14 +176,20 @@ const { title, metaDescription, backgroundColor } = Astro.props;
     #pause-button {
       width: 6.13806rem;
       height: 6.4375rem;
-      background-color: #901a36;
+      background-color: var(--primary-color);
       border-radius: 6px;
+      cursor: pointer;
     }
 
     #pause-button {
       display: none;
+      cursor: pointer;
     }
 
+    #forward-button,
+    #backward-button {
+      cursor: pointer;
+    }
     .close-v {
       margin: 0;
       display: flex;
@@ -195,6 +201,7 @@ const { title, metaDescription, backgroundColor } = Astro.props;
       gap: 10px;
       border-radius: 0.09375rem;
       background: rgba(144, 26, 54, 0.5);
+      cursor: pointer;
     }
 
     .top-right {
