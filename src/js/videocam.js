@@ -25,21 +25,21 @@ document.addEventListener("DOMContentLoaded", function () {
   var videoData = [
     {
       src: "../assets/videos/v001.mp4",
-      h2Con1: "Repition 1",
+      h2Con1: "Repetition 1",
       pCon1: "1/5",
       h2Con2: "Øvelse 1",
       pCon2: "Løft brynene",
     },
     {
       src: "../assets/videos/v002.mp4",
-      h2Con1: "Repition 2",
+      h2Con1: "Repetition 2",
       pCon1: "2/5",
       h2Con2: "Øvelse 2",
       pCon2: "Løft brynene (med hjælp)",
     },
     {
       src: "../assets/videos/v003.mp4",
-      h2Con1: "Repition 3",
+      h2Con1: "Repetition 3",
       pCon1: "3/5",
       h2Con2: "Øvelse 3",
       pCon2: "Rynk brynene",
