@@ -3,6 +3,9 @@ window.addEventListener("load", () => {
   document.getElementById("error").classList.add("hide");
 });
 
+if (localStorage.getItem("uuid")) {
+  window.location.href = "/gemte-programmer";
+}
 // When clicking submit a fetch request will be sent to the database
 // Data that matches the username (which the user has put in the inputfield log-in-username) will be fetched
 const form = document.querySelector("form");

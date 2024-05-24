@@ -79,6 +79,10 @@ function signUp(newUser) {
     });
 }
 
+if (localStorage.getItem("uuid")) {
+  window.location.href = "/gemte-programmer";
+}
+
 const form = document.querySelector(".sign-up");
 
 // The following function checks if the password includes an upper and a lower case letter and a number.

@@ -27,7 +27,11 @@ import Menu from "../components/Menu.astro";
     </div>
   </main>
 </LoginLayout>
-
+<script>
+  if (localStorage.getItem("uuid")) {
+    window.location.href = "/gemte-programmer";
+  }
+</script>
 <style>
   img {
     width: 271.002px;
