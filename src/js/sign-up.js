@@ -19,15 +19,22 @@ window.addEventListener("load", () => {
   passwordInput.classList.remove("invalid");
 });
 
+const modal = document.querySelector(".password-dialog");
+
 document
   .querySelector(".info-icon")
-  .addEventListener("click", () =>
-    document.querySelector(".password-dialog").showModal()
-  );
+  .addEventListener("mouseover", () => modal.showModal());
 
-document.querySelector(".close-button").addEventListener("mousedown", () => {
-  document.querySelector(".password-dialog").close();
+modal.addEventListener("mousedown", (event) => {
+  if (event.target == modal) {
+    document.querySelector(".password-dialog").close();
+  }
 });
+document
+  .querySelector(".close-button")
+  .addEventListener("mousedown", () =>
+    document.querySelector(".password-dialog").close()
+  );
 
 const passwordButton = document.getElementById("password-button");
 passwordButton.addEventListener("mousedown", () => {
