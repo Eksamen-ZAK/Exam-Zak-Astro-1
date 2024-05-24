@@ -79,6 +79,8 @@ function signUp(newUser) {
     });
 }
 
+// Checking if the uuid is stored in local storage. If that's the case, the user has previously
+// checked off "stay signed in", and will therefore be redirected to the page "gemte-programmer"
 if (localStorage.getItem("uuid")) {
   window.location.href = "/gemte-programmer";
 }
