@@ -80,14 +80,9 @@ import GoalModal from "../components/GoalModal.astro";
   const button = document.querySelector(".new-program");
 
   button.addEventListener(
-    "mousedown",
+    "click",
     () => (window.location.href = `/lav-dit-program`)
   );
-  button.addEventListener("keypress", (event) => {
-    if (event.key === "Enter") {
-      window.location.href = `/lav-dit-program`;
-    }
-  });
 </script>
 
 <style>

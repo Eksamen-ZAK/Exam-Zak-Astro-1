@@ -26,15 +26,7 @@ const { text, icon, variant, href, type, buttonId } = Astro.props;
   const buttons = document.querySelectorAll(".link");
   buttons.forEach((button) => {
     const href = button.getAttribute("data-link");
-    button.addEventListener(
-      "mousedown",
-      () => (window.location.href = `${href}`)
-    );
-    button.addEventListener("keypress", (event) => {
-      if (event.key === "Enter") {
-        window.location.href = `${href}`;
-      }
-    });
+    button.addEventListener("click", () => (window.location.href = `${href}`));
   });
 </script>
 

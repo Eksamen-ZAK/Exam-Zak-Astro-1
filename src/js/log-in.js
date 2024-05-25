@@ -55,7 +55,7 @@ async function logInFunction(e) {
 }
 
 const passwordButton = document.getElementById("log-in-password-button");
-passwordButton.addEventListener("mousedown", () => {
+passwordButton.addEventListener("click", () => {
   if (passwordButton.classList.contains("password-on")) {
     passwordButton.classList.remove("password-on");
     passwordButton.classList.add("password-off");

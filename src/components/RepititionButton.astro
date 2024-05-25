@@ -48,13 +48,13 @@ const { variant, cardId } = Astro.props;
 
       document
         .getElementById(`minus-${cardId}`)
-        .addEventListener("mousedown", () => {
+        .addEventListener("click", () => {
           retractRepitition();
         });
 
       document
         .getElementById(`plus-${cardId}`)
-        .addEventListener("mousedown", () => {
+        .addEventListener("click", () => {
           addRepitition();
         });
     });

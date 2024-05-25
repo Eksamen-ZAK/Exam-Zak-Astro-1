@@ -1,7 +1,7 @@
 // An eventListener is added to every the burger-menu button. When clicking on the burger menu button the class "hide"
 // will be removed from the menu and the navigation bar will be displayed
 document.querySelectorAll(".burger-menu").forEach((menu) =>
-  menu.addEventListener("mousedown", () => {
+  menu.addEventListener("click", () => {
     document
       .querySelectorAll(".menu-overlay")
       .forEach((overlay) => overlay.classList.remove("hide"));
@@ -11,7 +11,7 @@ document.querySelectorAll(".burger-menu").forEach((menu) =>
 // An eventListener is added to every close-menu button. When clicking on the button the class "hide"
 // will be added to the menu and the navigation bar will be hidden
 document.querySelectorAll(".close-menu").forEach((menu) =>
-  menu.addEventListener("mousedown", () => {
+  menu.addEventListener("click", () => {
     document
       .querySelectorAll(".menu-overlay")
       .forEach((overlay) => overlay.classList.add("hide"));

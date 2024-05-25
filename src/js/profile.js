@@ -71,7 +71,7 @@ const saveButton = document.querySelector(".save");
 // When clicking the edit button, the inputfields will be available by setting disabled to false,
 // and the class "hide" will be added to the button, so it is hidden. The class "hide" will also removed from
 // the button "gem" which makes it available for the user to save his or hers personal information after filling out the inputfields.
-editButton.addEventListener("mousedown", () => {
+editButton.addEventListener("click", () => {
   inputFields.forEach((input) => {
     input.disabled = false;
     input.classList.add("active");
@@ -82,7 +82,7 @@ editButton.addEventListener("mousedown", () => {
 
 // The gem button does the opposite. It disables the inputfields. The user is thereby not able to fill out the inputfields
 // It also hides the gem button and shows the rediger button
-saveButton.addEventListener("mousedown", () => {
+saveButton.addEventListener("click", () => {
   inputFields.forEach((input) => {
     input.disabled = true;
     input.classList.remove("active");
@@ -97,7 +97,7 @@ const form = document.getElementById("person-data");
 // properties. Afterward the object will be sent as a parameter to the function savePersonalInformation.
 // The form element "birthday" is only sent when the length of the inputfield is longer than 0
 // Otherwise there would be an error when sending a fetch request
-saveButton.addEventListener("mousedown", (e) => {
+saveButton.addEventListener("click", (e) => {
   e.preventDefault();
   console.log(form.elements.birthday.value.length > 0);
   if (form.elements.birthday.value.length > 0) {

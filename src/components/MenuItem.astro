@@ -17,7 +17,7 @@ const { link, image, text, id } = Astro.props;
   const buttons = document.querySelectorAll(".menu-item");
   buttons.forEach((button) => {
     const href = button.getAttribute("data-link");
-    button.addEventListener("mousedown", () => {
+    button.addEventListener("click", () => {
       if (href === "/") {
         sessionStorage.setItem("uuid", "");
         localStorage.setItem("uuid", "");
@@ -28,17 +28,6 @@ const { link, image, text, id } = Astro.props;
         sessionStorage.setItem("program-id", "");
         sessionStorage.setItem("program-list", "");
         sessionStorage.setItem("program-description", "");
-      }
-    });
-    button.addEventListener("keypress", function (e) {
-      if (e.key === "Enter") {
-        window.location.href = `${href}`;
-        if (sessionStorage.getItem("program-list")) {
-          sessionStorage.setItem("program-title", "");
-          sessionStorage.setItem("program-id", "");
-          sessionStorage.setItem("program-list", "");
-          sessionStorage.setItem("program-description", "");
-        }
       }
     });
   });

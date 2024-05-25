@@ -59,7 +59,7 @@ if (userData[0].saved_programs) {
 
     myClone
       .getElementById(`edit-${data.programId}`)
-      .addEventListener("mousedown", () => {
+      .addEventListener("click", () => {
         window.location.href = `/lav-dit-program`;
         sessionStorage.setItem(
           "program-list",
@@ -71,7 +71,7 @@ if (userData[0].saved_programs) {
       });
     myClone
       .getElementById(`set-goal-${data.programId}`)
-      .addEventListener("mousedown", () => {
+      .addEventListener("click", () => {
         document.querySelector(".goal-modal").showModal();
         sessionStorage.setItem("program-id", data.programId);
         sessionStorage.setItem("program-title", data.programTitle);
@@ -79,7 +79,7 @@ if (userData[0].saved_programs) {
       });
     myClone
       .getElementById(`delete-${data.programId}`)
-      .addEventListener("mousedown", () => {
+      .addEventListener("click", () => {
         const index = userData[0].saved_programs.findIndex(
           (item) => item.programId === data.programId
         );
@@ -91,7 +91,7 @@ if (userData[0].saved_programs) {
       });
     myClone
       .getElementById(`play-${data.programId}`)
-      .addEventListener("mousedown", () => {
+      .addEventListener("click", () => {
         window.location.href = "/afspil-program";
       });
     parentElement.appendChild(myClone);
@@ -123,7 +123,7 @@ let goalId;
 let goalProgram;
 let goalProgramList;
 
-document.querySelector(".back-button").addEventListener("mousedown", () => {
+document.querySelector(".back-button").addEventListener("click", () => {
   document.querySelector(".goal-modal").close();
 });
 

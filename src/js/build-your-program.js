@@ -55,12 +55,12 @@ if (programArray.length > 0) {
 }
 
 // Adding evenListener to the "Gem" button, when minimum one exercise has been added.
-document.querySelector(".save").addEventListener("mousedown", () => {
+document.querySelector(".save").addEventListener("click", () => {
   if (exercisesList.length > 0) {
     document.querySelector(".program-modal").showModal();
   }
 });
-document.querySelector(".play").addEventListener("mousedown", () => {
+document.querySelector(".play").addEventListener("click", () => {
   if (exercisesList.length > 0) {
     window.location.href = "/afspil-program";
   }
@@ -70,7 +70,7 @@ document.querySelector(".play").addEventListener("mousedown", () => {
 // The fetched data is being filtrered, in order to only show the id's from the array, that is being mapped through
 addButtons.forEach((button) => {
   const buttonId = button.getAttribute("data-button-id");
-  button.addEventListener("mousedown", () => {
+  button.addEventListener("click", () => {
     button.classList.add("disabled-green");
     button.classList.remove("green");
 
@@ -118,7 +118,7 @@ function mappingProgram(filteredData, programArray, exercisesList) {
     myClone.querySelector(".minus").setAttribute("id", `minus-${exercise.id}`);
     myClone
       .getElementById(`minus-${exercise.id}`)
-      .addEventListener("mousedown", () => {
+      .addEventListener("click", () => {
         retractRepitition(exercise.id);
       });
     myClone
@@ -138,7 +138,7 @@ function mappingProgram(filteredData, programArray, exercisesList) {
 
     myClone
       .getElementById(`x-small-${exercise.id}`)
-      .addEventListener("mousedown", () => {
+      .addEventListener("click", () => {
         parentElement.innerHTML = "";
         const index = programArray.indexOf(exercise.image);
         programArray.splice(index, 1);
@@ -162,7 +162,7 @@ function mappingProgram(filteredData, programArray, exercisesList) {
     myClone.querySelector(".plus").setAttribute("id", `plus-${exercise.id}`);
     myClone
       .getElementById(`plus-${exercise.id}`)
-      .addEventListener("mousedown", () => addRepitition(exercise.id));
+      .addEventListener("click", () => addRepitition(exercise.id));
     parentElement.appendChild(myClone);
     return programArray;
   });
@@ -242,7 +242,7 @@ let programUuid;
 // An eventListener is added to the back button in order to close the program modal when clicking the button
 document
   .querySelector(".back-button")
-  .addEventListener("mousedown", () =>
+  .addEventListener("click", () =>
     document.querySelector(".program-modal").close()
   );
 

@@ -57,7 +57,7 @@ if (userData[0].goals) {
       );
     myClone
       .getElementById(`edit-button-${data.programId}`)
-      .addEventListener("mousedown", () => {
+      .addEventListener("click", () => {
         sessionStorage.setItem("program-id", data.programId);
         sessionStorage.setItem("goal-number", data.goalNumber);
         sessionStorage.setItem("start-date", data.startDate);
@@ -88,7 +88,7 @@ let goalId;
 let goalProgram;
 let goalProgramList;
 
-document.querySelector(".back-button").addEventListener("mousedown", () => {
+document.querySelector(".back-button").addEventListener("click", () => {
   document.querySelector(".goal-modal").close();
 });
 
@@ -139,7 +139,7 @@ form.addEventListener("submit", (e) => {
   saveGoal(item);
 });
 
-//patching program liste
+// A fetch request is being sent to the database in order to patch the program list
 async function saveGoal(program) {
   fetch(
     `https://jlgsxiynwqvvhwheexwo.supabase.co/rest/v1/user-data?id=eq.${uuid}`,

@@ -19,19 +19,19 @@ document
   .querySelector(".info-icon")
   .addEventListener("mouseover", () => modal.showModal());
 
-modal.addEventListener("mousedown", (event) => {
+modal.addEventListener("click", (event) => {
   if (event.target == modal) {
     document.querySelector(".password-dialog").close();
   }
 });
 document
   .querySelector(".close-button")
-  .addEventListener("mousedown", () =>
+  .addEventListener("click", () =>
     document.querySelector(".password-dialog").close()
   );
 
 const passwordButton = document.getElementById("password-button");
-passwordButton.addEventListener("mousedown", () => {
+passwordButton.addEventListener("click", () => {
   if (passwordButton.classList.contains("password-on")) {
     passwordButton.classList.remove("password-on");
     passwordButton.classList.add("password-off");
@@ -44,7 +44,7 @@ passwordButton.addEventListener("mousedown", () => {
 });
 
 const repeatPasswordButton = document.getElementById("repeatPassword-button");
-repeatPasswordButton.addEventListener("mousedown", () => {
+repeatPasswordButton.addEventListener("click", () => {
   if (repeatPasswordButton.classList.contains("password-on")) {
     repeatPasswordButton.classList.remove("password-on");
     repeatPasswordButton.classList.add("password-off");
