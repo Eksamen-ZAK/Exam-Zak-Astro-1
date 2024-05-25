@@ -11,12 +11,6 @@ const numbers = /[0-9]/g;
 
 window.addEventListener("load", () => {
   document.getElementById("username").focus();
-  errorMessage.classList.add("hide");
-  letter.classList.add("hide");
-  number.classList.add("hide");
-  length.classList.add("hide");
-  document.getElementById("error").classList.add("hide");
-  passwordInput.classList.remove("invalid");
 });
 
 const modal = document.querySelector(".password-dialog");
@@ -98,31 +92,28 @@ const form = document.querySelector(".sign-up");
 // It also checks if the password is at least 8 characters long
 // An error message will be displayed if one of the four requirements is not being met
 function displayErrorMessage() {
-  document.getElementById("error").classList.add("hide");
+  document.getElementById("error").classList.remove("show");
   if (
     !passwordInput.value.match(lowerCaseLetters) ||
     !passwordInput.value.match(upperCaseLetters)
   ) {
-    passwordInput.classList.add("invalid");
-    errorMessage.classList.remove("hide");
-    letter.classList.remove("hide");
+    errorMessage.classList.add("show");
+    letter.classList.add("show");
   } else if (!passwordInput.value.match(numbers)) {
-    passwordInput.classList.add("invalid");
-    errorMessage.classList.remove("hide");
-    letter.classList.add("hide");
-    number.classList.remove("hide");
+    errorMessage.classList.add("show");
+    letter.classList.remove("show");
+    number.classList.add("show");
   } else if (passwordInput.value.length < 8) {
-    passwordInput.classList.add("invalid");
-    errorMessage.classList.remove("hide");
-    number.classList.add("hide");
-    length.classList.remove("hide");
+    errorMessage.classList.add("show");
+    number.classList.remove("show");
+    length.classList.add("show");
   } else if (
     form.elements.password.value != form.elements.repeatPassword.value
   ) {
-    errorMessage.classList.add("hide");
-    document.getElementById("error").classList.remove("hide");
+    errorMessage.classList.remove("show");
+    document.getElementById("error").classList.add("show");
   } else {
-    document.getElementById("error").classList.add("hide");
+    document.getElementById("error").classList.remove("show");
   }
 }
 
@@ -151,8 +142,8 @@ form.addEventListener("submit", (e) => {
   } else if (
     form.elements.password.value !== form.elements.repeatPassword.value
   ) {
-    errorMessage.classList.add("hide");
-    document.getElementById("error").classList.remove("hide");
+    errorMessage.classList.remove("show");
+    document.getElementById("error").classList.add("show");
   } else {
     displayErrorMessage();
   }

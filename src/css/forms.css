@@ -22,23 +22,18 @@ h1 {
   font-family: var(--main-font);
   color: var(--primary-color);
 }
-.hide {
-  display: none;
-}
-.valid:before {
-  position: relative;
-  left: -35px;
-  content: "&#10004;";
-}
-
-.invalid {
-  border: 2px solid var(--primary-color);
+.show {
+  display: block;
 }
 
 h2 {
+  display: none;
   color: var(--primary-color);
   font-family: var(--main-font);
   font-size: var(--fs-m);
+}
+span {
+  display: none;
 }
 label {
   font-size: var(--fs-m);

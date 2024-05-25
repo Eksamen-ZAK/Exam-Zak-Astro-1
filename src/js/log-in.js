@@ -1,6 +1,5 @@
 window.addEventListener("load", () => {
   document.getElementById("log-in-username").focus();
-  document.getElementById("error").classList.add("hide");
 });
 
 // Checking if the uuid is stored in local storage. If that's the case, the user has previously
@@ -35,7 +34,7 @@ async function logInFunction(e) {
   // telling the user that either the username or the password is wrong
   const data = await fetch(url, options).then((res) => {
     if (!res.ok) {
-      document.getElementById("error").classList.remove("hide");
+      document.getElementById("error").classList.add("show");
     }
     return res.json();
   });
@@ -48,10 +47,10 @@ async function logInFunction(e) {
       localStorage.setItem("uuid", data[0].id);
     }
     sessionStorage.setItem("uuid", data[0].id);
-    document.getElementById("error").classList.add("hide");
+    document.getElementById("error").classList.remove("show");
     window.location.href = "/gemte-programmer";
   } else {
-    document.getElementById("error").classList.remove("hide");
+    document.getElementById("error").classList.add("show");
   }
 }
 
