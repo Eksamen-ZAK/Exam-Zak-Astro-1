@@ -69,16 +69,13 @@ if (programArray.length > 0) {
   mappingProgram(filteredData, programArray, exercisesList);
 }
 
-// Adding evenListener to the "Gem" button, when minimum one exercise has been added.
+// Adding evenListener to the "Gem" button and "Afspil" button
+// "Gem" åbner et modal vindue, og "Afspil" fører brugeren til en ny side
 document.querySelector(".save").addEventListener("click", () => {
-  if (exercisesList.length > 0) {
-    document.querySelector(".program-modal").showModal();
-  }
+  document.querySelector(".program-modal").showModal();
 });
 document.querySelector(".play").addEventListener("click", () => {
-  if (exercisesList.length > 0) {
-    window.location.href = "/afspil-program";
-  }
+  window.location.href = "/afspil-program";
 });
 // Adding eventListeners to the "Tilføj"-buttons
 // The exercise, that is clicked on, has an id, that is getting pushed into the array "programArray".
