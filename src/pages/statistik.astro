@@ -10,6 +10,20 @@ import StatCard from "../components/StatCard.astro";
     <div class="goals-side-bar">
       <h1>Målsætninger</h1>
       <div class="goals-list">
+        <div class="instructions">
+          <h3>Her vil du kunne se dine målsætninger for din træning</h3>
+          <div>
+            <p>Sådan gør du:</p><ol>
+              <li>Gå ind under dine gemte programmer</li>
+              <li>Vælg det program du ønsker at træne</li>
+              <li>Tilføj en målsætning</li>
+            </ol>
+            <p class="further-description">
+              Hver gang du gennemfører dit udvalgte program, vil du automatisk
+              kunne se progression via din målsætning.
+            </p>
+          </div>
+        </div>
         <template class="goal-card-template">
           <article class="goal-card">
             <div class="goal-content">
@@ -152,6 +166,45 @@ import StatCard from "../components/StatCard.astro";
       font-size: var(--fs-s);
       font-weight: var(--fw-t);
       margin: 2px 0;
+    }
+    .instructions {
+      display: none;
+      text-align: start;
+      margin: 0 24px;
+      > h3 {
+        margin-top: 25px;
+        font-family: var(--main-font);
+        font-size: var(--fs-s);
+        font-weight: var(--fw-b);
+      }
+      > div {
+        margin-top: 50px;
+        > p {
+          font-family: var(--main-font);
+          font-size: var(--fs-s);
+          color: var(--primary-color);
+          font-weight: var(--fw-t);
+        }
+        > .further-description {
+          font-family: var(--main-font);
+          font-size: var(--fs-s);
+          color: var(--font-color);
+          font-weight: var(--fw-t);
+        }
+        > ol {
+          margin: 0 24px;
+          padding: 0;
+          > li {
+            font-family: var(--main-font);
+            font-size: var(--fs-s);
+            font-weight: var(--fw-t);
+            margin-bottom: 15px;
+          }
+        }
+      }
+    }
+    .show {
+      display: block;
     }
     .goal-progress {
       display: flex;

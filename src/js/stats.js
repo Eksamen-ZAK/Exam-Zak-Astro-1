@@ -23,6 +23,12 @@ const userData = await fetch(url, options).then((res) => {
   }
   return res.json();
 });
+console.log(userData[0].goals);
+if (userData[0].goals) {
+  document.querySelector(".instructions").classList.remove("show");
+} else {
+  document.querySelector(".instructions").classList.add("show");
+}
 
 const parentElement = document.querySelector(".goals-list");
 const template = document.querySelector(".goal-card-template").content;

@@ -27,6 +27,19 @@ import ProgramModal from "../components/ProgramModal.astro";
     <ProgramModal />
     <div class="sidebar">
       <h1>Dit program</h1>
+      <div class="instructions">
+        <h2>Når du har valgt nogle øvelser, vil de blive vist her.</h2>
+        <div>
+          <p>Sådan gør du:</p><ol>
+            <li>Udvælg de øvelser du gerne vil have i dit program</li><li>
+              Vælg hvor mange repetitioner du gerne vil have af den pågældende
+              øvelse
+            </li>
+            <li>Tilføj øvelsen ved at trykke på "tilføj"-knappen</li>
+            <li>Gem eller afspil dit program</li>
+          </ol>
+        </div>
+      </div>
       <div class="program-list">
         <template class="small-exercise-card">
           <article class="remove">
@@ -140,12 +153,16 @@ import ProgramModal from "../components/ProgramModal.astro";
   }
   h1,
   h2 {
-    font-size: var(--fs-l);
+    margin-top: 25px;
     font-family: var(--main-font);
     font-weight: var(--fw-b);
   }
+  h1 {
+    font-size: var(--fs-l);
+  }
   h2 {
     margin-bottom: 6px;
+    font-size: var(--fs-s);
   }
   p {
     margin: 0 0 21px 5px;
@@ -175,9 +192,6 @@ import ProgramModal from "../components/ProgramModal.astro";
     border-bottom: 1px solid var(--primary-color);
   }
 
-  div:has(h2) {
-    margin-left: 341px;
-  }
   .buttons {
     display: flex;
     gap: 15px;
@@ -251,6 +265,35 @@ import ProgramModal from "../components/ProgramModal.astro";
         width: 169px;
       }
     }
+  }
+  .instructions {
+    display: none;
+    text-align: start;
+    margin: 0 30px;
+
+    > div {
+      margin-top: 50px;
+      > p {
+        font-family: var(--main-font);
+        font-size: var(--fs-s);
+        color: var(--primary-color);
+        font-weight: var(--fw-t);
+      }
+      > ol {
+        margin: 0 30px;
+        padding: 0;
+        > li {
+          font-family: var(--main-font);
+          font-size: var(--fs-s);
+          font-weight: var(--fw-t);
+          margin-bottom: 15px;
+        }
+      }
+    }
+  }
+
+  .show {
+    display: block;
   }
   .red {
     gap: 4px;

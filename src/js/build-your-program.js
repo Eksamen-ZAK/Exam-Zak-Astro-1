@@ -43,6 +43,15 @@ if (sessionStorage.getItem("program-description")) {
   );
 }
 
+window.addEventListener("load", updateList());
+function updateList() {
+  if (programArray.length === 0) {
+    document.querySelector(".instructions").classList.add("show");
+  } else if (programArray.length > 0) {
+    document.querySelector(".instructions").classList.remove("show");
+  }
+}
+
 if (programArray.length > 0) {
   filteredData = data.filter((exercise) => {
     if (programArray.includes(exercise.image)) {
@@ -90,6 +99,7 @@ addButtons.forEach((button) => {
           return false;
         }
       });
+      updateList();
       mappingProgram(filteredData, programArray, exercisesList);
     }
   });
