@@ -50,7 +50,10 @@ window.addEventListener("load", updateList());
 function updateList() {
   if (programArray.length === 0) {
     document.querySelector(".instructions").classList.add("show");
-  } else if (programArray.length > 0) {
+  } else if (
+    programArray.length > 0 &&
+    document.querySelector(".instructions").classList.contains("show")
+  ) {
     document.querySelector(".instructions").classList.remove("show");
   }
 }
