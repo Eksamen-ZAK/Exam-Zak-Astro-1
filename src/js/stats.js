@@ -23,7 +23,9 @@ const userData = await fetch(url, options).then((res) => {
   }
   return res.json();
 });
-console.log(userData[0].goals);
+
+// Removing instructions when there are existing goals
+// Adding instructions otherwise
 if (userData[0].goals) {
   document.querySelector(".instructions").classList.remove("show");
 } else {

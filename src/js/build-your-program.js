@@ -43,6 +43,9 @@ if (sessionStorage.getItem("program-description")) {
   );
 }
 
+// Function that is called when window loads and when exercises are being added.
+// The function shows instructions when the programArray is empty
+// and removes instructions when there are added exercises to the programArray
 window.addEventListener("load", updateList());
 function updateList() {
   if (programArray.length === 0) {
