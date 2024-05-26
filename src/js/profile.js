@@ -52,9 +52,6 @@ function showProfile(user) {
     0,
     10
   );
-  document
-    .querySelector(".info-lists")
-    .appendChild(document.createElement("div"));
 }
 
 // Adding an eventListener to the button "log-out". When clicking on it the stored item uuid will be set to ""
@@ -82,13 +79,14 @@ editButton.addEventListener("click", () => {
 
 // The gem button does the opposite. It disables the inputfields. The user is thereby not able to fill out the inputfields
 // It also hides the gem button and shows the rediger button
-saveButton.addEventListener("click", () => {
+saveButton.addEventListener("click", (e) => {
   inputFields.forEach((input) => {
     input.disabled = true;
     input.classList.remove("active");
   });
   editButton.classList.remove("hide");
   saveButton.classList.add("hide");
+  saveData(e);
 });
 
 const form = document.getElementById("person-data");
@@ -97,9 +95,8 @@ const form = document.getElementById("person-data");
 // properties. Afterward the object will be sent as a parameter to the function savePersonalInformation.
 // The form element "birthday" is only sent when the length of the inputfield is longer than 0
 // Otherwise there would be an error when sending a fetch request
-saveButton.addEventListener("click", (e) => {
+function saveData(e) {
   e.preventDefault();
-  console.log(form.elements.birthday.value.length > 0);
   if (form.elements.birthday.value.length > 0) {
     obj = {
       name: form.elements.name.value,
@@ -115,11 +112,10 @@ saveButton.addEventListener("click", (e) => {
     };
   }
   savePersonalInformation(obj);
-});
+}
 
 // The object is being patched through a fetch request to the database
 async function savePersonalInformation(info) {
-  console.log(JSON.stringify(info));
   fetch(
     `https://jlgsxiynwqvvhwheexwo.supabase.co/rest/v1/user-data?id=eq.${uuid}`,
     {
