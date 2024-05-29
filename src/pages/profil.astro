@@ -34,7 +34,7 @@ import "../css/generel.css";
       />
       <div>
         <div id="personal-info">
-          <h2>Person information</h2>
+          <h1>Person information</h1>
           <div class="info-lists">
             <ul class="person-info">
               <li>
@@ -69,7 +69,7 @@ import "../css/generel.css";
         </div>
         <div id="gen-info">
           <div id="locked-info">
-            <h2>Generel information</h2>
+            <h1>Generel information</h1>
             <img src="/assets/lock.svg" alt="lås ikon" />
           </div>
           <div class="info-lists">
@@ -111,7 +111,7 @@ import "../css/generel.css";
 
 <style>
   main {
-    margin: 0rem 5rem;
+    margin: 0px 80px;
     padding-top: 50px;
   }
   * {
@@ -122,9 +122,16 @@ import "../css/generel.css";
   form {
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    gap:48px;
   }
-  h1 {
+
+   h1 {
+    margin-bottom: 6px;
+    font-size: var(--fs-m);
+    font-family: var(--main-font);
+    font-weight: var(--fw-b);
+  }
+  h2 {
     font-size: var(--fs-l);
     font-family: var(--main-font);
     font-weight: var(--fw-b);
@@ -138,15 +145,10 @@ import "../css/generel.css";
     font-weight: var(--fw-n);
     color: black;
   }
-  h2 {
-    margin-bottom: 6px;
-    font-size: var(--fs-m);
-    font-family: var(--main-font);
-    font-weight: var(--fw-b);
-  }
+ 
   ul {
     display: grid;
-    gap: 0.2rem;
+    gap: 3.2px;
     align-items: center;
     > li {
       font-size: var(--fs-small-card);
@@ -160,12 +162,12 @@ import "../css/generel.css";
   form > img {
     height: 120px;
     width: 120px;
-    margin: 0 2rem;
+    margin: 0 32px;
   }
   .buttons {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 16px;
     width: 260px;
     height: 100px;
   }
@@ -182,7 +184,7 @@ import "../css/generel.css";
   }
   .info-lists {
     display: flex;
-    gap: 1.5rem;
+    gap: 24px;
     > .colored-text {
       color: var(--primary-color);
       font-weight: var(--fw-b);
@@ -192,14 +194,14 @@ import "../css/generel.css";
     margin-top: 30px;
   }
   #personal-info {
-    margin-bottom: 2rem;
+    margin-bottom: 32px;
   }
   #locked-info {
     display: flex;
-    gap: 0.5rem;
+    gap: 8px;
     > img {
-      width: 1rem;
-      height: 1rem;
+      width: 16px;
+      height: 16px;
     }
   }
   .fade-img > img {

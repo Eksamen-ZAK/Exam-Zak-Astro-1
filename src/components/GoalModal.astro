@@ -4,6 +4,9 @@ import Button from "./Button.astro";
 ---
 
 <dialog class="goal-modal">
+  <button id="close-button" class="close-button">
+    <img src="/assets/x-red.svg" alt="close" />
+  </button>
   <div class="heading">
     <div>
       <img src="/assets/dart-icon.svg" alt="målsætning ikon" />
@@ -55,14 +58,27 @@ import Button from "./Button.astro";
 
 <style>
   dialog {
-    position: fixed;
-    width: 48vw;
-    height: 60vh;
-    border-radius: 10px;
-    background: #fff;
-    border: none;
-    padding: 20px 38px;
-  }
+  position: relative; /* Needed to position the close button absolutely within the dialog */
+  width: 48vw;
+  height: 60vh;
+  border-radius: 10px;
+  background: #fff;
+  border: none;
+  padding: 20px 38px;
+}
+
+#close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px; /* Adjust these values as necessary to fit your design */
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+#close-button img {
+  height: 42px;
+}
 
   .heading {
     display: flex;
@@ -113,4 +129,28 @@ import Button from "./Button.astro";
     border: none;
     cursor: pointer;
   }
+
+  /* --- modal/pop-up vindue ændret til at passe med iPad --- */
+@media (min-width: 768px) {
+  dialog {
+    width: 80vw; 
+    height: fit-content; 
+    padding: 20px 38px 30px; 
+    max-width: 600px; 
+  }
+}
 </style>
+<script>
+ document.addEventListener('DOMContentLoaded', function () {
+    const closeButton = document.getElementById('close-button');
+    const goalModal = document.querySelector('dialog.goal-modal');
+
+    if (goalModal instanceof HTMLDialogElement) {
+      closeButton.addEventListener('click', function() {
+        goalModal.close();
+      });
+    } else {
+      console.error('Dialog element not found or not supported.');
+    }
+  });
+</script>
