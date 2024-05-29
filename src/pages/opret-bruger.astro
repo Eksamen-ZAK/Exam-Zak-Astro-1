@@ -20,7 +20,7 @@ import "../css/forms.css";
       </ul>
     </dialog>
     <div class="fade-img">
-      <img src="../../assets/images/023.webp" alt="person" />
+      <img src="/assets/images/bg-til-landing-optimized.webp" alt="person smiler" />
     </div>
     <div>
       <h1>Opret bruger:</h1>
@@ -72,17 +72,25 @@ import "../css/forms.css";
 </LoginLayout>
 
 <style>
-  .fade-img > img {
-    filter: grayscale(1);
-    opacity: 0.1;
-    width: 70vw;
-    margin-top: -15%;
+  main{
+    margin: 0;
   }
-  .fade-img {
-    position: absolute;
-    top: 0%;
-    right: -35%;
-    height: 100vh;
-    overflow: hidden;
-  }
+.fade-img {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  z-index: -1; 
+}
+
+.fade-img > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1);
+  opacity: 0.5;
+}
+
 </style>
