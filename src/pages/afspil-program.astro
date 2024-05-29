@@ -30,18 +30,18 @@ const { title, metaDescription, backgroundColor } = Astro.props;
   <body class={backgroundColor}>
     <button class="top-right close-v">
       <div id=" close-vid">
-        <img src="../assets/fat-close-btn-icon.svg" alt="Næste video" />
+        <img class="img-close" src="../assets/fat-close-btn-icon.svg" alt="Næste video" />
       </div>
       <p class="close-p">Afbryd</p>
     </button>
 
     <div class="top-left con-1">
-      <h2>Repetition</h2>
+      <h1>Repetition</h1>
       <p>4/5</p>
     </div>
 
     <div class="top-left con-2">
-      <h2>Øvelse</h2>
+      <h1>Øvelse</h1>
       <p>Rynk brynene</p>
     </div>
 
@@ -100,7 +100,7 @@ const { title, metaDescription, backgroundColor } = Astro.props;
       --font-color: #141414;
     }
 
-    h2 {
+    h1 {
       color: var(--primary-color);
       font-family: var(--main-font);
       font-size: 1.875rem;
@@ -111,9 +111,9 @@ const { title, metaDescription, backgroundColor } = Astro.props;
     }
 
     p {
-      color: var(--sort, #141414);
+      color: var(--sort);
       font-family: var(--main-font);
-      font-size: 3.125rem;
+      font-size: 42px;
       font-style: normal;
       font-weight: 100;
       margin: 0;
@@ -125,7 +125,7 @@ const { title, metaDescription, backgroundColor } = Astro.props;
       text-align: center;
       font-family: var(--main-font);
       padding-top: 0.25rem;
-      font-size: 1.19769rem;
+      font-size: var(--fs-l);
       font-style: normal;
       font-weight: var(--fw-b);
       line-height: normal;
@@ -200,18 +200,26 @@ const { title, metaDescription, backgroundColor } = Astro.props;
       align-items: center;
       gap: 10px;
       border-radius: 0.09375rem;
-      background: rgba(144, 26, 54, 0.5);
+      background: var(--primary-color);
       cursor: pointer;
     }
 
+    .img-close{
+      width: 32px;
+      height: 32px;
+    }
+
     .top-right {
+      gap: 20px; 
       position: absolute;
-      top: 3%;
-      right: 0;
-      height: 2.8125rem;
-      padding: 0.625rem 1.25rem;
-      text-align: right;
-      margin: 0;
+       top: 3%;
+       right: 0;
+       height: 3.8125rem;
+       width: 267px;
+       padding: 0.625rem 1.25rem;
+        margin: 0;
+        text-align: right;
+        justify-content: flex-start;
     }
 
     .top-left {
@@ -220,9 +228,9 @@ const { title, metaDescription, backgroundColor } = Astro.props;
       left: 0;
     }
 
-    .con-1 h2,
+    .con-1 h1,
     .con-1 p,
-    .con-2 h2,
+    .con-2 h1,
     .con-2 p {
       margin: 0;
       line-height: 1.2;
@@ -237,20 +245,24 @@ const { title, metaDescription, backgroundColor } = Astro.props;
       padding: 0.625rem 1.875rem;
       border-radius: 0rem 0.375rem 0.375rem 0rem;
       opacity: 0.8;
-      background: rgba(249, 247, 244, 0.5);
+      background: rgba(249, 247, 244, 0.276);
       gap: 0.4375rem;
     }
 
     .con-2 {
       display: flex;
-      /* width: 22.8125rem; */
       padding: 0.625rem 1.875rem;
       flex-direction: column;
       align-items: flex-start;
       border-radius: 0rem 0.375rem 0.375rem 0rem;
       opacity: 0.8;
-      background: rgba(249, 247, 244, 0.5);
+      background: rgba(249, 247, 244, 0.276);
       gap: 0.4375rem;
     }
+    .control-buttons img {
+    width: 100%;
+    height: 50px;
+    }
+    
   </style>
 </html>

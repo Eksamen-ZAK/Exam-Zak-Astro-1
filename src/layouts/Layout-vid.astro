@@ -1,0 +1,64 @@
+---
+import Header from "../components/Header.astro";
+import Menu from "../components/Menu.astro";
+
+interface Props {
+  title: string;
+  metaDescription?: string;
+  backgroundColor?: string;
+}
+
+const { title, metaDescription, backgroundColor } = Astro.props;
+---
+
+<!doctype html>
+<html lang="da">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={metaDescription} />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/x-icon" href="/assets/logo.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manjari:wght@100;400;700&family=Marmelad&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body class={backgroundColor}>
+    <Header />
+
+    <slot />
+    <script src=`../js/generel.js`></script>
+  </body>
+</html>
+<style is:global>
+  html {
+    --main-font: "Manjari", sans-serif;
+    --secondary-font: "Marmelad", sans-serif;
+    --fw-b: 700;
+    --fw-r: 400;
+    --fw-t: 100;
+    --fs-xs: 10px;
+    --fs-s: 14px;
+    --fs-small-card: 16px;
+    --fs-m: 18px;
+    --fs-ml: 24px;
+    --fs-l: 30px;
+    --fs-xl: 32px;
+    --primary-color: #901a36;
+    --secondary-color: #749e2e;
+    --main-bg-color: #f9f7f4;
+    --alternative-bg-color: #eaeaea;
+    --font-color: #141414;
+  }
+  body {
+    max-height: 100vh;
+    background-color: var(--main-bg-color);
+  }
+  .alternative {
+    background-color: var(--alternative-bg-color);
+  }
+</style>

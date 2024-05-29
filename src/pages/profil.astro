@@ -34,7 +34,7 @@ import "../css/generel.css";
       />
       <div>
         <div id="personal-info">
-          <h2>Person information</h2>
+          <h1>Person information</h1>
           <div class="info-lists">
             <ul class="person-info">
               <li>
@@ -69,7 +69,7 @@ import "../css/generel.css";
         </div>
         <div id="gen-info">
           <div id="locked-info">
-            <h2>Generel information</h2>
+            <h1>Generel information</h1>
             <img src="/assets/lock.svg" alt="lås ikon" />
           </div>
           <div class="info-lists">
@@ -124,7 +124,14 @@ import "../css/generel.css";
     flex-direction: column;
     gap: 3rem;
   }
-  h1 {
+
+   h1 {
+    margin-bottom: 6px;
+    font-size: var(--fs-m);
+    font-family: var(--main-font);
+    font-weight: var(--fw-b);
+  }
+  h2 {
     font-size: var(--fs-l);
     font-family: var(--main-font);
     font-weight: var(--fw-b);
@@ -138,12 +145,7 @@ import "../css/generel.css";
     font-weight: var(--fw-n);
     color: black;
   }
-  h2 {
-    margin-bottom: 6px;
-    font-size: var(--fs-m);
-    font-family: var(--main-font);
-    font-weight: var(--fw-b);
-  }
+ 
   ul {
     display: grid;
     gap: 0.2rem;

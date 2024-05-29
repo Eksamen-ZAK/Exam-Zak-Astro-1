@@ -27,36 +27,74 @@ import MenuItem from "./MenuItem.astro";
   </div>
 
   <style>
-    button {
-      position: absolute;
-      right: 45px;
-      top: 45px;
-      width: 42px;
-      height: 35px;
-      background-color: transparent;
-      border: none;
-      cursor: pointer;
-    }
-    .menu-overlay {
-      height: 100vh;
-      width: 100vw;
-      position: fixed;
-      z-index: 3;
-      left: 0;
-      top: 0;
-      overflow-x: hidden;
-      background-color: var(--primary-color);
-      transition: all 2s linear;
-    }
-    .hide {
-      opacity: 0;
-      display: none;
-    }
+     button {
+    position: absolute;
+    right: 45px;
+    top: 45px;
+    width: 42px;
+    height: 35px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  .menu-overlay {
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    z-index: 3;
+    left: 0;
+    top: 0;
+    overflow-x: hidden;
+    background-color: var(--primary-color);
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .hide {
+    opacity: 0;
+    display: none;
+  }
+  .menu-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 90%;
+    max-width: 995px;
+    gap: 20px; 
+    text-align: center; 
+  }
+  
+  /* ---- iPad Air / Pro  ----- */
+  @media (max-width: 1024px) {
     .menu-content {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      width: 995px;
-      margin: 158px auto;
+      grid-template-columns: 1fr 1fr; 
+      width: 80%;
     }
+  }
+
+  @media (max-width: 768px) {
+    .menu-content {
+      grid-template-columns: 1fr; 
+      width: 90%;
+    }
+    button {
+      right: 20px;
+      top: 20px;
+    }
+  }
+  
+  /* --- Når iPad'en er i portræt / vertikal orientation --- */
+  @media (orientation: portrait) {
+    .menu-content {
+      margin: 0 auto; 
+    }
+  }
+
+  /* --- Når iPad'en er i landscape / horisontal orientation --- */
+  @media (orientation: landscape) {
+    .menu-content {
+      margin: 0 auto; 
+    }
+  }
   </style>
 </div>
