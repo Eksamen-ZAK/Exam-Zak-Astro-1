@@ -15,7 +15,10 @@ const { title, metaDescription, backgroundColor } = Astro.props;
 <html lang="da">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content={metaDescription} />
+    <meta
+      name="description"
+      content="På denne side bliver dit personlige træningsprogram afspillet. Følg med i antal repetitioner og øvelsesnavne, mens du ser dig selv træne via webcam i hjørnet af videoen"
+    />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/assets/logo.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -25,12 +28,16 @@ const { title, metaDescription, backgroundColor } = Astro.props;
       rel="stylesheet"
     />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
+    <title>Afspil program</title>
   </head>
-  <body class={backgroundColor}>
+  <body>
     <button class="top-right close-v">
       <div id=" close-vid">
-        <img class="img-close" src="../assets/fat-close-btn-icon.svg" alt="Næste video" />
+        <img
+          class="img-close"
+          src="../assets/fat-close-btn-icon.svg"
+          alt="Næste video"
+        />
       </div>
       <p class="close-p">Afbryd</p>
     </button>
@@ -175,7 +182,7 @@ const { title, metaDescription, backgroundColor } = Astro.props;
     #play-button,
     #pause-button {
       width: 98.20896px;
-      height:103px;
+      height: 103px;
       background-color: var(--primary-color);
       border-radius: 6px;
       cursor: pointer;
@@ -204,22 +211,22 @@ const { title, metaDescription, backgroundColor } = Astro.props;
       cursor: pointer;
     }
 
-    .img-close{
+    .img-close {
       width: 32px;
       height: 32px;
     }
 
     .top-right {
-      gap: 20px; 
+      gap: 20px;
       position: absolute;
-       top: 3%;
-       right: 0;
-       height: 10px;
-       width: 267px;
-       padding: 10px 20px;
-        margin: 0;
-        text-align: right;
-        justify-content: flex-start;
+      top: 3%;
+      right: 0;
+      height: 10px;
+      width: 267px;
+      padding: 10px 20px;
+      margin: 0;
+      text-align: right;
+      justify-content: flex-start;
     }
 
     .top-left {
@@ -260,9 +267,8 @@ const { title, metaDescription, backgroundColor } = Astro.props;
       gap: 7px;
     }
     .control-buttons img {
-    width: 100%;
-    height: 50px;
+      width: 100%;
+      height: 50px;
     }
-    
   </style>
 </html>
