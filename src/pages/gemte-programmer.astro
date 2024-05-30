@@ -42,7 +42,7 @@ import GoalModal from "../components/GoalModal.astro";
               <img class="program-image" src="" alt="program image" />
             </div>
             <div class="text-container">
-              <h2 class="program-title"></h2 >
+              <h2 class="program-title"></h2>
               <p class="program-description"></p>
               <div class="functions-list">
                 <button class="set-goal">
@@ -263,18 +263,28 @@ import GoalModal from "../components/GoalModal.astro";
     }
   }
 
-      /* --- Når iPad'en er i portræt / vertikal orientation --- */
-@media (min-width: 768px) and (orientation: portrait) {
-  .program-list {
-    grid-template-columns: repeat(2, 1fr); 
-    justify-items: center;
+  /* --- Når iPad'en er i portræt / vertikal orientation --- */
+  @media (min-width: 768px) and (orientation: portrait) {
+    .program-list {
+      grid-template-columns: repeat(2, 1fr);
+      justify-items: center;
+    }
   }
-}
-
+  @media (min-width: 768px) {
+    .program-list {
+      grid-template-columns: repeat(2, 1fr);
+      justify-items: center;
+    }
+  }
   /* --- Når iPad'en er i landscape / horisontal orientation --- */
-@media (min-width: 1024px) and (orientation: landscape) {
-  .program-list {
-    grid-template-columns: repeat(3, 1fr); 
+  @media (min-width: 1024px) and (orientation: landscape) {
+    .program-list {
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
-}
+  @media (min-width: 1200px) {
+    .program-list {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
 </style>
