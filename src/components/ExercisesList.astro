@@ -31,11 +31,37 @@ const { headline, description, dataFilter, divider = true } = Astro.props;
 </div>
 
 <style>
-  .grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    width: 90%;
-    gap: 10px;
+  /* --- Når iPad'en er i portræt / vertikal orientation --- */
+  @media (min-width: 768px), (min-width: 1024px) and (orientation: portrait) {
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+  }
+  @media (min-width: 768px) {
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+  }
+
+  /* --- Når iPad'en er i landscape / horisontal orientation --- */
+  @media (min-width: 1024px) and (orientation: landscape) {
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+  }
+  @media (min-width: 1280px) {
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      width: 90%;
+      gap: 10px;
+    }
   }
 
   h2 {

@@ -369,18 +369,4 @@ import ProgramModal from "../components/ProgramModal.astro";
     height: 17px;
     background-size: contain;
   }
-
-        /* --- Når iPad'en er i portræt / vertikal orientation --- */
-@media (min-width: 768px), (min-width: 1024px) and (orientation: portrait) {
-  .grid{
-    grid-template-columns: 1fr;
-    gap: 10px;}
-}
-
-  /* --- Når iPad'en er i landscape / horisontal orientation --- */
-@media (min-width: 1024px) and (orientation: landscape) {
-  .grid{
-    grid-template-columns: 1fr;
-    gap: 10px;}
-}
 </style>
