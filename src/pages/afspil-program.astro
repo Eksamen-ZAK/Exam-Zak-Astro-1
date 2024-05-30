@@ -48,13 +48,13 @@ const { title, metaDescription, backgroundColor } = Astro.props;
     </div>
 
     <div class="top-left con-2">
-      <h1>Øvelse</h1>
+      <h2>Øvelse</h2>
       <p>Rynk brynene</p>
     </div>
 
     <video id="background-video">
       <source src="../assets/videos/v003.mp4" type="video/mp4" />
-      Your browser does not support the video tag.
+      Din browser undersøtter ikke dette video format.
     </video>
 
     <div class="control-buttons">
@@ -107,7 +107,7 @@ const { title, metaDescription, backgroundColor } = Astro.props;
       --font-color: #141414;
     }
 
-    h1 {
+    h1,h2 {
       color: var(--primary-color);
       font-family: var(--main-font);
       font-size: 30px;
@@ -221,7 +221,7 @@ const { title, metaDescription, backgroundColor } = Astro.props;
       position: absolute;
       top: 3%;
       right: 0;
-      height: 10px;
+      height: 62px;
       width: 267px;
       padding: 10px 20px;
       margin: 0;

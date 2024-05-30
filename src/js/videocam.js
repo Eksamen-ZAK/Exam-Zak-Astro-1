@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var backwardButton = document.getElementById("backward-button");
   var h1Con1 = document.querySelector(".con-1 h1");
   var pCon1 = document.querySelector(".con-1 p");
-  var h1Con2 = document.querySelector(".con-2 h1");
+  var h2Con2 = document.querySelector(".con-2 h2");
   var pCon2 = document.querySelector(".con-2 p");
   var closeButton = document.querySelector(".close-v");
   // liste over objekter / tekst der bliver skiftet ud
@@ -27,21 +27,21 @@ document.addEventListener("DOMContentLoaded", function () {
       src: "../assets/videos/v001.mp4",
       h1Con1: "Repetition 1",
       pCon1: "1/5",
-      h1Con2: "Øvelse 1",
+      h2Con2: "Øvelse 1",
       pCon2: "Løft brynene",
     },
     {
       src: "../assets/videos/v002.mp4",
       h1Con1: "Repetition 1",
       pCon1: "2/5",
-      h1Con2: "Øvelse 2",
+      h2Con2: "Øvelse 2",
       pCon2: "Løft brynene (med hjælp)",
     },
     {
       src: "../assets/videos/v003.mp4",
       h1Con1: "Repetition 1",
       pCon1: "3/5",
-      h1Con2: "Øvelse 3",
+      h2Con2: "Øvelse 3",
       pCon2: "Rynk brynene",
     },
   ];
@@ -96,7 +96,7 @@ document.addEventListener("DOMContentLoaded", function () {
     video.src = currentVideo.src;
     h1Con1.textContent = currentVideo.h1Con1;
     pCon1.textContent = currentVideo.pCon1;
-    h1Con2.textContent = currentVideo.h1Con2;
+    h2Con2.textContent = currentVideo.h2Con2;
     pCon2.textContent = currentVideo.pCon2;
     video.pause();
     playButton.style.display = "inline-block";
